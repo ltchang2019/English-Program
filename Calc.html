@@ -1,0 +1,78 @@
+      <style>
+      .button {
+      font-size: 18px;
+      width: 15px;
+      height: 40px;
+      display: inline-block;
+      width: 4.5%;
+      margin-left: 2px;
+      margin-right: 2px;
+      margin-top: 2px;
+      margin-bottom: 2px;}
+
+      .submit{
+      margin-left: 10px;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      font-size: 48px;}
+
+      </style>
+       
+
+
+        <form id="KeyPadArea" name="KeyPadArea" class="KeyPadArea">
+            <button type="button" class="button" id="buttonMisc" value=" " onClick="Symbol(this.value);"></button>
+            <button type="button" class="button" id="button7" value="7" onClick="Symbol(this.value);">7</button>
+            <button type="button" class="button" id="button8" value="8" onClick="Symbol(this.value);">8</button>
+            <button type="button" class="button" id="button9" value="9" onClick="Symbol(this.value);">9</button>
+            
+            <button type="button" class="button" id="buttonLP" value="(" onClick="Symbol(this.value);">(</button>
+            <button type="button" class="button" id="buttonRP" value=")" onClick="Symbol(this.value);">)</button>
+            <button type="button" class="button" id="buttonColon" value=":" onClick="Symbol(this.value);">:</button>
+            <button type="button" class="button" id="buttonComma" value="," onClick="Symbol(this.value);">,</button>
+            <br>
+            
+            <button type="button" class="button" id="buttonN" value="-" onClick="Symbol(this.value);">-</button>
+            <button type="button" class="button" id="button4" value="4" onClick="Symbol(this.value);">4</button>
+            <button type="button" class="button" id="button5" value="5" onClick="Symbol(this.value);">5</button>
+            <button type="button" class="button" id="button6" value="6" onClick="Symbol(this.value);">6</button>
+            
+            <button type="button" class="button" id="buttonGE" value="≥" onClick="Symbol(this.value);">\ge</button>
+            <button type="button" class="button" id="buttonLE" value="≤" onClick="Symbol(this.value);">\le</button>
+            <button type="button" class="button" id="buttonG" value=">" onClick="Symbol(this.value);">></button>
+            <button type="button" class="button" id="buttonL" value="<" onClick="Symbol(this.value);"><</button>
+            <br>
+
+            <button type="button" class="button" id="buttonPlus" value="+" onClick="Symbol(this.value);">+</button>
+            <button type="button" class="button" id="button1" value="1" onClick="Symbol(this.value);">1</button>
+            <button type="button" class="button" id="button2" value="2" onClick="Symbol(this.value);">2</button>
+            <button type="button" class="button" id="button3" value="3" onClick="Symbol(this.value);">3</button>
+
+            <button type="button" class="button" id="buttonInf" value="°" onClick="Symbol(this.value);">°</button>
+            <button type="button" class="button" id="buttonPi" value="\pi" onClick="Symbol(this.value);">\pi</button>
+            <button type="button" class="button" id="buttonDollar" value="$" onClick="Symbol(this.value);">$</button>
+            <button type="button" class="button" id="" value="\infty" onClick="Symbol(this.value);">\infty</button>
+            <br>
+
+            <button type="button" class="button" id="" value="\pm" onClick="Symbol(this.value);">\pm</button>
+            <button type="button" class="button" id="buttonD" value="." onClick="Symbol(this.value);">.</button>
+            <button type="button" class="button" id="button0" value="0" onClick="Symbol(this.value);">0</button>
+            <button type="button" class="button" id="buttonEqual" value="=" onClick="Symbol(this.value);">=</button>
+            
+            <button type="button" class="button" id="buttonD" value="^" onClick="Symbol(this.value);">x^{a}</button>
+            <button type="button" class="button" id="buttonSub" value="_" onClick="Symbol(this.value);">x_a</button>
+            <button type="button" class="button" id="buttonSqrt" value="\sqrt" onClick="Symbol(this.value);">\sqrt{}</button>
+            <button type="button" class="button" id="buttonF" value="/" onClick="Symbol(this.value);">\frac{a}{b}</button>
+        </form>
+
+
+        <div id="ActionKeys">
+            <input type="button" name="Clear" class="buttonA" id="buttonD" value="DELETE" onClick="Delete();"/>
+            <input type="button" name="Clear" class="buttonA" id="buttonC" value="CLEAR" onClick="Clear();"/>
+            <input type="submit" name="Submit" class="buttonA" id="buttonE" value="ENTER" onClick="Correct();"/>
+        <br/>
+        <br/>
+        </div>
+        </div>
+

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX Messaging Project UI 2018</title>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+		}
+		#controlPanel {
+			background-color: #F0F000;
+			height: 100%;
+			float: left;
+		}
+		
+		#reportArea {
+			background-color: #00F0F0;
+			height: 100%;
+			width: 100%;
+			
+		}
+		.panelTitle {
+			padding: 0;
+			margin: 0;
+			color: red;
+			text-align: center;
+		}
+		
+		/*	NOTE: This, combined with the mods to the input[type=text] CSS, make the
+			fields of the form all line up on the right border (0px from the right)
+		*/
+		#checkMessagesToPanel, #checkMessagesFromPanel, #newUserPanel, #newMessagePanel {
+			border: 2px solid black;
+			position: relative;
+		}
+		
+		/*	This, with the relative positioning of the panels (see above) is 
+			one way to get the inputs to line up all nicely and flush against
+			the right hand side of the panels.
+			Position absolute positions elements relative to their nearest
+			positioned ancestor so this is putting items 0px from the right 
+			hand side of the panel divs...lines them up nicely.
+		*/
+		input[type=text] {
+			width: 150px;
+			position: absolute;
+			right: 0px;
+		}
+	</style>
+	
+</head>
+	
+	
+	
+	
+	
+	
+	
+<!-- LEFT BLANK ON PURPOSE...SCROLLING AID...OR SOMETHING -->	
+	
+	
+	
+	
+	
+	
+	
+
+<body>
+
+	<div id="controlPanel">
+		
+		<div id="checkMessagesToPanel">
+			<p class="panelTitle">Messages To Panel</p>
+			<form action="javascript:checkMessagesToOrSomething();" method="GETorPOSTyourCHOICE">
+				To: <input type="text" name="someName" id="uniqueID"></input><br>
+				<input type="submit"></input>
+			</form>
+		</div>
+		
+		<div id="checkMessagesFromPanel">
+			<p class="panelTitle">Messages From Panel</p>
+			<form action="javascript:checkMessagesFromOrSomething();" method="GETorPOSTyourCHOICE">
+				From: <input type="text" name="someName" id="uniqueID"></input><br>
+				<input type="submit"></input>
+			</form>
+		</div>
+		
+		<div id="newMessagePanel">
+			<p class="panelTitle">New Message Panel</p>
+			<form action="javascript:processNewMessageOrSomething();" method="GETorPOSTyourCHOICE">
+				From: <input type="text" name="someName" id="uniqueID"></input><br>
+				To: <input type="text" name="someName" id="uniqueID"></input><br>
+				Subject: <input type="text" name="someName" id="uniqueID"></input><br>
+				Body:<br>
+				<textarea rows=6 cols=30 name="someName" id="uniqueID3"></textarea><br>
+				<input type="submit"></input>
+			</form>
+		</div>
+		
+		<div id="newUserPanel">
+			<p class="panelTitle">New User Panel</p>
+			<form action="javascript:processNewUserOrSomething();" method="GETorPOSTyourCHOICE">
+				Username: <input type="text" name="someName" id="uniqueID"></input><br>
+				Passwyrd: <input type="text" name="someName" id="uniqueID"></input><br>
+				Le'mail: <input type="text" name="someName" id="uniqueID"></input><br>
+				FirstNom: <input type="text" name="someName" id="uniqueID"></input><br>
+				LastNym: <input type="text" name="someName" id="uniqueID"></input><br>
+				<input type="submit"></input>
+			</form>
+		</div>
+	
+	</div>
+	
+	<div id="reportArea">
+		This div is where the content from your AJAX requests will show up.
+	</div>
+	
+	
+	
+	
+	
+	
+	
+<!-- LEFT BLANK ON PURPOSE...SCROLLING AID...OR SOMETHING -->	
+	
+	
+	
+	
+	
+	
+	
+	<script>
+		
+		/* 	It is ABSOLUTELY REQUIRED that you change the names of these methods
+			so that they don't have silly names...also, be sure to give all of your form
+			elements good names and unique IDs.
+		*/
+		
+		function checkMessagesToOrSomething() {
+			var x = document.getElementById("uniqueID3").value;
+			alert(x);
+		}
+	
+	</script>
+	
+</body>
+</html>

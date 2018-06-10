@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>O.Classrooms</title>
+        <link rel="stylesheet" type="text/css" href="CommonCSS.css">
+		<script>
+        //Date Function
+        function GetDate()
+            {
+                var Month = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        
+                var Today = new Date();
+                var CurDate = Today.getDate();
+                var CurMonth = Today.getMonth();
+                var CurYear = Today.getFullYear();
+                Today = (CurDate + " " + Month[CurMonth] + " " + CurYear)
+                document.getElementById("Date").innerHTML = Today;
+            }
+        </script>
+	</head>
+	<body onLoad="GetDate();">
+    	<!--[if IE]>
+        This site is best viewed with Firefox.
+        <![endif]-->
+        <header id="Header">
+        <a href="Index.html"><img src="OClassrooms.png" alt="OClassrooms Logo"></a>
+        </header>
+        <div id="MainNav">
+        	<a class="MainNavLinks" href="About.html">ABOUT</a>
+            <a class="MainNavLinks" href="Feedback.html">FEEDBACK</a>
+            <a class="MainNavLinks" href="mailto:tan.huynh@oclassrooms.com">CONTACT</a>
+            <a class="MainNavLinks" href="Donate.html">DONATE</a>
+        </div>
+        <div id="Date"></div>
+        <div id="TileArea">
+        	<div id="TopTiles">
+                <a id="TileLT" class="TileLinks" href="http://mathematics.oclassrooms.com">PRACTICE</a>
+                <a id="TileRT" class="TileLinks" href="http://grafitart.oclassrooms.com">GRAF IT ART</a>
+            </div>
+	       	<div id="BottomTiles">
+                <a id="TileLB" class="TileLinks" href="http://tutoring.oclassrooms.com">TUTORING</a>
+<!--                <a id="TileRB" class="TileLinks" href="http://classes.oclassrooms.com">CLASSES</a>
+-->	        </div>
+        </div>
+	</body>
+	<footer id="Footer">
+        <a href="http://www.oclassrooms.com" target="_parent">OClassrooms Education Serveces, LLC<br/></a> 
+        <a href="#openModal">&copy; Copyright 2007-2017</a> <a href="mailto:tan.huynh@oclassrooms.com"> Tan Huynh </a>
+        <div id="openModal" class="modalDialog">
+        	<div>
+            	<a href="#close" title="Close" class="close">X</a>
+                <h2>Copyright (c) 2007-2017 Tan Huynh</h2>
+                <p> Permission is hereby granted, free of charge, to any person obtaining
+                    a copy of this software and associated documentation files (the
+                    "Software"), to deal in the Software without restriction, including
+                    without limitation the rights to use, copy, modify, merge, publish,
+                    distribute, sublicense, and/or sell copies of the Software, and to
+                    permit persons to whom the Software is furnished to do so, subject to
+                    the following conditions:</p>
+                <p> The above copyright notice and this permission notice shall be
+                    included in all copies or substantial portions of the Software.</p>
+                <p> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+                    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+                    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+                    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+                    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+                    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+            </div>
+        </div>
+    </footer>	
+</html>
+
+

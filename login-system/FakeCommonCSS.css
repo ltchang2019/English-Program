@@ -1,0 +1,580 @@
+@charset "utf-8";
+/* CSS Document */
+
+<style type="text/css">
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+}
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (min-width : 321px) {
+/* Styles */
+}
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 640px) {
+/* Styles */
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px) {
+/*and (max-device-width : 1024px) { */
+/* Styles */
+}
+/* iPads (landscape) ----------- */
+@media only screen
+and (max-device-width : 1024px)
+{
+/* Styles */
+html {
+	overflow: auto;
+	height: 700px;}
+noscript {
+	font-size: 36px;
+	color: white;
+	text-decoration: blink;}
+input {
+	font-size: 38px;
+	text-align: left;}
+form {
+	text-align: right;
+	font-size: 48px;
+	width: 85%;}
+legend {
+	font-size: 26px;}
+img {
+	max-width: 600px;}
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	text-align: left;
+	color: white;
+	font-size: 14px;}
+a {
+	text-decoration: none;
+	color: white;}
+a:hover {
+	color: red;}
+.Results {
+	text-align: left;}
+.FooterLinks{
+	color: white;
+	font-size: 16px;}
+.FooterLinks:hover {
+	color: red;}
+.button {
+	margin: -5px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: black;
+	width: 40px;
+	vertical-align: bottom;
+	text-align: left;}
+#buttonF {
+	font-size: 15px;
+}
+#buttonSqrt {
+	font-size: 12px;
+}
+.buttonA {
+	font-size: 26px;
+	color: black;
+	width: 150px;
+	height: 100px;
+	text-align: center;}
+#ButtonD{
+	font-size: 24px;
+	color: black;
+	width: 500px;
+	height: 100px;
+	text-align: center;
+}
+#AnswersContainer {
+	border: solid white;
+}
+#Ans, .Answers {
+	color: red;}
+#Graph, .button, input, legend {
+	box-shadow: 10px 10px 5px #000;}
+#Problem, #FractionProb {
+	font-size: 46px;
+	font-weight: bold;
+	margin-top: -20px;}
+#Format {
+	font-size: 18px;}
+#Feedback {
+	color: #00FFFF;
+	font-size: 22px;}
+#ActionKeys, #KeyPadArea {
+	margin-left: 800px;
+	text-align: left;
+	font-size: 48px;
+	width: 100%;}
+#MathField {
+	min-height: 40px;
+	white-space: nowrap;
+	min-width: 350px;
+	}
+
+
+#ProblemBox {
+	min-height: 40px;
+	white-space: nowrap;
+	min-width: 400px;
+	margin-top: 10px;
+	margin-bottom: 200px;}
+
+
+#Input {
+	font-size: 30px;
+	min-height: 40px;
+	white-space: nowrap;
+	min-width: 400px;
+	margin-top: -20px;}
+#Name, #ID {
+	width: 150px;}
+#Period {
+	width: 50px;}
+#Hide {
+	font-size: 22px;}
+#Timer, #Code {
+	text-align: right;
+	font-size: 18px;}
+#Ready a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;}
+#SubmitResults {
+	font-size: 20px;
+	text-align: left;
+	font-weight: bold;}
+#Clear {
+	width: 120px;}
+	
+#ProblemArea{
+	color: white;
+	font-size: 20px;
+	width: 95%;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: left;
+	word-wrap: break-word;}
+#ProblemTitle {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px 20px;
+	text-align: left;
+	text-transform: uppercase;}
+#SendArea {
+	color: white;
+	font-size: 20px;
+	width: 100%;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: left;}
+#SendTitle {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px 20px;
+	text-align: left;
+	text-transform: uppercase;}
+#StatsArea {
+	float: left;
+	color: white;
+	font-size: 18px;
+	width: 50%;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: left;}
+#StatsTitle {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px 20px;
+	text-align: left;
+	text-transform: uppercase;}
+
+/*Copyright Dialog*/
+.modalDialog {
+	position: fixed;
+	color: black;
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	-moz-opacity:0;
+	-khtml-opacity: 0;	
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;}
+.modalDialog:target {
+	filter:alpha(opacity=1);
+	-moz-opacity:1;
+	-khtml-opacity: 1;	
+	opacity:1;
+	pointer-events: auto;}
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);}
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: left;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;}
+.close:hover { 
+	background: #00d9ff;}
+}
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+/* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-device-width : 1025px) {
+/* Styles */
+html {
+	height: 700px;
+	overflow: auto;}
+body {
+	text-align: left;}
+noscript {
+	font-size: 36px;
+	color: white;
+	text-decoration: blink;}
+a {
+	text-decoration: none;
+	color:white;}
+a:hover {
+	color: red;}
+input {
+	font-size: 20px;
+	text-align: left;}
+form {
+	text-align: right;
+	font-size: 48px;
+	width: 85%;}
+legend {
+	font-size: 26px;}
+img {
+	max-width: 600px;}
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	text-align: left;
+	color: white;
+	font-size: 14px;}
+.Results {
+	text-align: left;}
+.FooterLinks{
+	color: white;
+	font-size: 16px;}
+.FooterLinks:hover {
+	color: red;}
+.button {
+	margin: -5px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: black;
+	width: 40px;
+	vertical-align: bottom;
+	text-align: left;}
+#buttonF {
+	font-size: 15px;
+	width:100px;
+}
+#buttonSqrt {
+	font-size: 12px;
+}
+.buttonA {
+	font-size: 24px;
+	color: black;
+	width: 100px;
+	text-align: left;}
+#AnswersContainer {
+	border: solid black;
+}
+#Ans, .Answers {
+	color: red;}
+#Graph, .button, input, legend {
+	box-shadow: 10px 10px 5px #000;}
+#Problem, #FractionProb {
+	font-size: 40px;
+	font-weight: bold;
+	}
+#Format {
+	font-size: 18px;}
+#Feedback {
+	color: #00FFFF;
+	font-size: 22px;}
+#MathField {
+	min-height: 100px;
+	white-space: nowrap;
+	min-width: 380px;
+	min-height: 150px;
+	margin-left: 525px;
+	margin-top: 70px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 35px;
+	}
+#TopicName{
+	margin-top: 20px;
+	margin-left: 500px;
+	margin-bottom: -10px;
+	font-size: 35px;
+	width: 300px;
+	height: 50px;
+	text-align: left;
+}
+#spacer{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+}
+#ProblemBox {
+	min-height: 40px;
+	white-space: nowrap;
+	min-width: 325px;
+	margin-left: 506px;
+	}
+#Input {
+	font-size: 30px;
+	min-height: 40px;
+	white-space: nowrap;
+	min-width: 400px;
+	margin-top: 50px;}
+#Name, #ID {
+	width: 150px;}
+#Period {
+	width: 50px;}
+#Hide {
+	font-size: 22px;}
+#Code {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+#Timer, #Code {
+	text-align: right;
+	font-size: 18px;}
+#Ready a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;}
+#SubmitResults {
+	font-size: 20px;
+	text-align: left;
+	font-weight: bold;}
+#Clear {
+	width: 120px;}
+#Page {
+	display: inline-block;
+	text-align: left;
+	max-width: 1000px;}
+#LeftCol {
+	display: inline-block;
+	position: relative;
+	margin-right: 65px;
+	float: left;
+	width: 60%;
+	min-width: 800px;
+	text-align: left;}
+#RightCol {
+	display: inline-block;
+	position: relative;
+	float: right;
+	text-align: left;
+	width: 20%;
+	min-width: 325px;}
+#ProblemArea{
+	min-width: 500px;
+	min-height: 300px;
+	color: black;
+	font-size: 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: left;
+	margin-left: 350px;
+	margin-top: 1px;}
+#ProblemTitle {
+	font-size: 22px;
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px 20px;
+	text-align: left;
+	text-transform: uppercase;}
+#SendArea {
+	color: white;
+	font-size: 20px;
+	width: 35%;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: left;}
+#SendTitle {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px 20px;
+	text-align: left;
+	text-transform: uppercase;}
+#StatsArea {
+	display: inline-block;
+	width: 100%;
+	height: 240px;
+	color: white;
+	font-size: 18px;
+	border: 0px solid black;
+	border-radius: 10px;
+	text-align: left;}
+#ActionKeys, #KeyPadArea {
+	margin-left: 435px;
+	margin-top: -70px;
+	width: 500px;
+	text-align: left;
+    font-size: 40px;}
+#AnswerTitle{
+	margin-top: 20px;
+	margin-right: 120px;
+	font-size: 40px;
+	float:right;
+	width: 300px;
+	height: 50px;
+}
+#StatsTitle {
+	font-size: 22px;
+	color: black;
+	background-color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 10px 20px;
+	text-align: left;
+	text-transform: uppercase;}
+
+/*Copyright Dialog*/
+.modalDialog {
+	position: fixed;
+	color: black;
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	-moz-opacity:0;
+	-khtml-opacity: 0;	
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;}
+.modalDialog:target {
+	filter:alpha(opacity=1);
+	-moz-opacity:1;
+	-khtml-opacity: 1;	
+	opacity:1;
+	pointer-events: auto;}
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);}
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: left;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;}
+.close:hover { 
+	background: #00d9ff;}
+
+.NewProblem{
+	margin-top: 100px;
+}
+
+#Container{
+	font-size: 1
+}
+
+
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+/* Styles */
+}
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+</style>
+
