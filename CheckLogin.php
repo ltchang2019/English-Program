@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbName = "accounts";
+$dbName = "Math Program";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
@@ -17,21 +17,12 @@ try {
     $statement = $conn -> query($sql);
 
     if ($statement -> rowCount() == 1){
-        //LOGIN
+        //START SESSION AND TO NEW PAGE
     }
     else{
-         echo "<script type='text/javascript'>alert('Username and/or password is incorrect');</script>";
+         print '<span style="color:red;text-align:center;">Incorrect username and/or password...</span>';
     }
-
-
-        foreach($statement as $row){
-    	$answer = $row["answer"];
-        break;
-    }
-
-    if($studAns == $answer)
-        print "YAY!";
-    }
+}
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();
 }
