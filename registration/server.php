@@ -73,9 +73,14 @@ if (isset($_POST['login_user'])) {
     $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
+      foreach($results as $row){
+        $firstName = $row['firstName'];
+      }
+      $_SESSION['username'] = $username;   
+      $_SESSION['firstName'] = $firstName;
+
       $_SESSION['success'] = "You are now logged in";
-      header('location: finalproject.html');
+      header('location: finalproject.php');
     }else {
       array_push($errors, "Wrong username/password combination");
     }

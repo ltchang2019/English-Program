@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<?php session_start(); ?>
+
 <html>
 <title>Math Program</title>
 <meta charset="UTF-8">
@@ -80,7 +83,6 @@ input[type=password] {
   color:red;
 }
 
-
 </style>
 
 <script>
@@ -115,22 +117,6 @@ input[type=password] {
       xmlHttp.send(null);
       // resetFieldStyles();
     }
-
-    // function resetFieldStyles() {
-
-    //   document.getElementById("toUsername").style.background = "white";
-    //   document.getElementById("fromUsername").style.background = "white";
-    //   document.getElementById("subject").style.background = "white";
-    //   document.getElementById("body").style.background = "white";
-
-    //   document.getElementById("SentFromUsername").style.background = "white";
-
-    //   document.getElementById("newUsername").style.background = "white";
-    //   document.getElementById("newPassword").style.background = "white";
-    //   document.getElementById("newEmail").style.background = "white";
-    //   document.getElementById("firstName").style.background = "white";
-    //   document.getElementById("lastName").style.background = "white";
-    // }
 
     function ShowNewProblems() {
       
@@ -246,6 +232,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <!-- Page Container -->
 <div class="w3-content" style="max-width:1400px; margin-left: -10px;">
 
+
   <!-- The Grid -->
   <div class="w3-row-padding">
   
@@ -255,7 +242,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
 
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b>User Panel</b></h2>
+          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b></h2>
         </div>
 
         <div class="w3-container">
@@ -284,9 +271,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </form>
           </p>
           <hr>
-
           
-          <h6><b> Send A Message </b></h6>
+          <h6><b> Send A Message</b></h6>
           <p><form action="javascript:SendMessage();" method="GET"> 
             <div class="inputElement">From: <input class = "input" type="text" name="fromWho" placeholder="username: "; id="fromUsername"></div>
             <div class="inputElement">To: <input class = "input" type="text" name="toWhom" placeholder="username: "; id = "toUsername"></div>
@@ -302,7 +288,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
       </div><br>
 
-
+      <p style=""><?php print "username: " . $_SESSION['username'] ?></p>
     <!-- End Left Column -->
     </div>
 
