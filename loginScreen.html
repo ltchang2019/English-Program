@@ -24,19 +24,19 @@
     }
 
     function showResults(responseText) {
-      document.getElementById("loginError").innerHTML = responseText;
-      alert(); 
+      // document.getElementById("loginError").innerHTML = responseText;
+      // alert(); 
     }
 
-	function CheckLogin(){
-		var url = "CheckLogin.php";
-		var username = document.getElementById("username").value;
-		var password = document.getElementById("password").value;
+	// function CheckLogin(){
+	// 	var url = "CheckLogin.php";
+	// 	var username = document.getElementById("username").value;
+	// 	var password = document.getElementById("password").value;
 
-		url += "?username=" + username + "&password=" + password;
+	// 	url += "?username=" + username + "&password=" + password;
 
-		httpGetAsync(url,showResults);
-	}
+	// 	httpGetAsync(url,showResults);
+	// }
 
 </script>
 
@@ -47,10 +47,13 @@
 		<h1>Welcome</h1>
 		<div class="loginError" style="" id="reportLoginError" >
               <p id="loginError"></p></div>
-		<form class="form" action="javascript:CheckLogin();" method="GET">
-			<input type="text" placeholder="Username" id="username">
-			<input type="password" placeholder="Password" id="password">
-			<button type="submit" id="login-button">Login</button><br><br>
+		<form class="form" action="CheckLoginTest.php" method="GET">
+			
+			<input type="text" placeholder="Username" id="username" name="username">
+			<input type="password" placeholder="Password" id="password" name="password">
+
+			<button type="submit" id="login-button" name="login_user">Login</button><br><br>
+
 			<p class="message">Not registered? <a href="FinalProject.html" style="color: green;">Create an account</a></p>
 		</form>
 	</div>
