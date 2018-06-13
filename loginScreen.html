@@ -24,7 +24,8 @@
     }
 
     function showResults(responseText) {
-      document.getElementById("loginError").innerHTML = responseText; 
+      document.getElementById("loginError").innerHTML = responseText;
+      alert(); 
     }
 
 	function CheckLogin(){
@@ -34,7 +35,7 @@
 
 		url += "?username=" + username + "&password=" + password;
 
-		httpGetAsync(url, showResults);
+		httpGetAsync(url,showResults);
 	}
 
 </script>

@@ -17,7 +17,8 @@ try {
     $statement = $conn -> query($sql);
 
     if ($statement -> rowCount() == 1){
-        //START SESSION AND TO NEW PAGE
+        header("Location: finalproject.html");
+        exit;
     }
     else{
          print '<span style="color:red;text-align:center;">Incorrect username and/or password...</span>';
