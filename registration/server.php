@@ -8,7 +8,7 @@ $lastName = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+$db = mysqli_connect('localhost', 'root', '', 'Math Program');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -45,8 +45,8 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
-    $query = "INSERT INTO users (firstName, lastName, username, password) 
-          VALUES('$firstName', '$lastName', '$username', '$password')";
+    $query = "INSERT INTO Users (firstName, lastName, username, password, groupNumber) 
+          VALUES('$firstName', '$lastName', '$username', '$password', 0)";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
@@ -70,7 +70,7 @@ if (isset($_POST['login_user'])) {
 
   if (count($errors) == 0) {
     $password = md5($password);
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $query = "SELECT * FROM Users WHERE username='$username' AND password='$password'";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
       foreach($results as $row){

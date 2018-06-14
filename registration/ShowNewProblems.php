@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+$user = $_SESSION['username'];
 //See original: https://www.w3schools.com/php/php_mysql_connect.asp
 $servername = "localhost";
 $username = "root";
@@ -11,8 +14,16 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * FROM Problems WHERE groupNumber = 1";
+    $sql = "SELECT * FROM Users WHERE username = '$user'";
     $statement = $conn -> query($sql);
+
+    foreach($statement as $row){
+        $groupNumber = $row["groupNumber"];
+        break;
+    }
+
+    $sql1 = "SELECT * FROM Problems WHERE groupNumber = '$groupNumber'";
+    $statement = $conn -> query($sql1);
 
     if ($statement -> rowCount() == 0) {
         print "<style> table, th, td { border: 0px solid black;} #center { margin-left: auto; margin-right: auto;}</style>";
