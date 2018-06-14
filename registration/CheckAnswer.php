@@ -1,11 +1,14 @@
 <?php
+session_start();
+$username1 = $_SESSION['username'];
+
 //See original: https://www.w3schools.com/php/php_mysql_connect.asp
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbName = "Math Program";
 
-session_start();
+
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
@@ -35,15 +38,15 @@ try {
 
     if($studAns == $answer){
         $validity = "correct";
-        print "YAY!";
-        print $_SESSION['username'];
+        print "CORRECT!";
     }
     else{
         $validity = "incorrect";
+        print "Incorrect, please try again!";
     }
     
     
-    $sql1 = "INSERT INTO Answers (problemID, username, studentAnswer, answer, validity, problem, groupNumber)VALUES($problemNumber, "$_SESSION['username']", '$studAns', '$answer', '$validity', '$problem', $groupNumber)";
+    $sql1 = "INSERT INTO Answers (problemID, username, studentAnswer, answer, validity, problem, groupNumber)VALUES($problemNumber, '$username1', '$studAns', '$answer', '$validity', '$problem', $groupNumber)";
     $conn -> exec( $sql1 );
 }
 catch(PDOException $e) {
