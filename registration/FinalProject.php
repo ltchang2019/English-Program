@@ -3,7 +3,7 @@
 <?php session_start(); ?>
 
 <html>
-<title>Math Program</title>
+<title>English Program</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -86,12 +86,13 @@ input[type=password] {
 </style>
 
 <script>
-    function showResults(responseText) {
+
+    function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
     }
 
-    function showResponse(responseText){
-      document.getElementById("responseArea").innerHTML = responseText; 
+    function showQuestionsInBox(responseText){
+      document.getElementById("questionArea").innerHTML = responseText; 
     }
 
     function httpGetAsync(theUrl, callbackWhenPageLoaded) { 
@@ -106,7 +107,7 @@ input[type=password] {
       // resetFieldStyles();
     }
 
-    function httpResponseAsync(theUrl, callbackWhenPageLoaded) { 
+    function httpQuestionAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
 
       xmlHttp.onreadystatechange = function() { 
@@ -118,12 +119,39 @@ input[type=password] {
       // resetFieldStyles();
     }
 
+
+    function httpDisplayAsync(theUrl, callbackWhenPageLoaded) { 
+      var xmlHttp = new XMLHttpRequest();
+
+      xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          callbackWhenPageLoaded(xmlHttp.responseText);
+      }
+      xmlHttp.open("GET", theUrl, true); 
+      xmlHttp.send(null);
+      // resetFieldStyles();
+    }
+
+    function showTextInBox(responseText){
+      document.getElementById("bookArea").innerHTML = responseText; 
+    }
+
+    function ShowText(){
+      var url = "ShowText.php"; 
+      var textName = document.getElementById("textName").value;
+
+      url += "?textName=" + textName;
+
+      httpQuestionAsync(url, showTextInBox);
+    }
+
+
     function ShowNewProblems() {
       
       var url = "ShowNewProblems.php"; 
       var username = "mmcgrath";
         
-      httpGetAsync(url, showResults);
+      httpGetAsync(url, showAssignments);
     }
 
     function SendMessage(){
@@ -185,39 +213,14 @@ input[type=password] {
       }
     }
 
-    function DisplayMessagesSent(){
+    function ShowQuestions(){
 
-      var url = "viewMessagesFrom.php"; 
-      var SentFromUsername = document.getElementById("SentFromUsername").value;
+      var url = "ShowQuestions.php"; 
+      var textName = document.getElementById("textName").value;
 
-      resetFieldStyles();
-      
-      var errorMessage = "Missing data: ";
-      var somethingBlank = false;
-      if(SentFromUsername == ""){
-        errorMessage += "username";
-        somethingBlank = true;
-        document.getElementById("SentFromUsername").style.background = "yellow";
-      }
-      url += "?username=" + SentFromUsername;
-      
-      if(errorMessage == "Missing data: ")
-        httpGetAsync(url, showResults);
-      else{
-        alert(errorMessage);
-        somethingBlank = false;
-        errorMessage = "Missing data: ";     
-      }
-    }
+      url += "?textName=" + textName;
 
-    function CheckAnswer(){
-      var url = "CheckAnswer.php"; 
-      var problemNumber = document.getElementById("problemNumber").value;
-      var studAns = document.getElementById("studAns").value;
-
-       url += "?problemNumber=" + problemNumber + "&studAns=" + studAns;
-
-      httpResponseAsync(url, showResponse);
+      httpQuestionAsync(url, showQuestionsInBox);
     }
 
   </script>
@@ -237,7 +240,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding">
   
     <!-- Left Column -->
-    <div class="w3-third">
+    <div class="w3-third" style="width:500px">
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
@@ -246,7 +249,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
 
         <div class="w3-container">
-          <h6><b>Problems To Work On</b></h6>
+          <h6><b>Assignments</b></h6>
           <p>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px" id="reportAreaContainer" >
               <p id="reportArea"></p>
@@ -256,7 +259,22 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
 
           <form action="javascript:ShowNewProblems();" method="GET">
-          <input type="submit" value="View Problems">
+          <input type="submit" value="View Assignments">
+          </form>
+          </p>
+          <hr>
+
+          <h6><b>Questions and Reading</b></h6>
+          <p>
+            <div class="inputElement">Text: <input class = "input" type="text" name="subject"; id="textName"></div>
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 200px" id="questionsContainer">
+              <p id="questionArea" style="margin-top: 20px"></p>
+            </div>
+          </form>
+          </p>
+
+          <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
+          <input type="submit" value="View Questions">
           </form>
           </p>
           <hr>
@@ -264,21 +282,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h6><b>Submit Answers</b></h6>
           <p>
           <form action="javascript:CheckAnswer();" method="GET"> 
-            <div class="inputElement">Problem #: <input class = "input" type="text" name="problemNumber" placeholder="username: "; id="problemNumber"></div>
-            <div class="inputElement">Answer: <input class = "input" type="text" name="studAns" placeholder="username: "; id = "studAns"></div>
-            <input type="submit" value="Submit">
+            <div class="inputElement">Problem Number: <input class = "input" type="text" name="problemNumber" id="problemNumber"></div>
+            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Answer... "; style="margin-bottom: 0px" id="body"></textarea><br>
+            <input type="submit" value="View">
           </form>
           </form>
           </p>
           <hr>
           
-          <h6><b> Send A Message</b></h6>
+          <h6><b>Ask Tutors Questions</b></h6>
           <p><form action="javascript:SendMessage();" method="GET"> 
-            <div class="inputElement">From: <input class = "input" type="text" name="fromWho" placeholder="username: "; id="fromUsername"></div>
-            <div class="inputElement">To: <input class = "input" type="text" name="toWhom" placeholder="username: "; id = "toUsername"></div>
             <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div> 
             <div class="inputElement"> 
-            Body:<br>
+
             <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="body"></textarea></div>
             <input type="submit" value="Send">
           </form>
@@ -288,15 +304,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
       </div><br>
 
-      <p style=""><?php print "username: " . $_SESSION['username'] ?></p>
     <!-- End Left Column -->
     </div>
 
     <!-- Right Column -->
-    <div class="w3-twothird">
+    <div class="w3-twothird" style="width:830px">
   
-      <div class="w3-container w3-card w3-white" style="margin-top: 5px" id="reportAreaContainer" >
-          <p id="responseArea"></p>
+      <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 910px" id="bookContainer" >
+
+          <p id="bookArea"></p>
       </div>
       </div>
 

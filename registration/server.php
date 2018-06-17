@@ -8,7 +8,7 @@ $lastName = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'Math Program');
+$db = mysqli_connect('localhost', 'root', '', 'English Program');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -31,7 +31,7 @@ if (isset($_POST['reg_user'])) {
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE username='$username' OR firstName='$firstName' LIMIT 1";
+  $user_check_query = "SELECT * FROM Users WHERE username='$username' OR firstName='$firstName' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
