@@ -14,7 +14,7 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * FROM Users WHERE username = '$user'";
+    $sql = "SELECT * FROM Administrators WHERE username = '$user'";
     $statement = $conn -> query($sql);
 
     foreach($statement as $row){
@@ -24,17 +24,20 @@ try {
 
     $textName = $_GET["textName"];
 
-    $sql = "SELECT * FROM Questions WHERE text = '$textName' AND groupNumber = '$groupNumber' ";
+    $sql = "SELECT * FROM Questions WHERE textName = '$textName' AND groupNumber = '$groupNumber' ";
     $statement = $conn -> query($sql);
 
-
-    if ($statement -> rowCount() == 0) {
-        print "<style> table, th, td { border: 0px solid black;} #center { margin-left: auto; margin-right: auto;}</style>";
-        print "<div id='center'><table id='center'><th><br><h4>" . "No new questions have been posted..." . "</h4></th>";
+    if($textName==""){
+        print "<h4 style='text-align: center'>" . "Please specify a book..." . "</h4>";
     }
     else{
-    print "<style> table, th, td {width: 300px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div id='center'><table id='center'><tr><th>Number</th><th>Question</th></tr>";
+    if ($statement -> rowCount() == 0) {
+        print "<h4 style='text-align: center'>" . "No new questions have been posted..." . "</h4>";
+    }
+    else{
+    
+    print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
+    print "<div><table id='center'><tr><th>Number</th><th>Question</th></tr>";
 
     $varNumb = 1;
     foreach($statement as $row){
@@ -49,6 +52,7 @@ try {
     }
         print "</table></div>";
     }
+}
 
 }
 catch(PDOException $e) {

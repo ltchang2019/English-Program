@@ -132,12 +132,55 @@ input[type=password] {
       // resetFieldStyles();
     }
 
+    function addFields(){
+          var number = document.getElementById("numbQuestions").value;
+          var container = document.getElementById("fieldContainer");
+          while (container.hasChildNodes()) {
+              container.removeChild(container.lastChild);
+          }
+          for (i=0;i<number;i++){
+              container.appendChild(document.createTextNode("Question " + (i+1)));
+               var input = document.createElement("input");
+              input.type = "text";
+              input.setAttribute("id", ("input" + i));
+               container.appendChild(input);
+              container.appendChild(document.createElement("br"));
+              container.appendChild(document.createElement("br"));
+            }
+        }
+
+        function submitQuestions(){
+            url = "submitQuestions.php";
+            var number = 1;
+            if(number == 1){
+              for (i=0;i<number;i++){
+                var question1 = document.getElementById("input" + i);
+                url += "?numbQuestions=" + number + "&question1=" + question1;
+              }
+            }
+            else if(number == 2){
+                i = 1
+                var question1 = document.getElementById("input" + i);
+                i = 2 
+                var question2 = document.getElementById("input" + i);
+          }
+          else if(number == 3){
+                i = 1
+                var question1 = document.getElementById("input" + i);
+                i = 2 
+                var question2 = document.getElementById("input" + i);
+                i = 3
+                var question3 = document.getElementById("input" + i);
+          }
+          httpQuestionAsync(url, showTextInBox);
+        }
+
     function showTextInBox(responseText){
       document.getElementById("bookArea").innerHTML = responseText; 
     }
 
-    function ShowText(){
-      var url = "ShowText.php"; 
+    function adminShowText(){
+      var url = "adminShowText.php"; 
       var textName = document.getElementById("textName").value;
 
       url += "?textName=" + textName;
@@ -146,9 +189,9 @@ input[type=password] {
     }
 
 
-    function ShowNewProblems() {
+    function adminShowAssignments() {
       
-      var url = "ShowNewProblems.php"; 
+      var url = "adminShowAssignments.php"; 
       var username = "mmcgrath";
         
       httpGetAsync(url, showAssignments);
@@ -213,9 +256,9 @@ input[type=password] {
       }
     }
 
-    function ShowQuestions(){
+    function adminShowQuestions(){
 
-      var url = "ShowQuestions.php"; 
+      var url = "adminShowQuestions.php"; 
       var textName = document.getElementById("textName").value;
 
       url += "?textName=" + textName;
@@ -249,7 +292,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
 
         <div class="w3-container">
-          <h6><b>Assignments</b></h6>
+          <h6><b>Pending Assignments</b></h6>
           <p>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px" id="reportAreaContainer" >
               <p id="reportArea"></p>
@@ -258,13 +301,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr>
 
-          <form action="javascript:ShowNewProblems();" method="GET">
+          <form action="javascript:adminShowAssignments();" method="GET">
           <input type="submit" value="View Assignments">
           </form>
           </p>
           <hr>
 
-          <h6><b>Questions and Reading</b></h6>
+          <h6><b>Assigned Questions and Reading</b></h6>
           <p>
             <div class="inputElement">Text: <input class = "input" type="text" name="subject"; id="textName"></div>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 200px" id="questionsContainer">
@@ -273,36 +316,44 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </form>
           </p>
 
-          <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
+          <form action="javascript:adminShowQuestions(); javascript:adminShowText();" method="GET">
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
           </p>
           <hr>
 
-          <h6><b>Submit Answers</b></h6>
-          <p>
-          <form action="javascript:CheckAnswer();" method="GET"> 
-            <div class="inputElement">Problem Number: <input class = "input" type="text" name="problemNumber" id="problemNumber"></div>
-            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Answer... "; style="margin-bottom: 0px" id="body"></textarea><br>
-            <input type="submit" value="View">
-          </form>
-          </form>
+          <h6><b>Assign Homework</b></h6>
+         
+            <div id="fieldContainer"/></div>
+            Number of Questions
+            <select id="numbQuestions">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <br>
+            <form action="javascript:addFields();" method="GET">
+            <input type="submit" value="Write Questions">
+            </form>
+
+            <form action="javascript:submitQuestions();" method="GET">
+            <input type="submit" value="Submit Questions"></div>
+            </form>
           </p>
           <hr>
           
-          <h6><b>Ask Tutors Questions</b></h6>
-          <p><form action="javascript:SendMessage();" method="GET"> 
-            <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div> 
-            <div class="inputElement"> 
+          <!-- <h6><b>Ask Tutors Questions</b></h6>
+          <p><form action="javascript:SendMessage();" method="GET">  -->
+          <!--   <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div>  -->
+            <!-- <div class="inputElement"></div> -->
 
-            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="body"></textarea></div>
-            <input type="submit" value="Send">
-          </form>
-          </p>
+            <!-- <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="body"></textarea> -->
         
-          <hr>
-        </div>
-      </div><br>
+         <!-- THIS NEEDS TO STAY -->
+          </div> 
+
 
     <!-- End Left Column -->
     </div>
@@ -314,7 +365,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <p id="bookArea"></p>
       </div>
-      </div>
+    
 
     <!-- End Right Column -->
     </div>

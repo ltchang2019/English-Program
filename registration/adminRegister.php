@@ -1,8 +1,8 @@
-<?php include('server.php') ?>
+<?php include('adminServer.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Student Register</title>
+  <title>Admin Register</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
     <h2>Register</h2>
   </div>
   
-  <form method="post" action="register.php">
+  <form method="post" action="adminRegister.php">
     <?php include('errors.php'); ?>
     <div class="input-group">
       <label>First Name</label>
@@ -39,7 +39,7 @@
       <button type="submit" class="btn" name="reg_user">Register</button>
     </div>
     <p>
-      Already a member? <a href="login.php">Sign in</a>
+      Already a member? <a href="adminLogin.php">Sign in</a>
     </p>
   </form>
 </body>
