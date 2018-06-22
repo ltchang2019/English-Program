@@ -3,7 +3,7 @@
 <?php session_start(); ?>
 
 <html>
-<title>English Program</title>
+<title>Grace English Program - Admin</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -47,6 +47,20 @@ input[type=password] {
     }
     h6{
       margin-top: 3px; margin-bottom: 2px;
+    }
+
+    #transparentLayer{
+      position: absolute;
+      text-align: left;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 900px;
+      z-index: 6;
+      opacity: 0.01;
+      -moz-opacity: 0.01;
+      -khtml-opacity: 0.01;
+      filter: alpha(opacity=1);
     }
 
     .inputElement {
@@ -132,13 +146,36 @@ input[type=password] {
       // resetFieldStyles();
     }
 
+    function httpFieldsAsync(theUrl, callbackWhenPageLoaded) { 
+      var xmlHttp = new XMLHttpRequest();
+
+      xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          callbackWhenPageLoaded(xmlHttp.responseText);
+      }
+      xmlHttp.open("GET", theUrl, true); 
+      xmlHttp.send(null);
+      // resetFieldStyles();
+    }
+
     function addFields(){
+          var submitTextName = document.getElementById("adminTextName").value;
+          localStorage.setItem("storedTextName", submitTextName);
+
+          var url = "storeNumbQuestions.php";
           var number = document.getElementById("numbQuestions").value;
+          url += "?numbQuestions=" + number;
+
+          localStorage.setItem("number", number);
+
           var container = document.getElementById("fieldContainer");
           while (container.hasChildNodes()) {
               container.removeChild(container.lastChild);
           }
           for (i=0;i<number;i++){
+              if(i==0){
+                container.appendChild(document.createElement("br"));
+              }
               container.appendChild(document.createTextNode("Question " + (i+1)));
                var input = document.createElement("input");
               input.type = "text";
@@ -147,32 +184,99 @@ input[type=password] {
               container.appendChild(document.createElement("br"));
               container.appendChild(document.createElement("br"));
             }
+
+          httpFieldsAsync(url, showTextInBox);
         }
 
+        // function submitAssignment(){
+        //   var url = "submitAssignment.php";
+        //   var submitTextName = document.getElementById("adminTextName").value;
+        //   var link = document.getElementById("pdfLink").value;
+        //   var storedNumber = localStorage.getItem("number");
+
+        //   url += "?textName=" + submitTextName + "&link=" + link + "?numbQuestions=" + storedNumber;
+
+        // }
+
         function submitQuestions(){
-            url = "submitQuestions.php";
-            var number = 1;
-            if(number == 1){
-              for (i=0;i<number;i++){
-                var question1 = document.getElementById("input" + i);
-                url += "?numbQuestions=" + number + "&question1=" + question1;
+            var submitTextName = document.getElementById("adminTextName").value;
+            localStorage.setItem("storedTextName", submitTextName);
+
+            if(localStorage.getItem("storedTextName")!==""){
+              var submitTextName = document.getElementById("adminTextName").value;
+              localStorage.setItem("storedTextName", submitTextName);
+              var storedTextName = localStorage.getItem("storedTextName");
+
+              var storedNumber = localStorage.getItem("number");
+              url = "submitQuestions.php";
+
+              var link = document.getElementById("pdfLink").value;
+
+            if(storedNumber == 1){
+              for (i=0;i<storedNumber;i++){
+                var question1 = document.getElementById("input" + i).value;
+                url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&link=" + link;
               }
             }
-            else if(number == 2){
-                i = 1
-                var question1 = document.getElementById("input" + i);
-                i = 2 
-                var question2 = document.getElementById("input" + i);
+            else if(storedNumber == 2){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+              }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&link=" + link;
           }
-          else if(number == 3){
-                i = 1
-                var question1 = document.getElementById("input" + i);
-                i = 2 
-                var question2 = document.getElementById("input" + i);
-                i = 3
-                var question3 = document.getElementById("input" + i);
+          else if(storedNumber == 3){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&link=" + link;
           }
-          httpQuestionAsync(url, showTextInBox);
+          else if(storedNumber == 4){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 + "&link=" + link;
+          }
+          else if(storedNumber == 5){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+                for (i=4;i<5;i++){
+                var question5 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&link=" + link;
+            }
+            httpQuestionAsync(url, showTextInBox);
+            }
+            else{
+              alert("Please specify a text name...");
+            }
         }
 
     function showTextInBox(responseText){
@@ -183,7 +287,7 @@ input[type=password] {
       var url = "adminShowText.php"; 
       var textName = document.getElementById("textName").value;
 
-      url += "?textName=" + textName;
+      url += "?textName=" + textName + "&output=embed";
 
       httpQuestionAsync(url, showTextInBox);
     }
@@ -309,7 +413,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <h6><b>Assigned Questions and Reading</b></h6>
           <p>
-            <div class="inputElement">Text: <input class = "input" type="text" name="subject"; id="textName"></div>
+            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="textName"></div>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 200px" id="questionsContainer">
               <p id="questionArea" style="margin-top: 20px"></p>
             </div>
@@ -323,8 +427,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
 
           <h6><b>Assign Homework</b></h6>
-         
-            <div id="fieldContainer"/></div>
+            
+            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
+            <div class="inputElement">PDF Link: <input class = "input" type="text" name="subject"; id="pdfLink"></div>
+            
             Number of Questions
             <select id="numbQuestions">
               <option value="1">1</option>
@@ -333,12 +439,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <br>
             <form action="javascript:addFields();" method="GET">
-            <input type="submit" value="Write Questions">
+            <input type="submit" value="Choose Number of Questions">
+    
             </form>
 
-            <form action="javascript:submitQuestions();" method="GET">
+            <form action="javascript:submitQuestions(); submitAssignment();" method="GET">
+              <div id="fieldContainer"/></div>
             <input type="submit" value="Submit Questions"></div>
             </form>
           </p>
@@ -362,6 +469,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <div class="w3-twothird" style="width: 63%; margin: 0 auto;">
   
       <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 910px;" id="bookContainer" >
+        <div class="transparentLayer"></div>
 
           <p id="bookArea"></p>
       </div>
