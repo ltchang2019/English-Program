@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Login</title>
+  <title>Administrator Login</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>

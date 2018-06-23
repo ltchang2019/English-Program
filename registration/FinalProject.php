@@ -70,7 +70,14 @@ input[type=password] {
   max-width: 100%;
 }
 #reportAreaContainer{
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+#questionsContainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
 }
 #reportArea{
   line-height: 1.5;
@@ -106,6 +113,36 @@ input[type=password] {
       xmlHttp.send(null);
       // resetFieldStyles();
     }
+
+    function addAnswerFields(){
+          var submitTextName = document.getElementById("adminTextName").value;
+          localStorage.setItem("storedTextName", submitTextName);
+
+          var url = "storeNumbQuestions.php";
+          var number = document.getElementById("numbQuestions").value;
+          url += "?numbQuestions=" + number;
+
+          localStorage.setItem("number", number);
+
+          var container = document.getElementById("fieldContainer");
+          while (container.hasChildNodes()) {
+              container.removeChild(container.lastChild);
+          }
+          for (i=0;i<number;i++){
+              if(i==0){
+                container.appendChild(document.createElement("br"));
+              }
+              container.appendChild(document.createTextNode("Question " + (i+1)));
+               var input = document.createElement("input");
+              input.type = "text";
+              input.setAttribute("id", ("input" + i));
+               container.appendChild(input);
+              container.appendChild(document.createElement("br"));
+              container.appendChild(document.createElement("br"));
+            }
+
+          httpFieldsAsync(url, showTextInBox);
+        }
 
     function httpQuestionAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
@@ -251,7 +288,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
           <h6><b>Assignments</b></h6>
           <p>
-            <div class="w3-container w3-card w3-white" style="margin-top: 5px" id="reportAreaContainer" >
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
               <p id="reportArea"></p>
             </div>
           </form>
@@ -267,8 +304,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h6><b>Questions and Reading</b></h6>
           <p>
             <div class="inputElement">Text: <input class = "input" type="text" name="subject"; id="textName"></div>
-            <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 200px" id="questionsContainer">
-              <p id="questionArea" style="margin-top: 20px"></p>
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 10px;" id="questionsContainer">
+              <p id="questionArea" style="margin-top: 15px"></p>
             </div>
           </form>
           </p>

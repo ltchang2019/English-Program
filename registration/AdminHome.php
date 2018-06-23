@@ -84,7 +84,14 @@ input[type=password] {
   max-width: 100%;
 }
 #reportAreaContainer{
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+#questionsContainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
 }
 #reportArea{
   line-height: 1.5;
@@ -92,7 +99,9 @@ input[type=password] {
   margin-top: 20px;
   vertical-align: middle;
 }
-
+.assignmentMessageContainer{
+  color: green;
+}
 .democlass{
   color:red;
 }
@@ -100,6 +109,11 @@ input[type=password] {
 </style>
 
 <script>
+
+    // function changeRightDivHeight (){
+    //   var leftHeight = document.getElementById("leftColumn").style.height;
+    //   document.getElementById("bookContainer").style.height = leftHeight;
+    // }
 
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
@@ -188,16 +202,6 @@ input[type=password] {
           httpFieldsAsync(url, showTextInBox);
         }
 
-        // function submitAssignment(){
-        //   var url = "submitAssignment.php";
-        //   var submitTextName = document.getElementById("adminTextName").value;
-        //   var link = document.getElementById("pdfLink").value;
-        //   var storedNumber = localStorage.getItem("number");
-
-        //   url += "?textName=" + submitTextName + "&link=" + link + "?numbQuestions=" + storedNumber;
-
-        // }
-
         function submitQuestions(){
             var submitTextName = document.getElementById("adminTextName").value;
             localStorage.setItem("storedTextName", submitTextName);
@@ -272,12 +276,16 @@ input[type=password] {
                 }
               url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&link=" + link;
             }
-            httpQuestionAsync(url, showTextInBox);
+            httpQuestionAsync(url, showAssignmentMessage);
             }
             else{
               alert("Please specify a text name...");
             }
         }
+
+    function showAssignmentMessage(responseText){
+      document.getElementById("assignmentMessageContainer").innerHTML = responseText; 
+    }
 
     function showTextInBox(responseText){
       document.getElementById("bookArea").innerHTML = responseText; 
@@ -387,7 +395,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding">
   
     <!-- Left Column -->
-    <div class="w3-third" style="width:36%">
+    <div class="w3-third" style="width:36%" id="leftColumn">
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
@@ -398,7 +406,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
           <h6><b>Pending Assignments</b></h6>
           <p>
-            <div class="w3-container w3-card w3-white" style="margin-top: 5px" id="reportAreaContainer" >
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
               <p id="reportArea"></p>
             </div>
           </form>
@@ -414,8 +422,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h6><b>Assigned Questions and Reading</b></h6>
           <p>
             <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="textName"></div>
-            <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 200px" id="questionsContainer">
-              <p id="questionArea" style="margin-top: 20px"></p>
+            <div class="w3-container w3-card w3-white" style="height: 200px; padding-bottom: 10px;" id="questionsContainer">
+              <p id="questionArea" style="margin-top: 10px"></p>
             </div>
           </form>
           </p>
@@ -444,9 +452,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
             </form>
 
-            <form action="javascript:submitQuestions(); submitAssignment();" method="GET">
+            <form action="javascript:submitQuestions();" method="GET">
               <div id="fieldContainer"/></div>
-            <input type="submit" value="Submit Questions"></div>
+              
+            <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div></div> 
             </form>
           </p>
           <hr>
