@@ -13,7 +13,7 @@ try {
 
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    if($_SESSION["displayBoolean"] == "true"){
 	$sql = "SELECT * FROM Users WHERE username = '$user'";
     $statement = $conn -> query($sql);
 
@@ -31,9 +31,8 @@ try {
         $link = $row1["link"];
         break;
     }
-
-print "<iframe src=" . $link . '" width="100%" height=900></iframe>';
-
+        print "<iframe src=" . $link . '" width="100%" height=900></iframe>';
+}
 
 }
 catch(PDOException $e) {

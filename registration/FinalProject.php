@@ -114,6 +114,14 @@ input[type=password] {
       // resetFieldStyles();
     }
 
+    function submitAnswer(){
+      var url = "SubmitAnswer.php";
+      var questionNumber = document.getElementById("questionNumber").value; 
+      var answer = document.getElementById("answer").value;
+
+      url += "?questionNumber"
+    }
+
     function addAnswerFields(){
           var submitTextName = document.getElementById("adminTextName").value;
           localStorage.setItem("storedTextName", submitTextName);
@@ -303,7 +311,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <h6><b>Questions and Reading</b></h6>
           <p>
-            <div class="inputElement">Text: <input class = "input" type="text" name="subject"; id="textName"></div>
+            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="textName"></div>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 10px;" id="questionsContainer">
               <p id="questionArea" style="margin-top: 15px"></p>
             </div>
@@ -318,8 +326,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <h6><b>Submit Answers</b></h6>
           <p>
-          <form action="javascript:CheckAnswer();" method="GET"> 
-            <div class="inputElement">Problem Number: <input class = "input" type="text" name="problemNumber" id="problemNumber"></div>
+          <form action="javascript:submitAnswer()" method="GET"> 
+            <div class="inputElement">Problem Number:  <select id="questionNumber">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
             <textarea class = "input" rows="2" cols="34" name="body" placeholder="Answer... "; style="margin-bottom: 0px" id="body"></textarea><br>
             <input type="submit" value="View">
           </form>
@@ -332,7 +347,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div> 
             <div class="inputElement"> 
 
-            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="body"></textarea></div>
+            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="answer"></textarea></div>
             <input type="submit" value="Send">
           </form>
           </p>

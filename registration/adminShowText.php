@@ -14,6 +14,8 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if($_SESSION["displayBoolean"] == "true"){
+
 	$sql = "SELECT * FROM Administrators WHERE username = '$user'";
     $statement = $conn -> query($sql);
 
@@ -33,7 +35,7 @@ try {
     }
 
 print "<iframe src=" . $link . '" width="100%" height=900></iframe>';
-
+}
 
 }
 catch(PDOException $e) {

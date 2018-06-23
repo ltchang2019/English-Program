@@ -28,9 +28,11 @@ try {
     $statement = $conn -> query($sql);
 
     if($textName==""){
-        print "<h4 style='text-align: center'>" . "Please specify a book..." . "</h4>";
+        print "<h4 style='text-align: center; color: crimson'>" . "Please specify a book..." . "</h4>";
+        $_SESSION["displayBoolean"] = "false";
     }
     else{
+        $_SESSION["displayBoolean"] = "true";
     if ($statement -> rowCount() == 0) {
         print "<h4 style='text-align: center'>" . "No new questions have been posted..." . "</h4>";
     }
