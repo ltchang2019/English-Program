@@ -437,7 +437,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h6><b>Assign Homework</b></h6>
             
             <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
-            <div class="inputElement">PDF Link: <input class = "input" type="text" name="subject"; id="pdfLink"></div>
+            <div class="inputElement">PDF Link: <input class = "input" type="url" name="subject"; id="pdfLink"></div>
             
             Number of Questions
             <select id="numbQuestions">

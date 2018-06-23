@@ -15,7 +15,7 @@ html{
   position: relative;
 /*  overflow: hidden;
 */}
-input[type=text] {
+.input {
       width: 15%;
       position: absolute;
       left: 150px;
@@ -77,7 +77,6 @@ input[type=password] {
 #questionsContainer{
     display: flex;
     flex-direction: column;
-    min-height: 200px;
 }
 #reportArea{
   line-height: 1.5;
@@ -93,6 +92,9 @@ input[type=password] {
 </style>
 
 <script>
+    function showAnswerMessage(responseText) {
+      document.getElementById("answerMessageContainer").innerHTML = responseText; 
+    }
 
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
@@ -114,43 +116,25 @@ input[type=password] {
       // resetFieldStyles();
     }
 
+    var numberOfAnswers;
     function submitAnswer(){
       var url = "SubmitAnswer.php";
-      var questionNumber = document.getElementById("questionNumber").value; 
-      var answer = document.getElementById("answer").value;
+      numberOfAnswers = document.getElementById("numbAnswers").className;
 
-      url += "?questionNumber"
+      var answers = [];
+      var answerID = [];
+      for(i=1;i<numberOfAnswers;i++){
+        answers[i] =  document.getElementById("question" + i).value;
+        answerID[i] = document.getElementById("question" + i).className;
+        if(i==1)
+          url += "?answer1=" + answers[i];
+        else
+          url += "&answer" + i + "=" + answers[i];
+      }
+      url += "&numberOfAnswers=" + numberOfAnswers;
+      httpGetAsync(url, showAnswerMessage);
+
     }
-
-    function addAnswerFields(){
-          var submitTextName = document.getElementById("adminTextName").value;
-          localStorage.setItem("storedTextName", submitTextName);
-
-          var url = "storeNumbQuestions.php";
-          var number = document.getElementById("numbQuestions").value;
-          url += "?numbQuestions=" + number;
-
-          localStorage.setItem("number", number);
-
-          var container = document.getElementById("fieldContainer");
-          while (container.hasChildNodes()) {
-              container.removeChild(container.lastChild);
-          }
-          for (i=0;i<number;i++){
-              if(i==0){
-                container.appendChild(document.createElement("br"));
-              }
-              container.appendChild(document.createTextNode("Question " + (i+1)));
-               var input = document.createElement("input");
-              input.type = "text";
-              input.setAttribute("id", ("input" + i));
-               container.appendChild(input);
-              container.appendChild(document.createElement("br"));
-              container.appendChild(document.createElement("br"));
-            }
-
-          httpFieldsAsync(url, showTextInBox);
-        }
 
     function httpQuestionAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
@@ -311,20 +295,20 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <h6><b>Questions and Reading</b></h6>
           <p>
-            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="textName"></div>
-            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 10px;" id="questionsContainer">
-              <p id="questionArea" style="margin-top: 15px"></p>
-            </div>
+            <div class="inputElement">Text Name: <input style="margin-bottom: -10px" class = "input" type="text" name="subject"; id="textName"></div>
+            <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
+          <input type="submit" value="View Questions">
           </form>
+            <div id="questionsContainer">
+              <p id="questionArea" style="color: black"></p>
+            </div>
+
           </p>
 
-          <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
-          <input type="submit" value="View Questions" style="margin-top: 5px">
-          </form>
           </p>
           <hr>
 
-          <h6><b>Submit Answers</b></h6>
+          <!-- <h6><b>Submit Answers</b></h6>
           <p>
           <form action="javascript:submitAnswer()" method="GET"> 
             <div class="inputElement">Problem Number:  <select id="questionNumber">
@@ -335,19 +319,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <option value="5">5</option>
             </select>
           </div>
-            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Answer... "; style="margin-bottom: 0px" id="body"></textarea><br>
+            <textarea rows="2" cols="34" name="body" placeholder="Answer... "; style="margin-bottom: 0px" id="body"></textarea><br>
             <input type="submit" value="View">
           </form>
           </form>
           </p>
-          <hr>
+          <hr> -->
           
           <h6><b>Ask Tutors Questions</b></h6>
           <p><form action="javascript:SendMessage();" method="GET"> 
             <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div> 
             <div class="inputElement"> 
 
-            <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="answer"></textarea></div>
+            <textarea rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="answer"></textarea></div>
             <input type="submit" value="Send">
           </form>
           </p>

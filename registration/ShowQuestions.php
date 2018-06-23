@@ -28,7 +28,7 @@ try {
     $statement = $conn -> query($sql);
 
     if($textName==""){
-        print "<h4 style='text-align: center; color: crimson'>" . "Please specify a book..." . "</h4>";
+        print "<p style='color: crimson'>" . "Please specify a book..." . "</h4>";
         $_SESSION["displayBoolean"] = "false";
     }
     else{
@@ -37,25 +37,23 @@ try {
         print "<h4 style='text-align: center'>" . "No new questions have been posted..." . "</h4>";
     }
     else{
-    
-    print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div><table id='center'><tr><th>Number</th><th>Question</th></tr>";
-
     $varNumb = 1;
     foreach($statement as $row){
     	$question = $row["question"];
+        $questionID = $row["questionID"];
+
+        print $varNumb . ". " . $question;
     
-        print "<tr>";
-        print "<td>" . $varNumb . "</td>";
-        print "<td>" . $question . "</td>";
-        print "</tr>";
+        print "<textarea class='" . $questionID . "' style='max-width: 100%' rows='2' cols='36' placeholder='Answer...' id='question" . $varNumb . "'>" . "</textarea><br>";
 
         $varNumb++;
     }
-        print "</table></div>";
     }
 }
-
+    print "<p id='answerMessageContainer' style='color: green'></p>";
+    print "<form action='javascript:submitAnswer();' method='GET'>
+          <input type='submit' value='Submit Answers'></form>";
+    print "<div id='numbAnswers' class='" . $varNumb . "'></div>";
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();
