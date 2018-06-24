@@ -50,6 +50,7 @@ try {
     }
     }
 }
+
     print "<p id='answerMessageContainer' style='color: green'></p>";
     print "<form action='javascript:submitAnswer();' method='GET'>
           <input type='submit' value='Submit Answers'></form>";

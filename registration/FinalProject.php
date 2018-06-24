@@ -127,13 +127,13 @@ input[type=password] {
         answers[i] =  document.getElementById("question" + i).value;
         answerID[i] = document.getElementById("question" + i).className;
         if(i==1)
-          url += "?answer1=" + answers[i];
+          url += "?answer1=" + answers[i] + "&answerID1=" + answerID[i];
         else
-          url += "&answer" + i + "=" + answers[i];
+          url += "&answer" + i + "=" + answers[i] + "&answerID" + i + "=" + answerID[i];
       }
       url += "&numberOfAnswers=" + numberOfAnswers;
+      alert(numberOfAnswers);
       httpGetAsync(url, showAnswerMessage);
-
     }
 
     function httpQuestionAsync(theUrl, callbackWhenPageLoaded) { 
