@@ -23,6 +23,7 @@ try {
     }
 
     $textName = $_GET["textName"];
+    $_SESSION["textName"] = $textName;
 
     $sql = "SELECT * FROM Questions WHERE textName = '$textName' AND groupNumber = '$groupNumber' ";
     $statement = $conn -> query($sql);

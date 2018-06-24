@@ -132,7 +132,7 @@ input[type=password] {
           url += "&answer" + i + "=" + answers[i] + "&answerID" + i + "=" + answerID[i];
       }
       url += "&numberOfAnswers=" + numberOfAnswers;
-      alert(numberOfAnswers);
+
       httpGetAsync(url, showAnswerMessage);
     }
 
@@ -274,7 +274,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
 
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b></h2>
+          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="login.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2> 
         </div>
 
         <div class="w3-container">
