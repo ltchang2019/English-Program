@@ -29,8 +29,8 @@ try {
         print "<div id='center'><table id='center'><th><br><h4>" . "No new assignments have been posted..." . "</h4></th>";
     }
     else{
-    print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div id='center'><table id='center'><tr><th>#</th><th>Date Assigned</th><th style='min-width:150px'>Text</th><th>Number of Questions</th></tr>";
+    print "<style> table, th, td {max-width: 450px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
+    print "<div id='center'><table id='center'><tr><th>Date Assigned</th><th style='min-width:150px'>Text</th><th>Number of Questions</th><th>Completed By</th></tr>";
 
     $userID = -1;
     foreach($statement as $row){
@@ -39,16 +39,17 @@ try {
         $text = $row["textName"];
         $link = $row["link"];
         $numbQuestions = $row["numbQuestions"];
+        $completedBy = $row["completedBy"];
 
         $_SESSION['link'] = $link;
 
         session_abort();
 
         print "<tr>";
-        print "<td style='min-width:10px'>" . $assignmentID . "</td>";
         print "<td style='max-width:50px'>" . $dateAssigned . "</td>";
         print "<td style='max-width:50px'>" . $text . "</td>";
         print "<td style='max-width:5px'>" . $numbQuestions . "</td>";
+        print "<td>" . $completedBy . "</td>";
         print "</tr>";
     }
         print "</table></div>";
