@@ -26,16 +26,31 @@ try {
     $textName = $_GET["storedTextName"];
     $link = $_GET["link"];
 
+    $blankQuestion = "false";
+
     if($numbQuestions > 0){
     if($numbQuestions == 1){
         $question1 = $_GET["question1"];
+
+        if($question1 == ""){
+            $blankQuestion = "true";
+            print "<p style='color: crimson'>Please fill in all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question1', $groupNumber, '')";
         $conn -> exec ( $sql );
         print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
     }
+    }
     else if($numbQuestions == 2){
         $question1 = $_GET["question1"];
         $question2 = $_GET["question2"];
+
+        if($question1 == "" || $question2 == ""){
+            $blankQuestion = "true";
+            print "<p style='color: crimson'>Please fill in all questions...</p>";
+        }
+        else{
         $sql1 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question1', $groupNumber, '')";
         $conn -> exec ( $sql1 );
         $sql1 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question2', $groupNumber, '')";
@@ -43,11 +58,17 @@ try {
 
         print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
     }
+    }
     else if($numbQuestions == 3){
         $question1 = $_GET["question1"];
         $question2 = $_GET["question2"];
         $question3 = $_GET["question3"];
 
+        if($question1 == "" || $question2 == "" || $question3 == ""){
+            $blankQuestion = "true";
+            print "<p style='color: crimson'>Please fill in all questions...</p>";
+        }
+        else{
         $sql1 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question1', $groupNumber, '')";
         $conn -> exec ( $sql1 );
         $sql2 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question2', $groupNumber, '')";
@@ -57,12 +78,18 @@ try {
 
         print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
     }
+    }
     else if($numbQuestions == 4){
         $question1 = $_GET["question1"];
         $question2 = $_GET["question2"];
         $question3 = $_GET["question3"];
         $question4 = $_GET["question4"];
 
+        if($question1 == "" || $question2 == "" || $question3 == "" || $question4 == ""){
+            $blankQuestion = "true";
+            print "<p style='color: crimson'>Please fill in all questions...</p>";
+        }
+        else{
         $sql1 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question1', $groupNumber, '')";
         $conn -> exec ( $sql1 );
         $sql2 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question2', $groupNumber, '')";
@@ -74,6 +101,7 @@ try {
 
         print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
     }
+    }
     else if($numbQuestions == 5){
         $question1 = $_GET["question1"];
         $question2 = $_GET["question2"];
@@ -81,6 +109,11 @@ try {
         $question4 = $_GET["question4"];
         $question5 = $_GET["question5"];
 
+        if($question1 == "" || $question2 == "" || $question3 == "" || $question4 == "" || $question5 == ""){
+            $blankQuestion = "true";
+            print "<p style='color: crimson'>Please fill in all questions...</p>";
+        }
+        else{
         $sql1 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question1', $groupNumber, '')";
         $conn -> exec ( $sql1 );
         $sql2 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question2', $groupNumber, '')";
@@ -94,11 +127,13 @@ try {
 
         print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
     }
+    }
+    if($blankQuestion=="false"){
     $sql = "INSERT INTO Assignments (textName, link, groupNumber, dateAssigned, numbQuestions) VALUES ('$textName', '$link', '$groupNumber', CURDATE() ,'$numbQuestions')";
     $conn -> exec ($sql);
+    }
 }
 
-    
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

@@ -118,21 +118,36 @@ input[type=password] {
 
     var numberOfAnswers;
     function submitAnswer(){
+      var missingData = false;
       var url = "SubmitAnswer.php";
       numberOfAnswers = document.getElementById("numbAnswers").className;
 
       var answers = [];
       var answerID = [];
       for(i=1;i<numberOfAnswers;i++){
+        if(missingData==false){
         answers[i] =  document.getElementById("question" + i).value;
         answerID[i] = document.getElementById("question" + i).className;
+        if(answers[i]==""){
+          missingData=true;
+          url += "?missingMessage=" + "Please answer all questions..." + "&missing=" + "true";
+        }
+        else{
         if(i==1)
           url += "?answer1=" + answers[i] + "&answerID1=" + answerID[i];
         else
           url += "&answer" + i + "=" + answers[i] + "&answerID" + i + "=" + answerID[i];
+      
+        url += "&numberOfAnswers=" + numberOfAnswers + "&missing=" + "false";
       }
-      url += "&numberOfAnswers=" + numberOfAnswers;
-
+    }
+  }
+      if(missingData==false){
+        document.getElementById("questionArea").innerHTML = "";
+        var answerMessageDiv = document.createElement("div");
+        answerMessageDiv.setAttribute("id", "answerMessageContainer");
+        document.getElementById("questionArea").appendChild(answerMessageDiv);
+      }
       httpGetAsync(url, showAnswerMessage);
     }
 
@@ -328,10 +343,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           
           <h6><b>Ask Tutors Questions</b></h6>
           <p><form action="javascript:SendMessage();" method="GET"> 
-            <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div> 
+
             <div class="inputElement"> 
 
-            <textarea rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="answer"></textarea></div>
+            <textarea rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px; max-width: 100%" id="answer"></textarea></div>
             <input type="submit" value="Send">
           </form>
           </p>

@@ -19,6 +19,7 @@ try {
 
     foreach($statement as $row){
         $groupNumber = $row["groupNumber"];
+        $firstName = $row["firstName"];
         break;
     }
 
@@ -42,7 +43,15 @@ try {
     foreach($statement as $row){
     	$question = $row["question"];
         $questionID = $row["questionID"];
+        $completedBy = $row["completedBy"];
 
+        if(strpos($completedBy, $firstName) !== false){
+            print "<p style='color: green'>Questions already completed!</p>";
+            $_SESSION["questionsCompleted"] = "true";
+            break;
+        }
+        else{
+        $_SESSION["questionsCompleted"] = "false";
         print $varNumb . ". " . $question;
     
         print "<textarea class='" . $questionID . "' style='max-width: 100%' rows='2' cols='36' placeholder='Answer...' id='question" . $varNumb . "'>" . "</textarea><br>";
@@ -50,12 +59,14 @@ try {
         $varNumb++;
     }
     }
+    }
 }
-
-    print "<p id='answerMessageContainer' style='color: green'></p>";
+    if($_SESSION["questionsCompleted"] == "false"){
+    print "<p id='answerMessageContainer'></p>";
     print "<form action='javascript:submitAnswer();' method='GET'>
           <input type='submit' value='Submit Answers'></form>";
     print "<div id='numbAnswers' class='" . $varNumb . "'></div>";
+}
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

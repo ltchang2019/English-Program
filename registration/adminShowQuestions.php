@@ -37,22 +37,38 @@ try {
         print "<h4 style='text-align: center'>" . "No new questions have been posted..." . "</h4>";
     }
     else{
-    
-    print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div><table id='center'><tr><th>Number</th><th>Question</th></tr>";
 
     $varNumb = 1;
     foreach($statement as $row){
     	$question = $row["question"];
-    
-        print "<tr>";
-        print "<td>" . $varNumb . "</td>";
-        print "<td>" . $question . "</td>";
-        print "</tr>";
+        $questionID = $row["questionID"];
 
+        print "<p>" . $varNumb . ". " . $question;
+
+
+        $sql1 = "SELECT * FROM Answers WHERE questionID = '$questionID' ";
+        $statement1 = $conn -> query($sql1);
+
+        if ($statement1 -> rowCount() == 0) {
+            print "<br><b>No responses yet...</b><br>";
+        }
+        else{
+            print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
+            print "<div><table id='center'><tr><th style='width: 200px'>Student</th><th style='width:290px'>Answer</th></tr>";
+
+        foreach($statement1 as $row){
+            $firstName = $row["firstName"];
+            $answer = $row["answer"];
+    
+            print "<tr>";
+            print "<td>" . $firstName . "</td>";
+            print "<td>" . $answer . "</td>";
+            print "</tr>";
+        }
+        }
+        print "</table></div><br>";
         $varNumb++;
     }
-        print "</table></div>";
     }
 }
 

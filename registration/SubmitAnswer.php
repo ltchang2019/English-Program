@@ -15,6 +15,11 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $missing = $_GET["missing"];
+    if($missing == "true"){
+        print "<p style='color: crimson'> Please answer all questions...</p>";
+    }
+    else{
     $numbAnswers = $_GET["numberOfAnswers"];
 
     $sql = "SELECT * FROM Users WHERE username = '$user'";
@@ -27,7 +32,7 @@ try {
     }
     if($numbAnswers == 1+1){
         $answer1 = $_GET["answer1"];
-        $answerID1 =$_GET["answerID1"];
+        $answerID1 = $_GET["answerID1"];
 
         $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$answer1', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql1 );
@@ -156,7 +161,8 @@ try {
         $sql = "UPDATE Assignments SET completedBy = CONCAT(completedBy, '$firstName ') WHERE textName = '$textName' AND groupNumber = '$groupNumber'";
         $conn -> exec ( $sql );
     }
-    print "Answers submitted!";
+    print "<p style = 'color: green'>Answers submitted!</p>";
+}
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

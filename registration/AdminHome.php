@@ -22,6 +22,13 @@ input[type=text] {
       max-width: 100%;
       height: 22px;
     }
+input[type=url]{
+  width: 15%;
+  position: absolute;
+  left: 150px;
+  max-width: 100%;
+  height: 22px;
+}
 input[type=password] {
       width: 15%;
       position: absolute;
@@ -199,7 +206,7 @@ input[type=password] {
               container.appendChild(document.createElement("br"));
             }
 
-          httpFieldsAsync(url, showTextInBox);
+          httpFieldsAsync(url, showBlank);
         }
 
         function submitQuestions(){
@@ -216,20 +223,26 @@ input[type=password] {
 
               var link = document.getElementById("pdfLink").value;
 
+              var blankQuestion = false;
+
             if(storedNumber == 1){
               for (i=0;i<storedNumber;i++){
                 var question1 = document.getElementById("input" + i).value;
                 url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&link=" + link;
+                if(question1 == "")
+                  blankQuestion=true;
               }
             }
             else if(storedNumber == 2){
                 for (i=0;i<1;i++){
-                var question1 = document.getElementById("input" + i).value;
+                  var question1 = document.getElementById("input" + i).value;
                 }
                 for (i=1;i<2;i++){
                 var question2 = document.getElementById("input" + i).value;
               }
               url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&link=" + link;
+              if(question1 == "" || question2 == "")
+                blankQuestion=true;
           }
           else if(storedNumber == 3){
                 for (i=0;i<1;i++){
@@ -242,6 +255,8 @@ input[type=password] {
                 var question3 = document.getElementById("input" + i).value;
                 }
               url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "")
+                blankQuestion=true;
           }
           else if(storedNumber == 4){
                 for (i=0;i<1;i++){
@@ -257,6 +272,8 @@ input[type=password] {
                 var question4 = document.getElementById("input" + i).value;
                 }
               url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "")
+                blankQuestion=true;
           }
           else if(storedNumber == 5){
                 for (i=0;i<1;i++){
@@ -275,13 +292,24 @@ input[type=password] {
                 var question5 = document.getElementById("input" + i).value;
                 }
               url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "")
+                blankQuestion=true;
             }
+            // document.getElementById("adminTextName").value = "";
+            // document.getElementById("pdfLink").value = "";
             httpQuestionAsync(url, showAssignmentMessage);
+            if(blankQuestion==false){
+              document.getElementById("fieldContainer").innerHTML = "";
+              document.getElementById("assignmentMessageContainer").innerHTML = "Assignment submitted";
+            }
             }
             else{
-              alert("Please specify a text name...");
+              alert("Please specify a text name and/or link...");
             }
         }
+
+    function showBlank(responseText){
+    }
 
     function showAssignmentMessage(responseText){
       document.getElementById("assignmentMessageContainer").innerHTML = responseText; 
@@ -419,10 +447,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr>
 
-          <h6><b>Assigned Questions and Reading</b></h6>
+          <h6><b>View Readings, Questions, and Answers</b></h6>
           <p>
-            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="textName"></div>
-            <div class="w3-container w3-card w3-white" style="height: 200px; padding-bottom: 10px;" id="questionsContainer">
+            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject" id="textName" ></div>
+            <div class="w3-container w3-card w3-white" style="padding-bottom: 10px;" id="questionsContainer">
               <p id="questionArea" style="margin-top: 10px"></p>
             </div>
           </form>
@@ -454,9 +482,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
             <form action="javascript:submitQuestions();" method="GET">
               <div id="fieldContainer"/></div>
-              
-            <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div></div> 
-            </form>
+
+            <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
+          
+          </div> 
+          </form>
           </p>
           <hr>
           

@@ -18,11 +18,20 @@ try {
 
     foreach($statement as $row){
         $groupNumber = $row["groupNumber"];
+        $firstName = $row["firstName"];
         break;
     }
 
-    $sql1 = "SELECT * FROM Assignments WHERE groupNumber = '$groupNumber'";
+
+
+    $sql1 = "SELECT * FROM Assignments WHERE groupNumber = '$groupNumber' ";
     $statement = $conn -> query($sql1);
+
+    // foreach($statement as $row){
+    //     $completedBy = $row["completedBy"];
+    // }
+
+    
 
     if ($statement -> rowCount() == 0) {
         print "<style> table, th, td { border: 0px solid black;} #center { margin-left: auto; margin-right: auto;}</style>";
@@ -34,6 +43,8 @@ try {
 
     $userID = -1;
     foreach($statement as $row){
+        $completedBy = $row["completedBy"];
+
         $assignmentID = $row["assignmentID"];
     	$dateAssigned = $row["dateAssigned"];
         $text = $row["textName"];
@@ -42,13 +53,16 @@ try {
 
         $_SESSION['link'] = $link;
 
-        session_abort();
-
+        if(strpos($completedBy, $firstName) !== false){
+        
+        }
+        else{
         print "<tr>";
         print "<td style='max-width:50px'>" . $dateAssigned . "</td>";
         print "<td style='max-width:50px'>" . $text . "</td>";
         print "<td style='max-width:5px'>" . $numbQuestions . "</td>";
         print "</tr>";
+    }
     }
         print "</table></div>";
 
