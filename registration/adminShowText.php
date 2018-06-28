@@ -34,7 +34,7 @@ try {
         break;
     }
 
-print "<iframe src=" . $link . '" width="100%" height=900></iframe>';
+print "<iframe src=" . $link . '" width="100%" height="817px" id="realBookFrame"></iframe>';
 }
 
 }
@@ -42,3 +42,6 @@ catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();
 }
 ?>
+<script type="text/javascript">
+    adjustHeightQuestions();
+</script>

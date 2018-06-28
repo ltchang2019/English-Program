@@ -1,3 +1,16 @@
+<script>
+    function adjustHeightQuestions(){
+      var newHeight = document.getElementById("questionsContainer").offsetHeight;
+      alert(newHeight);
+      var addedHeight = newHeight - 200;
+      var currBoxHeight = document.getElementById("bookFrame").offsetHeight;
+      var heightToSet = currBoxHeight + addedHeight;
+      alert(heightToSet);
+
+      document.getElementById("bookFrame").setAttribute("height", heightToSet);
+    }
+</script>
+
 <?php
 
 session_start();

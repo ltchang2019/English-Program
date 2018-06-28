@@ -44,8 +44,6 @@ input[type=password] {
 
     hr{
       margin-top: 5px; margin-bottom: 5px;
-      border-color: darkgray;
-      border-width: .25px;
     }
     p{
       margin-top: 5px; margin-bottom: 5px;
@@ -57,37 +55,17 @@ input[type=password] {
       margin-top: 3px; margin-bottom: 2px;
     }
 
-    #transparentLayer{
-      position: absolute;
-      text-align: left;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 900px;
-      z-index: 6;
-      opacity: 0.01;
-      -moz-opacity: 0.01;
-      -khtml-opacity: 0.01;
-      filter: alpha(opacity=1);
-    }
-
     .inputElement {
       margin: 3px 0px;
     }
-    .w3-third{
-      max-height: 100%;
-      float: left;
-      resize: both;
-}
-.w3-twothird{
-  height: 100%;
-  float: right;
-  display: flex;
-  flex-direction: column;
-  resize: both;
-}
-.w3-container{
-
+    .col{
+      display: table-cell;
+      padding: 5px;
+    }
+.content{
+  display: table;
+  border-spacing: 10px;
+  width:100%;
 }
 .sendForm{
   resize: both;
@@ -139,13 +117,9 @@ input[type=password] {
 
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
-      adjustHeightAssignment();
     }
 
     function showQuestionsInBox(responseText){
-      var oldQuestionHeight = document.getElementById("questionsContainer").offsetHeight;
-      localStorage.setItem("oldQuestionHeight", oldQuestionHeight);
-      alert(oldQuestionHeight);
       document.getElementById("questionArea").innerHTML = responseText; 
     }
 
@@ -226,7 +200,6 @@ input[type=password] {
             }
 
           httpFieldsAsync(url, showBlank);
-          adjustHeightAddFields();
         }
 
         function submitQuestions(){
@@ -334,11 +307,8 @@ input[type=password] {
       document.getElementById("assignmentMessageContainer").innerHTML = responseText; 
     }
 
-    var textShown = false;
     function showTextInBox(responseText){
-      document.getElementById("bookArea").innerHTML = responseText;
-      textShown = true;
-      adjustHeightQuestions();
+      document.getElementById("bookContainer").innerHTML = responseText; 
     }
 
     function adminShowText(){
@@ -357,72 +327,6 @@ input[type=password] {
       var username = "mmcgrath";
         
       httpGetAsync(url, showAssignments);
-    }
-
-    function adjustHeightAssignment(){
-      var newHeight = document.getElementById("reportAreaContainer").offsetHeight;
-      var addedHeight = newHeight - 200;
-
-      if(textShown==true){
-        var currHeight = document.getElementById("realBookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight;
-
-        document.getElementById("realBookFrame").setAttribute("height", heightToSet);
-      }
-      else{
-        var currHeight = document.getElementById("bookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight + 5;
-
-        document.getElementById("bookFrame").style.height = heightToSet + "px";
-      }
-    }
-
-    function adjustHeightQuestions(){
-      if(textShown==true)
-         newHeight = document.getElementById("questionsContainer").offsetHeight;
-      else
-         newHeight = document.getElementById("realBookFrame").offsetHeight;
-
-      var addedHeight = newHeight - localStorage.getItem("oldQuestionHeight");
-
-      alert(newHeight);
-
-      alert(document.getElementById("realBookFrame").offsetHeight);
-
-      if(textShown==true)
-        newFrameHeight = document.getElementById("realBookFrame").offsetHeight;
-      else
-        newFrameHeight = document.getElementById("bookFrame").offsetHeight;
-
-      document.getElementById("realBookFrame").setAttribute("height", newFrameHeight);
-
-      var currBoxHeight = document.getElementById("realBookFrame").offsetHeight;
-      alert(currBoxHeight);
-      var heightToSet = currBoxHeight + addedHeight - 5;
-
-      document.getElementById("bookFrame").style.height = 0 + "px";
-
-      document.getElementById("realBookFrame").setAttribute("height", heightToSet);
-      alert(document.getElementById("realBookFrame").offsetHeight);
-      localStorage.removeItem("oldQuestionHeight");
-    }
-
-    function adjustHeightAddFields(){
-      var newHeight = document.getElementById("fieldContainer").offsetHeight;
-      var addedHeight = newHeight;
-
-      if(textShown==true){
-        var currHeight = document.getElementById("realBookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight;
-
-        document.getElementById("realBookFrame").setAttribute("height", heightToSet);
-      }
-      else{
-        var currHeight = document.getElementById("bookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight;
-
-        document.getElementById("bookFrame").style.height = heightToSet + "px";
-      }
     }
 
     function SendMessage(){
@@ -502,23 +406,14 @@ input[type=password] {
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 <body class="w3-light-grey">
-
-<!-- Page Container -->
-<div class="w3-content" style="max-width:1400px; margin-left: -10px;">
+<div class="content">
 
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third" style="width:36%;" id="leftColumn">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="adminlogin.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2>
+    <!-- LEFT COLUMN -->
+      <div class="w3-white w3-text-grey w3-card-4 col" style="width:40%; float: top;">
+      <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -50px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="adminlogin.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a></h2>
       
-
-        <div class="w3-container">
+      <div class="w3-container" style="margin-top: -50px">
           <h6><b>Pending Assignments</b></h6>
           <p>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
@@ -526,16 +421,20 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
+          <hr>
 
           <form action="javascript:adminShowAssignments();" method="GET">
-          <input type="submit" value="View Assignments" style="margin-bottom: 10px; margin-top: 5px">
+          <input type="submit" value="View Assignments" style="margin-bottom: 10px">
           </form>
           </p>
           <hr>
 
-          <h6 style="margin-top: 10px"><b>View Readings, Questions, and Answers</b></h6>
+
+          <!-- NEXT SECTION -->
+
+          <h6><b>View Readings, Questions, and Answers</b></h6>
           <p>
-            <div class="inputElement" style="margin-bottom: 10px">Text Name: <input class = "input" type="text" name="subject" id="textName" ></div>
+            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject" id="textName" ></div>
             <div class="w3-container w3-card w3-white" style="padding-bottom: 10px;" id="questionsContainer">
               <p id="questionArea" style="margin-top: 10px"></p>
             </div>
@@ -543,69 +442,24 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
 
           <form action="javascript:adminShowQuestions(); javascript:adminShowText();" method="GET">
-          <input type="submit" value="View Questions" style="margin-top: 5px; margin-bottom: 10px">
+          <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
           </p>
           <hr>
 
-          <h6 style="margin-top: 10px"><b>Assign Homework</b></h6>
-            <form id="assignHW">
-            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
-            <div class="inputElement">PDF Link: <input class = "input" type="url" name="subject"; id="pdfLink"></div>
-            
-            Number of Questions
-            <select id="numbQuestions">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            </form>
-            <form action="javascript:addFields();" method="GET">
-            <input type="submit" value="Choose Number of Questions" style="margin-bottom: 5px; margin-top: 5px">
-            </form>
-
-            <form action="javascript:submitQuestions();" method="GET">
-              <div id="fieldContainer"/></div>
-
-            <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
-          
-          </div> 
-          </form>
-          </p>
-          <hr>
-          
-          </div> 
 
 
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird" style="width: 63%">
-  
-      <div class="w3-white w3-text-grey w3-card-4" style="margin-top: 5px; min-height: 830px; display: flex; flex-direction: column;" id="bookContainer" >
-        <div class="transparentLayer"></div>
-
-          <p id="bookArea" style="padding-left: 3px;"></p>
-          <div id="bookFrame" style="height: 817px" class="holderBookFrame"></div>
+        </div>
       </div>
-    <!-- End Right Column -->
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
-</div>
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
- 
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
 
+    <!-- RIGHT COLUMN -->
+
+      <div class="w3-white w3-text-grey w3-card-4 col" id="bookContainer" style="width: 60%">
+        <p id="bookArea">apudshfpasiudhfpiushifuhapidufpiuhwepfuhpiohbouhbp<br>sadfoiuhapsufpaisdbfoiahbdsf<br><br>apsudfpauisbdpfiuabspdiubfap</p>
+      </div>
+
+</div>
 </body>
 </html>
 
