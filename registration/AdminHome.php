@@ -13,20 +13,21 @@
 <style>
 html{
   position: relative;
-  overflow: scroll;
-  resize: both;
-}
+/*  overflow: hidden;
+*/}
 input[type=text] {
       width: 50%;
       position: relative;
+      left: 10px;
       max-width: 100%;
       height: 22px;
     }
 input[type=url]{
-    width: 50%;
-    position: relative;
-    max-width: 100%;
-    height: 22px;
+  width: 50%;
+  position: relative;
+  left: 10px;
+  max-width: 100%;
+  height: 22px;
 }
 input[type=password] {
       width: 15%;
@@ -41,11 +42,8 @@ input[type=password] {
     height: 20px;
     text-align: center;
   }*/
-
     hr{
       margin-top: 5px; margin-bottom: 5px;
-      border-color: darkgray;
-      border-width: .25px;
     }
     p{
       margin-top: 5px; margin-bottom: 5px;
@@ -56,7 +54,6 @@ input[type=password] {
     h6{
       margin-top: 3px; margin-bottom: 2px;
     }
-
     #transparentLayer{
       position: absolute;
       text-align: left;
@@ -70,31 +67,32 @@ input[type=password] {
       -khtml-opacity: 0.01;
       filter: alpha(opacity=1);
     }
-
     .inputElement {
       margin: 3px 0px;
     }
-    .w3-third{
-      max-height: 100%;
+.w3-third{
+      height: 100%;
       float: left;
       resize: both;
+      display: flex;
+    flex-direction: column;
 }
 .w3-twothird{
   height: 100%;
   float: right;
-  display: flex;
-  flex-direction: column;
   resize: both;
-}
-.w3-container{
-
 }
 .sendForm{
   resize: both;
 }
-
 #body{
   max-width: 100%;
+}
+#realLeftColumn{
+  overflow: scroll;
+      display: flex;
+    flex-direction: column;
+    margin-top: 5px;
 }
 #reportAreaContainer{
     display: flex;
@@ -118,40 +116,21 @@ input[type=password] {
 .democlass{
   color:red;
 }
-
 </style>
 
 <script>
-
-
-//     $(document).ready(function(){
-
-// //get height of right div
-
-//       var eRightHt = $(“.w3-twothird).outerHeight();
-
-// // apply height to image in leftdiv
-
-//       $(“.w3-third).css(“height”,eRightHt);
-
-//     });
-    
-
+    // function changeRightDivHeight (){
+    //   var leftHeight = document.getElementById("leftColumn").style.height;
+    //   document.getElementById("bookContainer").style.height = leftHeight;
+    // }
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
-      adjustHeightAssignment();
     }
-
     function showQuestionsInBox(responseText){
-      var oldQuestionHeight = document.getElementById("questionsContainer").offsetHeight;
-      localStorage.setItem("oldQuestionHeight", oldQuestionHeight);
-      alert(oldQuestionHeight);
       document.getElementById("questionArea").innerHTML = responseText; 
     }
-
     function httpGetAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
-
       xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
           callbackWhenPageLoaded(xmlHttp.responseText);
@@ -160,10 +139,8 @@ input[type=password] {
       xmlHttp.send(null);
       // resetFieldStyles();
     }
-
     function httpQuestionAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
-
       xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
           callbackWhenPageLoaded(xmlHttp.responseText);
@@ -172,11 +149,8 @@ input[type=password] {
       xmlHttp.send(null);
       // resetFieldStyles();
     }
-
-
     function httpDisplayAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
-
       xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
           callbackWhenPageLoaded(xmlHttp.responseText);
@@ -185,10 +159,8 @@ input[type=password] {
       xmlHttp.send(null);
       // resetFieldStyles();
     }
-
     function httpFieldsAsync(theUrl, callbackWhenPageLoaded) { 
       var xmlHttp = new XMLHttpRequest();
-
       xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
           callbackWhenPageLoaded(xmlHttp.responseText);
@@ -197,17 +169,13 @@ input[type=password] {
       xmlHttp.send(null);
       // resetFieldStyles();
     }
-
     function addFields(){
           var submitTextName = document.getElementById("adminTextName").value;
           localStorage.setItem("storedTextName", submitTextName);
-
           var url = "storeNumbQuestions.php";
           var number = document.getElementById("numbQuestions").value;
           url += "?numbQuestions=" + number;
-
           localStorage.setItem("number", number);
-
           var container = document.getElementById("fieldContainer");
           while (container.hasChildNodes()) {
               container.removeChild(container.lastChild);
@@ -216,7 +184,7 @@ input[type=password] {
               if(i==0){
                 container.appendChild(document.createElement("br"));
               }
-              container.appendChild(document.createTextNode("Question " + (i+1 + ": ")));
+              container.appendChild(document.createTextNode("Question " + (i+1)));
                var input = document.createElement("input");
               input.type = "text";
               input.setAttribute("id", ("input" + i));
@@ -224,27 +192,19 @@ input[type=password] {
               container.appendChild(document.createElement("br"));
               container.appendChild(document.createElement("br"));
             }
-
           httpFieldsAsync(url, showBlank);
-          adjustHeightAddFields();
         }
-
         function submitQuestions(){
             var submitTextName = document.getElementById("adminTextName").value;
             localStorage.setItem("storedTextName", submitTextName);
-
             if(localStorage.getItem("storedTextName")!==""){
               var submitTextName = document.getElementById("adminTextName").value;
               localStorage.setItem("storedTextName", submitTextName);
               var storedTextName = localStorage.getItem("storedTextName");
-
               var storedNumber = localStorage.getItem("number");
               url = "submitQuestions.php";
-
               var link = document.getElementById("pdfLink").value;
-
               var blankQuestion = false;
-
             if(storedNumber == 1){
               for (i=0;i<storedNumber;i++){
                 var question1 = document.getElementById("input" + i).value;
@@ -315,42 +275,32 @@ input[type=password] {
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "")
                 blankQuestion=true;
             }
-            
+            // document.getElementById("adminTextName").value = "";
+            // document.getElementById("pdfLink").value = "";
             httpQuestionAsync(url, showAssignmentMessage);
             if(blankQuestion==false){
               document.getElementById("fieldContainer").innerHTML = "";
-              document.getElementById("assignHW").reset();
+              document.getElementById("assignmentMessageContainer").innerHTML = "Assignment submitted";
             }
             }
             else{
               alert("Please specify a text name and/or link...");
             }
         }
-
     function showBlank(responseText){
     }
-
     function showAssignmentMessage(responseText){
       document.getElementById("assignmentMessageContainer").innerHTML = responseText; 
     }
-
-    var textShown = false;
     function showTextInBox(responseText){
-      document.getElementById("bookArea").innerHTML = responseText;
-      textShown = true;
-      adjustHeightQuestions();
+      document.getElementById("bookArea").innerHTML = responseText; 
     }
-
     function adminShowText(){
       var url = "adminShowText.php"; 
       var textName = document.getElementById("textName").value;
-
       url += "?textName=" + textName + "&output=embed";
-
       httpQuestionAsync(url, showTextInBox);
     }
-
-
     function adminShowAssignments() {
       
       var url = "adminShowAssignments.php"; 
@@ -358,73 +308,6 @@ input[type=password] {
         
       httpGetAsync(url, showAssignments);
     }
-
-    function adjustHeightAssignment(){
-      var newHeight = document.getElementById("reportAreaContainer").offsetHeight;
-      var addedHeight = newHeight - 200;
-
-      if(textShown==true){
-        var currHeight = document.getElementById("realBookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight;
-
-        document.getElementById("realBookFrame").setAttribute("height", heightToSet);
-      }
-      else{
-        var currHeight = document.getElementById("bookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight + 5;
-
-        document.getElementById("bookFrame").style.height = heightToSet + "px";
-      }
-    }
-
-    function adjustHeightQuestions(){
-      if(textShown==true)
-         newHeight = document.getElementById("questionsContainer").offsetHeight;
-      else
-         newHeight = document.getElementById("realBookFrame").offsetHeight;
-
-      var addedHeight = newHeight - localStorage.getItem("oldQuestionHeight");
-
-      alert(newHeight);
-
-      alert(document.getElementById("realBookFrame").offsetHeight);
-
-      if(textShown==true)
-        newFrameHeight = document.getElementById("realBookFrame").offsetHeight;
-      else
-        newFrameHeight = document.getElementById("bookFrame").offsetHeight;
-
-      document.getElementById("realBookFrame").setAttribute("height", newFrameHeight);
-
-      var currBoxHeight = document.getElementById("realBookFrame").offsetHeight;
-      alert(currBoxHeight);
-      var heightToSet = currBoxHeight + addedHeight - 5;
-
-      document.getElementById("bookFrame").style.height = 0 + "px";
-
-      document.getElementById("realBookFrame").setAttribute("height", heightToSet);
-      alert(document.getElementById("realBookFrame").offsetHeight);
-      localStorage.removeItem("oldQuestionHeight");
-    }
-
-    function adjustHeightAddFields(){
-      var newHeight = document.getElementById("fieldContainer").offsetHeight;
-      var addedHeight = newHeight;
-
-      if(textShown==true){
-        var currHeight = document.getElementById("realBookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight;
-
-        document.getElementById("realBookFrame").setAttribute("height", heightToSet);
-      }
-      else{
-        var currHeight = document.getElementById("bookFrame").offsetHeight;
-        var heightToSet = currHeight + addedHeight;
-
-        document.getElementById("bookFrame").style.height = heightToSet + "px";
-      }
-    }
-
     function SendMessage(){
       var url = "SendMessage.php"; 
       var toUsername = document.getElementById("toUsername").value;
@@ -433,7 +316,6 @@ input[type=password] {
       var body = document.getElementById("body").value;
       
       resetFieldStyles();
-
       var errorMessage = "Missing data: ";
       var somethingBlank = false;
       if(fromUsername == ""){
@@ -441,7 +323,6 @@ input[type=password] {
         somethingBlank = true;
         document.getElementById("fromUsername").style.background = "yellow";
       }
-
       if(toUsername == "" && somethingBlank == true){
         errorMessage += ", to";
         document.getElementById("toUsername").style.background = "yellow";
@@ -451,7 +332,6 @@ input[type=password] {
         somethingBlank = true;
         document.getElementById("toUsername").style.background = "yellow";
       }
-
       if(subject == "" && somethingBlank == true){
         errorMessage += ", subject";
         document.getElementById("subject").style.background = "yellow";
@@ -461,7 +341,6 @@ input[type=password] {
         somethingBlank = true;
         document.getElementById("subject").style.background = "yellow";
       }
-
       if(body == "" && somethingBlank == true){
         errorMessage += ", body";
         document.getElementById("body").style.background = "yellow";
@@ -471,9 +350,7 @@ input[type=password] {
         somethingBlank = true;
         document.getElementById("body").style.background = "yellow";
       }
-
       url += "?fromWho=" + fromUsername + "&toWhom=" + toUsername + "&subject=" + subject + "&body=" + body;
-
     
       if(errorMessage == "Missing data: ")
         httpGetAsync(url, showResults);
@@ -483,17 +360,12 @@ input[type=password] {
         errorMessage = "Missing data: "
       }
     }
-
     function adminShowQuestions(){
-
       var url = "adminShowQuestions.php"; 
       var textName = document.getElementById("textName").value;
-
       url += "?textName=" + textName;
-
       httpQuestionAsync(url, showQuestionsInBox);
     }
-
   </script>
 
 
@@ -511,12 +383,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding">
   
     <!-- Left Column -->
-    <div class="w3-third" style="width:36%;" id="leftColumn">
+    <div class="w3-third" style="width:36%" id="leftColumn">
     
-      <div class="w3-white w3-text-grey w3-card-4">
-        
+      <div class="w3-white w3-text-grey w3-card-4" style="height: 620px" id="realLeftColumn">
+        <div class="w3-display-container">
+
           <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="adminlogin.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2>
-      
+        </div>
 
         <div class="w3-container">
           <h6><b>Pending Assignments</b></h6>
@@ -526,16 +399,17 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
+          <hr>
 
           <form action="javascript:adminShowAssignments();" method="GET">
-          <input type="submit" value="View Assignments" style="margin-bottom: 10px; margin-top: 5px">
+          <input type="submit" value="View Assignments">
           </form>
           </p>
           <hr>
 
-          <h6 style="margin-top: 10px"><b>View Readings, Questions, and Answers</b></h6>
+          <h6><b>View Readings, Questions, and Answers</b></h6>
           <p>
-            <div class="inputElement" style="margin-bottom: 10px">Text Name: <input class = "input" type="text" name="subject" id="textName" ></div>
+            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject" id="textName" ></div>
             <div class="w3-container w3-card w3-white" style="padding-bottom: 10px;" id="questionsContainer">
               <p id="questionArea" style="margin-top: 10px"></p>
             </div>
@@ -543,13 +417,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
 
           <form action="javascript:adminShowQuestions(); javascript:adminShowText();" method="GET">
-          <input type="submit" value="View Questions" style="margin-top: 5px; margin-bottom: 10px">
+          <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
           </p>
           <hr>
 
-          <h6 style="margin-top: 10px"><b>Assign Homework</b></h6>
-            <form id="assignHW">
+          <h6><b>Assign Homework</b></h6>
+            
             <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
             <div class="inputElement">PDF Link: <input class = "input" type="url" name="subject"; id="pdfLink"></div>
             
@@ -561,9 +435,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            </form>
             <form action="javascript:addFields();" method="GET">
-            <input type="submit" value="Choose Number of Questions" style="margin-bottom: 5px; margin-top: 5px">
+            <input type="submit" value="Choose Number of Questions" style="margin-top: 4px; margin-bottom: 3px;">
+    
             </form>
 
             <form action="javascript:submitQuestions();" method="GET">
@@ -576,6 +450,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr>
           
+          <!-- <h6><b>Ask Tutors Questions</b></h6>
+          <p><form action="javascript:SendMessage();" method="GET">  -->
+          <!--   <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div>  -->
+            <!-- <div class="inputElement"></div> -->
+
+            <!-- <textarea class = "input" rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px" id="body"></textarea> -->
+        
+         <!-- THIS NEEDS TO STAY -->
           </div> 
 
 
@@ -583,14 +465,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </div>
 
     <!-- Right Column -->
-    <div class="w3-twothird" style="width: 63%">
+    <div class="w3-twothird" style="width: 63%; margin: 0 auto;">
   
-      <div class="w3-white w3-text-grey w3-card-4" style="margin-top: 5px; min-height: 830px; display: flex; flex-direction: column;" id="bookContainer" >
+      <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 620px;" id="bookContainer" >
         <div class="transparentLayer"></div>
 
-          <p id="bookArea" style="padding-left: 3px;"></p>
-          <div id="bookFrame" style="height: 817px" class="holderBookFrame"></div>
+          <p id="bookArea"></p>
       </div>
+    
+
     <!-- End Right Column -->
     </div>
     
@@ -598,7 +481,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   </div>
   
   <!-- End Page Container -->
-</div>
 </div>
 
 <footer class="w3-container w3-teal w3-center w3-margin-top">
@@ -608,4 +490,3 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
 </body>
 </html>
-

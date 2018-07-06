@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 
-<?php session_start(); ?>
+<?php 
+session_abort();
+session_start(); 
+$firstName = $_SESSION['firstName'];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbName = "English Program";
+
+try{
+  $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
+
+    // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  // $sql = "INSERT INTO Sessions (firstName, dateLoggedIn)VALUES('$firstName', CURDATE())";
+  // $conn -> exec ( $sql );
+}
+catch(PDOException $e) {
+    print "Connection failed: " . $e->getMessage();
+}
+?>
 
 <html>
 <title>Grace English Program - Student</title>
@@ -16,16 +38,16 @@ html{
 /*  overflow: hidden;
 */}
 .input {
-      width: 15%;
-      position: absolute;
-      left: 150px;
+      width: 50%;
+      position: relative;
+      left: 10px;
       max-width: 100%;
       height: 22px;
     }
 input[type=password] {
-      width: 15%;
-      position: absolute;
-      left: 150px;
+      width: 50%;
+      position: relative;
+      left: 10px;
 //      margin-bottom: 200px;
    //   margin: 20px 0px 20px 0px;
       max-width: 100%;
@@ -56,11 +78,17 @@ input[type=password] {
       height: 100%;
       float: left;
       resize: both;
+      display: flex;
+      flex-direction: column;
+}
 }
 .w3-twothird{
   height: 100%;
-  float: right;
+  float: left;
   resize: both;
+  display: flex;
+  flex-direction: column;
+}
 }
 .sendForm{
   resize: both;
@@ -92,6 +120,14 @@ input[type=password] {
 </style>
 
 <script>
+    function getSessionLength(){
+        var url = "sessionTime.php";
+        httpQuestionAsync(url, showBlankLogout);
+    }
+    function showBlankLogout(responseText){
+      window.location = "login.php";
+    }
+
     function showAnswerMessage(responseText) {
       document.getElementById("answerMessageContainer").innerHTML = responseText; 
     }
@@ -284,12 +320,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding">
   
     <!-- Left Column -->
-    <div class="w3-third" style="width:36%">
+    <div class="w3-third" style="width:36%;">
     
-      <div class="w3-white w3-text-grey w3-card-4">
+      <div class="w3-white w3-text-grey w3-card-4" style="height: 620px; overflow: scroll; margin-top: 5px">
         <div class="w3-display-container">
 
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="login.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2> 
+          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="javascript:getSessionLength();"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2> 
         </div>
 
         <div class="w3-container">
@@ -312,7 +348,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p>
             <div class="inputElement">Text Name: <input style="margin-bottom: -10px" class = "input" type="text" name="subject"; id="textName"></div>
             <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
-          <input type="submit" value="View Questions">
+          <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
             <div id="questionsContainer">
               <p id="questionArea" style="color: black"></p>
@@ -341,7 +377,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr> -->
           
-          <h6><b>Ask Tutors Questions</b></h6>
+          <h6><b>Ask Questions (NOT FINISHED)</b></h6>
           <p><form action="javascript:SendMessage();" method="GET"> 
 
             <div class="inputElement"> 
@@ -350,8 +386,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <input type="submit" value="Send">
           </form>
           </p>
-        
           <hr>
+
+          <h6><b>View Results (NOT FINISHED)</b></h6>
+          <p>
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
+              <p id="reportArea"></p>
+            </div>
+          </form>
+          </p>
+          <hr>
+          <form action="javascript:ShowNewProblems();" method="GET">
+          <input type="submit" value="View Assignments">
+          </form>
+          </p>
+
         </div>
       </div><br>
 
@@ -361,7 +410,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <!-- Right Column -->
     <div class="w3-twothird" style="width: 63%; margin: 0 auto;">
   
-      <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 910px;" id="bookContainer" >
+      <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 620px;" id="bookContainer" >
 
           <p id="bookArea"></p>
       </div>

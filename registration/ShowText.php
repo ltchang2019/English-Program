@@ -35,7 +35,7 @@ try {
         $link = $row1["link"];
         break;
     }
-        print "<iframe src=" . $link . '" width="100%" height=900></iframe>';
+        print "<iframe src=" . $link . '" width="100%" height=615></iframe>';
 }
 }
 }
