@@ -39,7 +39,7 @@ try {
     }
     else{
     print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div id='center'><table id='center'><tr><th>Date Assigned</th><th style='min-width:150px'>Text</th><th>Number of Questions</th></tr>";
+    print "<div id='center'><table id='center'><tr><th>Date Assigned</th><th style='min-width:150px'>Text</th><th>Completed</th></tr>";
 
     $userID = -1;
     foreach($statement as $row){
@@ -54,15 +54,16 @@ try {
         $_SESSION['link'] = $link;
 
         if(strpos($completedBy, $firstName) !== false){
-        
+            $string = '✅';
         }
         else{
+            $string = '❌';
+        }
         print "<tr>";
         print "<td style='max-width:50px'>" . $dateAssigned . "</td>";
         print "<td style='max-width:50px'>" . $text . "</td>";
-        print "<td style='max-width:5px'>" . $numbQuestions . "</td>";
+        print "<td>" . $string . "</td>";
         print "</tr>";
-    }
     }
         print "</table></div>";
 

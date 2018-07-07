@@ -422,7 +422,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr>
 
-          <h6><b>Assign Homework</b></h6>
+          <h6><b>Assign Reading Homework</b></h6>
             
             <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
             <div class="inputElement">PDF Link: <input class = "input" type="url" name="subject"; id="pdfLink"></div>
@@ -444,12 +444,56 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <div id="fieldContainer"/></div>
 
             <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
+            <hr style="margin-top: 15px; margin-bottom: 10px">
           
+
+            <h6><b>Assign Grammar Homework (NOT FINISHED)</b></h6>
+            
+            Grammar Grade Level  
+            <select id="numbQuestions">
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <br>
+
+            Number of Questions
+            <select id="numbQuestions">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <br>
+
+            <div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" placeholder="Page numbers, questions, etc... "; style="margin-bottom: -5px" id="body"></textarea></div>
+            
+            
+
+            <form action="javascript:submitQuestions();" method="GET">
+              <div id="fieldContainer"/></div>
+
+            <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
+          
+          
+
+
+          <!-- DUNNO WHAT THIS IS BUT IT STAYS -->
           </div> 
-          </form>
           </p>
           <hr>
           
+
           <!-- <h6><b>Ask Tutors Questions</b></h6>
           <p><form action="javascript:SendMessage();" method="GET">  -->
           <!--   <div class="inputElement">Subject: <input class = "input" type="text" name="subject" placeholder="subject: "; id="subject"></div>  -->
