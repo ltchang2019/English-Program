@@ -13,7 +13,7 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * FROM Users WHERE username = '$user'";
+    $sql = "SELECT * FROM Administrators WHERE username = '$user'";
     $statement = $conn -> query($sql);
 
     foreach($statement as $row){
@@ -33,26 +33,11 @@ try {
 
     $userID = -1;
     foreach($statement as $row){
-        $completedBy = $row["completedBy"];
-
-        $assignmentID = $row["assignmentID"];
         $text = $row["textName"];
 
-        if(strpos($completedBy, $firstName) !== false){
-            $string = '✅';
-        }
-        else{
-            $string = '❌';
-        }
-
-        if($string == ❌){
-            print "<option value='" . $text . "'>" . $text . "</option>";
-        }
-        
+        print "<option value='" . $text . "'>" . $text . "</option>";
     }
         print "</select>";
-
-
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

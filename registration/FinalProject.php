@@ -127,7 +127,7 @@ input[type=password] {
         httpQuestionAsync(url, showBlankLogout);
     }
     function showBlankLogout(responseText){
-      document.getElementById("questionArea").innerHTML = ""; 
+      // document.getElementById("questionArea").innerHTML = ""; 
       window.location = "login.php";
     }
 
@@ -235,7 +235,7 @@ input[type=password] {
     function createTextMenu(){
       var url = "createTextMenu.php";
 
-      httpGetAsync(url, showTextMenu)
+      httpGetAsync(url, showTextMenu);
     }
 
     function ShowNewProblems() {

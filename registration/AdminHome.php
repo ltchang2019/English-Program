@@ -121,6 +121,7 @@ input[type=password] {
 
 <script>
     adminShowAssignments();
+    createTextMenu()
 
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
@@ -296,7 +297,7 @@ input[type=password] {
     }
     function adminShowText(){
       var url = "adminShowText.php"; 
-      var textName = document.getElementById("textName").value;
+      var textName = document.getElementById("textMenuID").value;
       url += "?textName=" + textName + "&output=embed";
       httpQuestionAsync(url, showTextInBox);
     }
@@ -361,9 +362,18 @@ input[type=password] {
     }
     function adminShowQuestions(){
       var url = "adminShowQuestions.php"; 
-      var textName = document.getElementById("textName").value;
+      var textName = document.getElementById("textMenuID").value;
       url += "?textName=" + textName;
       httpQuestionAsync(url, showQuestionsInBox);
+    }
+
+    function createTextMenu(){
+      var url = "adminCreateTextMenu.php";
+
+      httpGetAsync(url, showTextMenu);
+    }
+    function showTextMenu(responseText){
+      document.getElementById("textMenu").innerHTML = responseText; 
     }
   </script>
 
@@ -402,8 +412,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
 
           <h6><b>View Readings, Questions, and Answers</b></h6>
-          <p>
-            <div class="inputElement">Text Name: <input class = "input" type="text" name="subject" id="textName" ></div>
+          
+          Text Name: <div id="textMenu" style="display: inline"></div>
             <div class="w3-container w3-card w3-white" style="padding-bottom: 10px;" id="questionsContainer">
               <p id="questionArea" style="margin-top: 10px"></p>
             </div>
