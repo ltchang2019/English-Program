@@ -27,6 +27,7 @@ try {
     }
 
 	$textName = $_GET["textName"];
+    $_SESSION["textName"] = $textName;
 
 	$sql1 = "SELECT * FROM Assignments WHERE textName = '$textName' AND groupNumber = '$groupNumber' ";
     $statement1 = $conn -> query($sql1);

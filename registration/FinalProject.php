@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 
 <?php 
-session_abort();
 session_start(); 
-$firstName = $_SESSION['firstName'];
 
 $servername = "localhost";
 $username = "root";
@@ -59,7 +57,8 @@ input[type=password] {
   }*/
 
     hr{
-      margin-top: 5px; margin-bottom: 5px;
+      margin-top: 15px; margin-bottom: 15px;
+      border-color: silver;
     }
     p{
       margin-top: 5px; margin-bottom: 5px;
@@ -120,11 +119,15 @@ input[type=password] {
 </style>
 
 <script>
+    ShowNewProblems();
+    createTextMenu();
+
     function getSessionLength(){
         var url = "sessionTime.php";
         httpQuestionAsync(url, showBlankLogout);
     }
     function showBlankLogout(responseText){
+      document.getElementById("questionArea").innerHTML = ""; 
       window.location = "login.php";
     }
 
@@ -216,20 +219,28 @@ input[type=password] {
       document.getElementById("bookArea").innerHTML = responseText; 
     }
 
+    function showTextMenu(responseText){
+      document.getElementById("textMenu").innerHTML = responseText; 
+    }
+
     function ShowText(){
       var url = "ShowText.php"; 
-      var textName = document.getElementById("textName").value;
+      var textName = document.getElementById("textMenuID").value;
 
       url += "?textName=" + textName;
 
       httpQuestionAsync(url, showTextInBox);
     }
 
+    function createTextMenu(){
+      var url = "createTextMenu.php";
+
+      httpGetAsync(url, showTextMenu)
+    }
 
     function ShowNewProblems() {
       
       var url = "ShowNewProblems.php"; 
-      var username = "mmcgrath";
         
       httpGetAsync(url, showAssignments);
     }
@@ -296,7 +307,7 @@ input[type=password] {
     function ShowQuestions(){
 
       var url = "ShowQuestions.php"; 
-      var textName = document.getElementById("textName").value;
+      var textName = document.getElementById("textMenuID").value;
 
       url += "?textName=" + textName;
 
@@ -336,17 +347,16 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
-          <hr>
 
-          <form action="javascript:ShowNewProblems();" method="GET">
+          <!-- <form action="javascript:ShowNewProblems();" method="GET">
           <input type="submit" value="View Assignments">
-          </form>
+          </form> -->
           </p>
           <hr>
 
           <h6><b>Questions and Reading</b></h6>
-          <p>
-            <div class="inputElement">Text Name: <input style="margin-bottom: -10px" class = "input" type="text" name="subject"; id="textName"></div>
+          
+            Text Name: <div id="textMenu" style="display: inline"></div>
             <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
@@ -356,7 +366,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           </p>
 
-          </p>
           <hr>
 
           <!-- <h6><b>Submit Answers</b></h6>
@@ -395,9 +404,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
-          <hr>
           <form action="javascript:ShowNewProblems();" method="GET">
-          <input type="submit" value="View Assignments">
+          <input type="submit" value="View Assignments" style="margin-bottom: 10px">
           </form>
           </p>
 

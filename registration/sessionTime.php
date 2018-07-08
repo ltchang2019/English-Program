@@ -18,7 +18,7 @@ try {
     // echo $difference->format('%i minutes');
     //INSERT TIMESTAMP INTO DATABASE
     echo $timeSinceLogin;
-    session_abort();
+
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

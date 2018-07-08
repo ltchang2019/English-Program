@@ -9,6 +9,7 @@ $password = "";
 $dbName = "English Program";
 
 try {
+    $varNumb = 1;
     $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
 
     // set the PDO error mode to exception
@@ -39,7 +40,7 @@ try {
         print "<h4 style='text-align: center'>" . "No new questions have been posted..." . "</h4>";
     }
     else{
-    $varNumb = 1;
+    
     foreach($statement as $row){
     	$question = $row["question"];
         $questionID = $row["questionID"];

@@ -43,7 +43,8 @@ input[type=password] {
     text-align: center;
   }*/
     hr{
-      margin-top: 5px; margin-bottom: 5px;
+      margin-top: 15px; margin-bottom: 15px;
+      border-color: silver;
     }
     p{
       margin-top: 5px; margin-bottom: 5px;
@@ -119,10 +120,8 @@ input[type=password] {
 </style>
 
 <script>
-    // function changeRightDivHeight (){
-    //   var leftHeight = document.getElementById("leftColumn").style.height;
-    //   document.getElementById("bookContainer").style.height = leftHeight;
-    // }
+    adminShowAssignments();
+
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
     }
@@ -399,12 +398,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
-          <hr>
 
-          <form action="javascript:adminShowAssignments();" method="GET">
-          <input type="submit" value="View Assignments">
-          </form>
-          </p>
           <hr>
 
           <h6><b>View Readings, Questions, and Answers</b></h6>
@@ -491,7 +485,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <!-- DUNNO WHAT THIS IS BUT IT STAYS -->
           </div> 
           </p>
-          <hr>
           
 
           <!-- <h6><b>Ask Tutors Questions</b></h6>
