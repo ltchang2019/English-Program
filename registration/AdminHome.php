@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<?php session_start(); 
+<?php 
+session_start(); 
 ?>
 
 <html>
@@ -398,7 +399,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-white w3-text-grey w3-card-4" style="height: 620px" id="realLeftColumn">
         <div class="w3-display-container">
 
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!" ?></b> <a href="adminlogin.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2>
+          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!"; ?></b> <a href="adminlogin.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2>
         </div>
 
         <div class="w3-container">
@@ -415,7 +416,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h6><b>View Readings, Questions, and Answers</b></h6>
           
           Text Name: <div id="textMenu" style="display: inline"></div>
-            <div class="w3-container w3-card w3-white" style="padding-bottom: 10px;" id="questionsContainer">
+            <div class="w3-container w3-card w3-white" style="padding-bottom: 10px; margin-top: 10px" id="questionsContainer">
               <p id="questionArea" style="margin-top: 10px"></p>
             </div>
           </form>

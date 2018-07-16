@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
 <?php 
-session_start(); 
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbName = "English Program";
+$servername = "db746401298.db.1and1.com";
+$username = "dbo746401298";
+$password = "Tr@vel000";
+$dbName = "db746401298";
+
+session_start(); 
 
 try{
   $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);

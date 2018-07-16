@@ -8,7 +8,7 @@ $lastName = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'English Program');
+$db = mysqli_connect('db746401298.db.1and1.com', 'dbo746401298', 'Tr@vel000', 'db746401298');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
