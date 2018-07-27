@@ -34,7 +34,7 @@ try {
         break;
     }
 
-print "<iframe src=" . $link . '" width="100%" height="615px" id="realBookFrame"></iframe>';
+print "<iframe src=" . $link . '" style="width:100%; height:98vh" id="realBookFrame"></iframe>';
 }
 
 }

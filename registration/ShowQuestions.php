@@ -55,7 +55,7 @@ try {
         $_SESSION["questionsCompleted"] = "false";
         print $varNumb . ". " . $question;
     
-        print "<textarea class='" . $questionID . "' style='max-width: 100%' rows='2' cols='36' placeholder='Answer...' id='question" . $varNumb . "'>" . "</textarea><br>";
+        print "<br><textarea class='" . $questionID . "' style='max-width: 100%' rows='2' cols='36' placeholder='Answer...' id='question" . $varNumb . "'>" . "</textarea><br>";
 
         $varNumb++;
     }

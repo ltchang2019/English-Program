@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$timeSinceLogin = ( time () - $_SESSION ['timer'])/60;
+// $timeSinceLogin = ( time () - $_SESSION ['timer'])/60;
 
 $servername = "db746401298.db.1and1.com";
 $username = "dbo746401298";
@@ -17,7 +17,8 @@ try {
     // $difference = $_SESSION['loginTime']->diff(new DateTime(date('y-m-d h:m:s')));
     // echo $difference->format('%i minutes');
     //INSERT TIMESTAMP INTO DATABASE
-    echo $timeSinceLogin;
+    $loginTime = time();
+    echo $loginTime;
 
 }
 catch(PDOException $e) {

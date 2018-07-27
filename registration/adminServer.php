@@ -76,11 +76,13 @@ if (isset($_POST['login_user'])) {
       foreach($results as $row){
         $firstName = $row['firstName'];
       }
-      $_SESSION['username'] = $username;   
+      $_SESSION['username'] = $username;
       $_SESSION['firstName'] = $firstName;
 
       $_SESSION['success'] = "You are now logged in";
       header('location: AdminHome.php');
+      print $_SESSION['firstName'];
+
     }else {
       array_push($errors, "Wrong username/password combination");
     }

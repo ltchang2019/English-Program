@@ -1,14 +1,84 @@
 <!DOCTYPE html>
 
 <html>
-	<title>TITLE</title>
-
+<style>
+body{
+	background-image: url("graceWall.png");
+	background-repeat:no-repeat;
+   	background-size:cover;
+}
+body:before{
+  content:'';
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
+}
+button{
+  background:brown;
+  color:white;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  border-radius: 8px;
+}
+button:hover{
+  background:#fff;
+  color:brown;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: brown;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
+	<title>Grace Girls English</title>
+	<br>
+	<header>
+		<br>
+		<br>
+		<img src="graceLogo3.png" style="margin-left: auto; margin-right: auto; display: block; width: 200px;">
+	</header>
+	<br>
+	<br>
 	<body>
-		Grace English
+		<div style="width:600px;height:3px; background-color: brown; margin-right: auto; margin-left: auto;"></div>
+		<div style="width:600px;height:360px; background-color: silver; margin-right: auto; margin-left: auto; padding-top: 2px; padding-bottom: 10px">
+			<div style="width:95%;height:350px; background-color: white; margin-right: auto; margin-left: auto; margin-top: 8px">
+				<br>
+				<p style="text-align: center; margin-top: 5px; color: brown; font-family: sans-serif; font-style: normal; font-size: 30px;">Sign In or Create Your Account</p>
+				<p style="text-align: center; margin-top: 10px; color: dimgray; font-family: sans-serif; font-style: normal; font-size: 20px;">I am a...</p>
+				<form action="login.php"><button>Student</button></form>
+				<br>
+				<form action="adminLogin.php"><button>Tutor</button></form>
+			</div>
+		</div>
 		<br>
-		<a href="login.php">Student</a>
+<!-- 		<a href="login.php">Student</a>
 		<br>
-		<a href="adminLogin.php">Administrator</a>
+		<a href="adminLogin.php">Administrator</a> -->
 
 	</body>
 

@@ -2,6 +2,8 @@
 
 <?php 
 session_start(); 
+$user = $_SESSION['firstName'];
+$_SESSION['firstName'] = $user;
 ?>
 
 <html>
@@ -76,14 +78,10 @@ input[type=password] {
 .w3-third{
       height: 100%;
       float: left;
-      resize: both;
-      display: flex;
-    flex-direction: column;
 }
 .w3-twothird{
   height: 100%;
   float: right;
-  resize: both;
 }
 .sendForm{
   resize: both;
@@ -123,7 +121,18 @@ input[type=password] {
 
 <script>
     adminShowAssignments();
-    createTextMenu()
+    createTextMenu();
+    showWelcome();
+
+    function showWelcome(){
+       var url = "showWelcome.php"; 
+        
+      httpGetAsync(url, welcomeFunction);
+    }
+
+    function welcomeFunction(responseText) {
+      document.getElementById("welcomeSection").innerHTML = responseText; 
+    }
 
     function showAssignments(responseText) {
       document.getElementById("reportArea").innerHTML = responseText; 
@@ -362,6 +371,7 @@ input[type=password] {
         errorMessage = "Missing data: "
       }
     }
+
     function adminShowQuestions(){
       var url = "adminShowQuestions.php"; 
       var textName = document.getElementById("textMenuID").value;
@@ -387,19 +397,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <body class="w3-light-grey">
 
 <!-- Page Container -->
-<div class="w3-content" style="max-width:1400px; margin-left: -10px;">
+<div style="width:100%;">
 
 
   <!-- The Grid -->
-  <div class="w3-row-padding">
+  <div class="w3-row-padding" style="width: 100%">
   
     <!-- Left Column -->
     <div class="w3-third" style="width:36%" id="leftColumn">
     
-      <div class="w3-white w3-text-grey w3-card-4" style="height: 620px" id="realLeftColumn">
+      <div class="w3-white w3-text-grey w3-card-4" style="height: 99vh" id="realLeftColumn">
         <div class="w3-display-container">
 
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><?php echo "Welcome " . $_SESSION['firstName'] . "!"; ?></b> <a href="adminlogin.php"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2>
+          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b>
+          <div id="welcomeSection">
+          </b> <a href="index.html"><img src="logout.png" style="float: right; margin-right: 15px; margin-top: 10px; width:40px; height:35px;"></a> </h2>
         </div>
 
         <div class="w3-container">
@@ -516,7 +528,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <!-- Right Column -->
     <div class="w3-twothird" style="width: 63%; margin: 0 auto;">
   
-      <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 620px;" id="bookContainer" >
+      <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 99vh;" id="bookContainer" >
         <div class="transparentLayer"></div>
 
           <p id="bookArea"></p>
