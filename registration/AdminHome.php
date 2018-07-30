@@ -319,58 +319,58 @@ input[type=password] {
         
       httpGetAsync(url, showAssignments);
     }
-    function SendMessage(){
-      var url = "SendMessage.php"; 
-      var toUsername = document.getElementById("toUsername").value;
-      var fromUsername = document.getElementById("fromUsername").value;
-      var subject = document.getElementById("subject").value;
-      var body = document.getElementById("body").value;
+    // function SendMessage(){
+    //   var url = "SendMessage.php"; 
+    //   var toUsername = document.getElementById("toUsername").value;
+    //   var fromUsername = document.getElementById("fromUsername").value;
+    //   var subject = document.getElementById("subject").value;
+    //   var body = document.getElementById("body").value;
       
-      resetFieldStyles();
-      var errorMessage = "Missing data: ";
-      var somethingBlank = false;
-      if(fromUsername == ""){
-        errorMessage += "from";
-        somethingBlank = true;
-        document.getElementById("fromUsername").style.background = "yellow";
-      }
-      if(toUsername == "" && somethingBlank == true){
-        errorMessage += ", to";
-        document.getElementById("toUsername").style.background = "yellow";
-      }
-      else if(toUsername == ""){
-        errorMessage += "to";
-        somethingBlank = true;
-        document.getElementById("toUsername").style.background = "yellow";
-      }
-      if(subject == "" && somethingBlank == true){
-        errorMessage += ", subject";
-        document.getElementById("subject").style.background = "yellow";
-      }
-      else if(subject == ""){
-        errorMessage += "subject";
-        somethingBlank = true;
-        document.getElementById("subject").style.background = "yellow";
-      }
-      if(body == "" && somethingBlank == true){
-        errorMessage += ", body";
-        document.getElementById("body").style.background = "yellow";
-      }
-      else if(body == ""){
-        errorMessage += "body";
-        somethingBlank = true;
-        document.getElementById("body").style.background = "yellow";
-      }
-      url += "?fromWho=" + fromUsername + "&toWhom=" + toUsername + "&subject=" + subject + "&body=" + body;
+    //   resetFieldStyles();
+    //   var errorMessage = "Missing data: ";
+    //   var somethingBlank = false;
+    //   if(fromUsername == ""){
+    //     errorMessage += "from";
+    //     somethingBlank = true;
+    //     document.getElementById("fromUsername").style.background = "yellow";
+    //   }
+    //   if(toUsername == "" && somethingBlank == true){
+    //     errorMessage += ", to";
+    //     document.getElementById("toUsername").style.background = "yellow";
+    //   }
+    //   else if(toUsername == ""){
+    //     errorMessage += "to";
+    //     somethingBlank = true;
+    //     document.getElementById("toUsername").style.background = "yellow";
+    //   }
+    //   if(subject == "" && somethingBlank == true){
+    //     errorMessage += ", subject";
+    //     document.getElementById("subject").style.background = "yellow";
+    //   }
+    //   else if(subject == ""){
+    //     errorMessage += "subject";
+    //     somethingBlank = true;
+    //     document.getElementById("subject").style.background = "yellow";
+    //   }
+    //   if(body == "" && somethingBlank == true){
+    //     errorMessage += ", body";
+    //     document.getElementById("body").style.background = "yellow";
+    //   }
+    //   else if(body == ""){
+    //     errorMessage += "body";
+    //     somethingBlank = true;
+    //     document.getElementById("body").style.background = "yellow";
+    //   }
+    //   url += "?fromWho=" + fromUsername + "&toWhom=" + toUsername + "&subject=" + subject + "&body=" + body;
     
-      if(errorMessage == "Missing data: ")
-        httpGetAsync(url, showResults);
-      else{
-        alert(errorMessage);
-        somethingBlank = false;
-        errorMessage = "Missing data: "
-      }
-    }
+    //   if(errorMessage == "Missing data: ")
+    //     httpGetAsync(url, showResults);
+    //   else{
+    //     alert(errorMessage);
+    //     somethingBlank = false;
+    //     errorMessage = "Missing data: "
+    //   }
+    // }
 
     function adminShowQuestions(){
       var url = "adminShowQuestions.php"; 
@@ -384,9 +384,105 @@ input[type=password] {
 
       httpGetAsync(url, showTextMenu);
     }
+
     function showTextMenu(responseText){
       document.getElementById("textMenu").innerHTML = responseText; 
     }
+
+   function httpGrammarAsync(theUrl, callbackWhenPageLoaded){
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          callbackWhenPageLoaded(xmlHttp.responseText);
+      }
+      xmlHttp.open("GET", theUrl, true); 
+      xmlHttp.send(null);
+      // resetFieldStyles();
+    }
+    function specifyGrammar(){
+      var url = "specifyGrammar.php";
+      var numbSections = document.getElementById("numbSections").value;
+      var gradeLevel = document.getElementById("gradeLevel").value;
+
+      url += "?numbSections=" + numbSections + "&gradeLevel=" + gradeLevel; 
+
+      httpGrammarAsync(url, createNextGrammar);
+    }
+    function createNextGrammar(responseText){
+      document.getElementById("nextGrammar").innerHTML = responseText; 
+    }
+
+    function submitGrammarAssignment(){
+      var url = "submitGrammarAssignment.php";
+      var gradeLevel = document.getElementById("gradeLevel").value;
+      var numbSections = document.getElementById("numbSections").value;
+      var instructions = document.getElementById("instructions").value;
+
+      if(numbSections==1){
+        var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
+        var sectionNumb1 = document.getElementById("sectionNumb1").value;
+        url += "?numbQuestions1=" + numbQuestions1 + "&sectionNumb1=" + sectionNumb1;
+      }
+      else if (numbSections==2){
+        var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
+        var numbQuestions2 = document.getElementById("numbGrammarQuestions2").value;
+
+        var sectionNumb1 = document.getElementById("sectionNumb1").value;
+        var sectionNumb2 = document.getElementById("sectionNumb2").value;
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2;
+      }
+      else if (numbSections==3){
+        var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
+        var numbQuestions2 = document.getElementById("numbGrammarQuestions2").value;
+        var numbQuestions3 = document.getElementById("numbGrammarQuestions3").value;
+
+        var sectionNumb1 = document.getElementById("sectionNumb1").value;
+        var sectionNumb2 = document.getElementById("sectionNumb2").value;
+        var sectionNumb3 = document.getElementById("sectionNumb3").value;
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3;
+      }
+      else if (numbSections==4){
+        var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
+        var numbQuestions2 = document.getElementById("numbGrammarQuestions2").value;
+        var numbQuestions3 = document.getElementById("numbGrammarQuestions3").value;
+        var numbQuestions4 = document.getElementById("numbGrammarQuestions4").value;
+
+        var sectionNumb1 = document.getElementById("sectionNumb1").value;
+        var sectionNumb2 = document.getElementById("sectionNumb2").value;
+        var sectionNumb3 = document.getElementById("sectionNumb3").value;
+        var sectionNumb4 = document.getElementById("sectionNumb4").value;
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4;
+      }
+      else if (numbSections==5){
+        var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
+        var numbQuestions2 = document.getElementById("numbGrammarQuestions2").value;
+        var numbQuestions3 = document.getElementById("numbGrammarQuestions3").value;
+        var numbQuestions4 = document.getElementById("numbGrammarQuestions4").value;
+        var numbQuestions5 = document.getElementById("numbGrammarQuestions5").value;
+
+        var sectionNumb1 = document.getElementById("sectionNumb1").value;
+        var sectionNumb2 = document.getElementById("sectionNumb2").value;
+        var sectionNumb3 = document.getElementById("sectionNumb3").value;
+        var sectionNumb4 = document.getElementById("sectionNumb4").value;
+        var sectionNumb5 = document.getElementById("sectionNumb5").value;
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&numbQuestions5=" + numbQuestions5 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4 + "&sectionNumb5=" + sectionNumb5;
+      }
+
+      url += "&numbSections=" + numbSections + "&gradeLevel=" + gradeLevel + "&instructions=" + instructions;
+ 
+      httpGrammarAsync(url, submitGrammar);
+    }
+    function submitGrammar(responseText){
+      document.getElementById("grammarMessage").innerHTML = responseText; 
+    }
+
+    // function submitGrammarQuestions(){
+    //   var url = "submitGrammarQuestions.php";
+
   </script>
 
 
@@ -460,7 +556,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
             <form action="javascript:submitQuestions();" method="GET">
               <div id="fieldContainer"/></div>
-
+            </form>
             <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
             <hr style="margin-top: 15px; margin-bottom: 10px">
           
@@ -468,7 +564,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <h6><b>Assign Grammar Homework (NOT FINISHED)</b></h6>
             
             Grammar Grade Level  
-            <select id="numbQuestions">
+            <select id="gradeLevel">
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
@@ -479,30 +575,28 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </select>
             <br>
 
-            Number of Questions
-            <select id="numbQuestions">
+            Number of Sections
+            <select id="numbSections">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
             </select>
-            <br>
 
-            <div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" placeholder="Page numbers, questions, etc... "; style="margin-bottom: -5px" id="body"></textarea></div>
+            <!-- <div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" placeholder="Page numbers, questions, etc... "; style="margin-bottom: -5px" id="body"></textarea></div> -->
             
-            
+            <form action="javascript:specifyGrammar();" method="GET">
+            <input type="submit" value="Questions and Instructions" style="margin-top: 3px" id="grammarAssignButton">
+            </form>
 
-            <form action="javascript:submitQuestions();" method="GET">
-              <div id="fieldContainer"/></div>
+            <div id="nextGrammar"></div>
 
-            <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
-          
+            <form action="javascript:submitGrammarAssignment();" method="GET">
+            <input type="submit" value="Submit Assignment" style="margin-top: 3px">
+            </form>
+
+            <div id="grammarMessage"></div>
           
 
 
