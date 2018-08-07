@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 
 <?php 
-
+session_start();
 $servername = "db746401298.db.1and1.com";
 $username = "dbo746401298";
 $password = "Tr@vel000";
 $dbName = "db746401298";
-
-session_start(); 
 
 try{
   $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
@@ -15,21 +13,12 @@ try{
     // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  // $sql = "INSERT INTO Sessions (firstName, dateLoggedIn)VALUES('$firstName', CURDATE())";
-  // $conn -> exec ( $sql );
+  
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();
 }
 ?>
-
-<html>
-<title>Grace English Program - Student</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 html{
@@ -114,18 +103,37 @@ input[type=password] {
 </style>
 
 <script>
+
     ShowNewProblems();
     createTextMenu();
     showWelcome();
 
+    window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+  }
+
+
+    function destroySession(){
+      var url = "destroySession.php"; 
+        
+      httpGetAsync(url, showBlankLogout);
+    }
+
     function showWelcome(){
-       var url = "showWelcome.php"; 
+      var url = "showWelcome.php"; 
         
       httpGetAsync(url, welcomeFunction);
     }
 
+
     function welcomeFunction(responseText) {
       document.getElementById("welcomeSection").innerHTML = responseText; 
+
+      // location.reload();
+
     }
 
     function getSessionLength(){
@@ -158,6 +166,7 @@ input[type=password] {
       }
       xmlHttp.open("GET", theUrl, true); 
       xmlHttp.send(null);
+
       // resetFieldStyles();
     }
 
@@ -323,15 +332,27 @@ input[type=password] {
   </script>
 
 
-
 <style>
+
+
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
+
+<html>
+<title>Grace English Program - Student</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<META http-equiv="expires" content="0">
+
 <body class="w3-light-grey">
+
 
 <!-- Page Container -->
 <div style="width:100%">
-
 
   <!-- The Grid -->
   <div class="w3-row-padding" style="width: 100%">
@@ -391,17 +412,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </form>
           </p>
           <hr> -->
-          
-          <h6><b>Ask Questions (NOT FINISHED)</b></h6>
-          <p><form action="javascript:SendMessage();" method="GET"> 
-
-            <div class="inputElement"> 
-
-            <textarea rows="2" cols="34" name="body" placeholder="Message... "; style="margin-bottom: -5px; max-width: 100%" id="answer"></textarea></div>
-            <input type="submit" value="Send">
-          </form>
-          </p>
-          <hr>
 
           <h6><b>View Results (NOT FINISHED)</b></h6>
           <p>

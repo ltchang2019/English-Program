@@ -79,12 +79,15 @@ if (isset($_POST['login_user'])) {
       $_SESSION['username'] = $username;   
       $_SESSION['firstName'] = $firstName;
 
+
+
       $sql = "INSERT INTO Sessions (firstName)VALUES('$firstName')";
       $statement = mysqli_prepare($db, $sql);
       mysqli_stmt_execute($statement);
 
-      $_SESSION['success'] = "You are now logged in";
+      // $_SESSION['success'] = "You are now logged in";
       header('location: finalproject.php');
+
     }else {
       array_push($errors, "Wrong username/password combination");
     }

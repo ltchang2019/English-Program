@@ -531,7 +531,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
 
           <form action="javascript:adminShowQuestions(); javascript:adminShowText();" method="GET">
-          <input type="submit" value="View Questions" style="margin-top: 5px">
+          <input type="submit" value="View Responses" style="margin-top: 5px">
           </form>
           </p>
           <hr>
@@ -556,10 +556,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
             <form action="javascript:submitQuestions();" method="GET">
               <div id="fieldContainer"/></div>
-            </form>
+            
             <input type="submit" value="Submit Assignment" onclick="document.getElementsByClassName('inputElement').value = '' "><div id="assignmentMessageContainer"></div>
             <hr style="margin-top: 15px; margin-bottom: 10px">
-          
+          </form>
 
             <h6><b>Assign Grammar Homework (NOT FINISHED)</b></h6>
             
