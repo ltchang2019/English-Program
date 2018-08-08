@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 
-<?php 
-session_start(); 
-$user = $_SESSION['firstName'];
-$_SESSION['firstName'] = $user;
-?>
-
 <html>
 <title>Grace English Program - Admin</title>
 <meta charset="UTF-8">
@@ -123,6 +117,23 @@ input[type=password] {
     adminShowAssignments();
     createTextMenu();
     showWelcome();
+
+    window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+  }
+
+     function destroySession(){
+      var url = "destroySession.php"; 
+        
+      httpGetAsync(url, showBlankLogout);
+    }
+    function showBlankLogout(responseText){
+      // document.getElementById("questionArea").innerHTML = ""; 
+      window.location = "index.html";
+    }
 
     function showWelcome(){
        var url = "showWelcome.php"; 
@@ -416,21 +427,23 @@ input[type=password] {
       var url = "submitGrammarAssignment.php";
       var gradeLevel = document.getElementById("gradeLevel").value;
       var numbSections = document.getElementById("numbSections").value;
-      var instructions = document.getElementById("instructions").value;
 
       if(numbSections==1){
         var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
         var sectionNumb1 = document.getElementById("sectionNumb1").value;
-        url += "?numbQuestions1=" + numbQuestions1 + "&sectionNumb1=" + sectionNumb1;
+        var page1 = document.getElementById("grammarPage1").value;
+        url += "?numbQuestions1=" + numbQuestions1 + "&sectionNumb1=" + sectionNumb1 + "&page1=" + page1;
       }
       else if (numbSections==2){
         var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
         var numbQuestions2 = document.getElementById("numbGrammarQuestions2").value;
+        var page1 = document.getElementById("grammarPage1").value;
 
         var sectionNumb1 = document.getElementById("sectionNumb1").value;
         var sectionNumb2 = document.getElementById("sectionNumb2").value;
+        var page2 = document.getElementById("grammarPage2").value;
 
-        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2;
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&page1=" + page1 + "&page2=" + page2;
       }
       else if (numbSections==3){
         var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
@@ -441,7 +454,11 @@ input[type=password] {
         var sectionNumb2 = document.getElementById("sectionNumb2").value;
         var sectionNumb3 = document.getElementById("sectionNumb3").value;
 
-        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3;
+        var page1 = document.getElementById("grammarPage1").value;
+        var page2 = document.getElementById("grammarPage2").value;
+        var page3 = document.getElementById("grammarPage3").value;
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&page1=" + page1 + "&page2=" + page2 + "&page3=" + page3;
       }
       else if (numbSections==4){
         var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
@@ -454,7 +471,13 @@ input[type=password] {
         var sectionNumb3 = document.getElementById("sectionNumb3").value;
         var sectionNumb4 = document.getElementById("sectionNumb4").value;
 
-        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4;
+        var page1 = document.getElementById("grammarPage1").value;
+        var page2 = document.getElementById("grammarPage2").value;
+        var page3 = document.getElementById("grammarPage3").value;
+        var page4 = document.getElementById("grammarPage4").value;
+
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4 + "&page1=" + page1 + "&page2=" + page2 + "&page3=" + page3 + "&page4=" + page4;
       }
       else if (numbSections==5){
         var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
@@ -469,10 +492,16 @@ input[type=password] {
         var sectionNumb4 = document.getElementById("sectionNumb4").value;
         var sectionNumb5 = document.getElementById("sectionNumb5").value;
 
-        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&numbQuestions5=" + numbQuestions5 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4 + "&sectionNumb5=" + sectionNumb5;
+        var page1 = document.getElementById("grammarPage1").value;
+        var page2 = document.getElementById("grammarPage2").value;
+        var page3 = document.getElementById("grammarPage3").value;
+        var page4 = document.getElementById("grammarPage4").value;
+        var page5 = document.getElementById("grammarPage4").value;
+
+        url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&numbQuestions5=" + numbQuestions5 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4 + "&sectionNumb5=" + sectionNumb5 + "&page1=" + page1 + "&page2=" + page2 + "&page3=" + page3 + "&page4=" + page4 + "&page5=" + page5;
       }
 
-      url += "&numbSections=" + numbSections + "&gradeLevel=" + gradeLevel + "&instructions=" + instructions;
+      url += "&numbSections=" + numbSections + "&gradeLevel=" + gradeLevel;
  
       httpGrammarAsync(url, submitGrammar);
     }
@@ -500,7 +529,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding" style="width: 100%">
   
     <!-- Left Column -->
-    <div class="w3-third" style="width:36%" id="leftColumn">
+    <div class="w3-third" style="width:38%" id="leftColumn">
     
       <div class="w3-white w3-text-grey w3-card-4" style="height: 99vh" id="realLeftColumn">
         <div class="w3-display-container">
@@ -587,7 +616,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <!-- <div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" placeholder="Page numbers, questions, etc... "; style="margin-bottom: -5px" id="body"></textarea></div> -->
             
             <form action="javascript:specifyGrammar();" method="GET">
-            <input type="submit" value="Questions and Instructions" style="margin-top: 3px" id="grammarAssignButton">
+            <input type="submit" value="Specify Instructions" style="margin-top: 3px" id="grammarAssignButton">
             </form>
 
             <div id="nextGrammar"></div>
@@ -620,7 +649,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </div>
 
     <!-- Right Column -->
-    <div class="w3-twothird" style="width: 63%; margin: 0 auto;">
+    <div class="w3-twothird" style="width: 61%; margin: 0 auto;">
   
       <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 99vh;" id="bookContainer" >
         <div class="transparentLayer"></div>

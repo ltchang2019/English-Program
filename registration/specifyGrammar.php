@@ -46,10 +46,8 @@ try {
               <option value="8">8</option>
               <option value="9">9</option>
               <option value="10">10</option>
-            </select><br>';
+            </select>' . '<b> / </b>' . 'Page' . '<input class = "input" style="width: 25px; margin-bottom: 2px;" type="text" name="subject"; id="grammarPage' . $x . '"><br>' ;
         }
-    print '<br><div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" placeholder="Format: Page Number - Section Numbers (e.g. page 7 - sections 2 & 3)"; style="margin-bottom: -5px" id="instructions"></textarea></div>';
-
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

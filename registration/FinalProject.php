@@ -1,25 +1,5 @@
 <!DOCTYPE html>
 
-<?php 
-session_start();
-$servername = "db746401298.db.1and1.com";
-$username = "dbo746401298";
-$password = "Tr@vel000";
-$dbName = "db746401298";
-
-try{
-  $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
-
-    // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  
-}
-catch(PDOException $e) {
-    print "Connection failed: " . $e->getMessage();
-}
-?>
-
 <style>
 html{
   position: relative;
@@ -107,6 +87,7 @@ input[type=password] {
     ShowNewProblems();
     createTextMenu();
     showWelcome();
+    showGrammarAssignments();
 
     window.onload = function() {
     if(!window.location.hash) {
@@ -115,6 +96,15 @@ input[type=password] {
     }
   }
 
+    function showGrammarAssignments(){
+      var url = "showNewGrammar.php";
+
+      httpGetAsync(url, showGrammarInBox);
+    }
+
+    function showGrammarInBox(responseText){
+      document.getElementById("grammarAssignmentArea").innerHTML = responseText; 
+    }
 
     function destroySession(){
       var url = "destroySession.php"; 
@@ -358,16 +348,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="w3-row-padding" style="width: 100%">
   
     <!-- Left Column -->
-    <div class="w3-third" style="width:36%;">
+    <div class="w3-third" style="width:38%;">
     
       <div class="w3-white w3-text-grey w3-card-4" style="height: 99vh; overflow: scroll; margin-top: 5px">
         <div class="w3-display-container">
 
-          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><b><div id="welcomeSection"></div></b></h2> 
+          <h2 style="padding: 0px 2px 0px 10px; margin-bottom: -10px; color: teal"><div id="welcomeSection"></div>
+
+          </h2> 
         </div>
 
         <div class="w3-container">
-          <h6><b>Assignments</b></h6>
+          <h6><b>Reading Assignments</b></h6>
           <p>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
               <p id="reportArea"></p>
@@ -381,7 +373,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr>
 
-          <h6><b>Questions and Reading</b></h6>
+          <h6><b>Grammar Assignments</b></h6>
+          <p>
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px; padding-top: 15px" id="grammarAssignmentArea" >
+              <p id="reportArea"></p>
+            </div>
+          </form>
+          </p>
+
+          </p>
+          <hr>
+
+          <h6><b>Reading Homework</b></h6>
           
             Text Name: <div id="textMenu" style="display: inline"></div>
             <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
@@ -392,24 +395,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
 
           </p>
-
           <hr>
 
-          <!-- <h6><b>Submit Answers</b></h6>
-          <p>
-          <form action="javascript:submitAnswer()" method="GET"> 
-            <div class="inputElement">Problem Number:  <select id="questionNumber">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-            <textarea rows="2" cols="34" name="body" placeholder="Answer... "; style="margin-bottom: 0px" id="body"></textarea><br>
-            <input type="submit" value="View">
+          <!-- <h6><b>Grammar Homework</b></h6>
+          
+            Text Name: <div id="textMenu" style="display: inline"></div>
+            <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
+          <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
-          </form>
+            <div id="questionsContainer">
+              <p id="questionArea" style="color: black"></p>
+            </div>
+
           </p>
           <hr> -->
 
@@ -432,7 +429,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </div>
 
     <!-- Right Column -->
-    <div class="w3-twothird" style="width: 63%; margin: 0 auto;">
+    <div class="w3-twothird" style="width: 61%; margin: 0 auto;">
   
       <div class="w3-container w3-card w3-white" style="margin-top: 5px; height: 99vh;" id="bookContainer" >
 

@@ -19,10 +19,8 @@ try {
     $_SESSION["gradeLevel"] = $gradeLevel;
     $numbSections = $_GET["numbSections"];
     $_SESSION["numbSections"] = $numbSections;
-    $instructions = $_GET["instructions"];
-    $_SESSION["instructions"] = $instructions;
 
-    $sql = "INSERT INTO GrammarAssignments (gradeLevel, numbSections, instructions) VALUES ('$gradeLevel', '$numbSections', '$instructions')";
+    $sql = "INSERT INTO GrammarAssignments (gradeLevel, numbSections, dateAssigned) VALUES ('$gradeLevel', '$numbSections', CURDATE())";
     $conn -> exec ( $sql1 );
 }
 catch(PDOException $e) {
