@@ -24,7 +24,7 @@ try {
 
 
 
-    $sql1 = "SELECT * FROM GrammarAssignments WHERE groupNumber = '$groupNumber' ";
+    $sql1 = "SELECT * FROM GrammarQuestions WHERE groupNumber = '$groupNumber' ";
     $statement = $conn -> query($sql1);
 
     // foreach($statement as $row){
@@ -39,14 +39,13 @@ try {
     }
     else{
     print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div id='center'><table id='center'><tr><th>Date Assigned</th><th>Grade Level</th><th>Instructions</th><th>Completed</th></tr>";
+    print "<div id='center'><table id='center'><tr><th>Grade Level</th><th>Page</th><th>Section Number</th><th>Completed</th></tr>";
 
     $userID = -1;
     foreach($statement as $row){
-        $dateAssigned = $row["dateAssigned"];
         $gradeLevel = $row["gradeLevel"];
-    	$numbSections = $row["numbSections"];
-        $instructions = $row["instructions"];
+    	$sectionNumber = $row["sectionNumber"];
+        $page = $row["pageNumber"];
         $completedBy = $row["completedBy"];
 
         if(strpos($completedBy, $firstName) !== false){
@@ -57,9 +56,9 @@ try {
         }
 
         print "<tr>";
-        print "<td style='max-width:50px'>" . $dateAssigned . "</td>";
-        print "<td style='max-width:30px'>" . $gradeLevel . "</td>";
-        print "<td style='max-width:50px'>" . $instructions . "</td>";
+        print "<td style='max-width:50px'>" . $gradeLevel . "</td>";
+        print "<td style='max-width:30px'>" . $page . "</td>";
+        print "<td style='max-width:30px'>" . $sectionNumber . "</td>";
         print "<td>" . $string . "</td>";
         print "</tr>";
     }

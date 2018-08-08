@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<html>
+<title>Grace English Program - Student</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 html{
@@ -88,6 +96,17 @@ input[type=password] {
     createTextMenu();
     showWelcome();
     showGrammarAssignments();
+    createGrammarMenu();
+
+    function createGrammarMenu(){
+      var url = "createGrammarMenu.php";
+
+      httpGetAsync(url, grammarMenu);
+    }
+
+    function grammarMenu(responseText){
+      document.getElementById("grammarMenu").innerHTML = responseText; 
+    }
 
     window.onload = function() {
     if(!window.location.hash) {
@@ -328,16 +347,6 @@ input[type=password] {
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 
-<html>
-<title>Grace English Program - Student</title>
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<META http-equiv="expires" content="0">
-
 <body class="w3-light-grey">
 
 
@@ -366,10 +375,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
+          <hr>
 
-          <!-- <form action="javascript:ShowNewProblems();" method="GET">
-          <input type="submit" value="View Assignments">
-          </form> -->
+
+          <h6><b>Reading Homework</b></h6>
+          
+            Text Name: <div id="textMenu" style="display: inline"></div>
+            <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
+          <input type="submit" value="View Questions" style="margin-top: 5px">
+          </form>
+            <div id="questionsContainer">
+              <p id="questionArea" style="color: black"></p>
+            </div>
+
           </p>
           <hr>
 
@@ -380,13 +398,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
-
-          </p>
           <hr>
 
-          <h6><b>Reading Homework</b></h6>
+          <h6><b>Grammar Homework</b></h6>
           
-            Text Name: <div id="textMenu" style="display: inline"></div>
+            Text Name: <div id="grammarMenu" style="display: inline"></div>
             <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
