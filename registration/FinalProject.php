@@ -98,6 +98,27 @@ input[type=password] {
     showGrammarAssignments();
     createGrammarMenu();
 
+    function showGrammarSlots(){
+      var url = "showGrammarSlots.php"; 
+      var slotID = document.getElementById("grammarAssignmentMenu").value;
+
+      url += "?slotID=" + slotID;
+
+      httpGetAsync(url, grammarSlots);
+    }
+
+    function grammarSlots(responseText){
+      document.getElementById("grammarSlotArea").innerHTML = responseText;
+    }
+
+    function showGrammarFrame(){
+      var url = "showGrammarFrame.php";
+      var assignmentID = document.getElementById("grammarAssignmentMenu").value;
+
+       url += "?assignmentID=" + assignmentID;
+       httpGetAsync(url, showTextInBox);
+    }
+
     function createGrammarMenu(){
       var url = "createGrammarMenu.php";
 
@@ -403,11 +424,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h6><b>Grammar Homework</b></h6>
           
             Text Name: <div id="grammarMenu" style="display: inline"></div>
-            <form action="javascript:ShowQuestions(); javascript:ShowText();" method="GET">
+            <form action="javascript:showGrammarSlots(); javascript:showGrammarFrame();" method="GET">
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
-            <div id="questionsContainer">
-              <p id="questionArea" style="color: black"></p>
+            <div id="grammarSlotsContainer">
+              <p id="grammarSlotArea" style="color: black"></p>
             </div>
 
           </p>

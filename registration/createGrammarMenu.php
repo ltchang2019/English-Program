@@ -27,7 +27,7 @@ try {
 
     // print $user;
     // print $firstName;
-    print "<select id='textMenuID'>";
+    print "<select id='grammarAssignmentMenu'>";
 
     $userID = -1;
     foreach($statement as $row){
@@ -36,11 +36,12 @@ try {
         $page = $row["pageNumber"];
         $numbQuestions = $row['numbQuestions'];
         $completedBy = $row['completedBy'];
+        $assignmentID = $row['assignmentID'];
 
         if(strpos($completedBy, $firstName) !== false){
         }
         else{
-        print "<option value='" . $numbQuestions . "'>" . "Grade " . $gradeLevel . ", " . "Page " . $page . ", " . "Section " . $sectionNumber . "</option>";
+        print "<option" . " value='" . $assignmentID . "'>" . "Grade " . $gradeLevel . ", " . "Page " . $page . ", " . "Section " . $sectionNumber . "</option>";
     }
     }
         print "</select>";
