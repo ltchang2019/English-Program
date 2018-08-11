@@ -98,6 +98,28 @@ input[type=password] {
     showGrammarAssignments();
     createGrammarMenu();
 
+    var answer;
+    var idVar;
+    function submitGrammarAnswers(){
+      var url = "submitGrammarAnswers.php";
+
+      var numbSlots = document.getElementById("numbSlots").className;
+
+      url += "?numbSlots=" + numbSlots;
+
+      for(i=1;i<=numbSlots;i++){
+        idVar = "grammarSlot" + i;
+        answer = document.getElementById(idVar).value;
+        url += "&" + idVar + "=" + answer;
+      }
+
+      httpGetAsync(url, submitGrammar);
+    }
+
+    function submitGrammar(responseText){
+      document.getElementById("numbSlots").innerHTML = responseText;
+    }
+
     function showGrammarSlots(){
       var url = "showGrammarSlots.php"; 
       var slotID = document.getElementById("grammarAssignmentMenu").value;

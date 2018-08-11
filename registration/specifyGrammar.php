@@ -20,8 +20,6 @@ try {
     $numbSections = $_GET["numbSections"];
     $_SESSION["numbSections"] = $numbSections;
 
-    print '<br>';
-
     for ($x = 1; $x <= $numbSections; $x++) {
     print 'Section ' . '<select id="sectionNumb' . $x .  '">
               <option value="01">01</option>

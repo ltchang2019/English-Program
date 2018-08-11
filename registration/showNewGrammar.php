@@ -34,8 +34,7 @@ try {
     
 
     if ($statement -> rowCount() == 0) {
-        print "<style> table, th, td { border: 0px solid black;} #center { margin-left: auto; margin-right: auto;}</style>";
-        print "<div id='center'><table id='center'><th><br><h4>" . "No new assignments have been posted..." . "</h4></th>";
+        print "<p style='text-align: center'>No new assignments posted...</p>";
     }
     else{
     print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
