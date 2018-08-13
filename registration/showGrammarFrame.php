@@ -22,17 +22,23 @@ try {
 
         foreach($statement as $row){
             $gradeLevel = $row["gradeLevel"];
-            break;
+            $pageNumber = $row["pageNumber"];
         }
     
         $sql = "SELECT * FROM GrammarBooks WHERE gradeLevel = '$gradeLevel'";
         $statement = $conn -> query($sql);
 
         foreach($statement as $row){
-            $link = $row["link"];
+            $firstPage = $row["firstPage"];
+            $lastPage = $row["lastPage"];
+            $fileName = $row["fileName"];
+            if($pageNumber >= $firstPage && $pageNumber<=$lastPage){
+                $link = $fileName;
+                break;
+            }
         }
 
-        print "<iframe src=" . $link . '" style="width:100%; height:98vh"></iframe>';
+        print '<iframe src="' . "../" . $link . '" style="width:100%; height:98vh"></iframe>';
 
 }
 catch(PDOException $e) {

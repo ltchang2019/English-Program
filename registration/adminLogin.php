@@ -6,13 +6,15 @@
   padding: 0px;
 }
 body {
-  font-size: 120%;
-  background: #F8F8FF;
+ font-size: 120%;
+    background-image: url("graceWall.png");
+  background-repeat:no-repeat;
+    background-size:cover;
 }
 
 .header {
   width: 30%;
-  margin: 50px auto 0px;
+  margin: 150px auto 0px;
   color: white;
   font-family: sans-serif;
   background: brown;

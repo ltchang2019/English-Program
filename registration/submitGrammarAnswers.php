@@ -30,13 +30,6 @@ try {
         break;
     }
 
-    $answer1 = $_GET["grammarSlot1"];
-    $answer2 = $_GET["grammarSlot2"];
-    $answer3 = $_GET["grammarSlot3"];
-    $answer4 = $_GET["grammarSlot4"];
-    $answer5 = $_GET["grammarSlot5"];
-    $answer6 = $_GET["grammarSlot6"];
-
     if($numbQuestions == 5){
         $answer1 = $_GET["grammarSlot1"];
         $answer2 = $_GET["grammarSlot2"];
@@ -400,6 +393,7 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 15, '$answer15', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
     }
+    print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

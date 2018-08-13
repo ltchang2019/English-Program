@@ -9,6 +9,29 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+
+ .animated {
+            background-repeat: no-repeat;
+            background-position: left top;
+            -webkit-animation-duration: 3s;animation-duration: 3s;
+            -webkit-animation-fill-mode: both;animation-fill-mode: both;
+         }
+         
+         @-webkit-keyframes fadeOut {
+            0% {opacity: 1;}
+            100% {opacity: 0;}
+         }
+         
+         @keyframes fadeOut {
+            0% {opacity: 1;}
+            100% {opacity: 0;}
+         }
+         
+         .fadeOut {
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
+         }
+
 html{
   position: relative;
 /*  overflow: hidden;
@@ -88,6 +111,11 @@ input[type=password] {
   color:red;
 }
 
+.grammarSlotArea{
+  display: flex;
+  flex-direction: column;
+  min-height: 1px;
+}
 </style>
 
 <script>
@@ -117,7 +145,7 @@ input[type=password] {
     }
 
     function submitGrammar(responseText){
-      document.getElementById("numbSlots").innerHTML = responseText;
+      document.getElementById("grammarSlotArea").innerHTML = responseText;
     }
 
     function showGrammarSlots(){
@@ -430,7 +458,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <div id="questionsContainer">
               <p id="questionArea" style="color: black"></p>
             </div>
-
           </p>
           <hr>
 
@@ -449,10 +476,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <form action="javascript:showGrammarSlots(); javascript:showGrammarFrame();" method="GET">
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
-            <div id="grammarSlotsContainer">
-              <p id="grammarSlotArea" style="color: black"></p>
-            </div>
-
+            <div id="grammarSlotArea" style="color: black"></div>
+            <form action="javascript: submitGrammarAnswers();" method="GET"><input type="submit" value="Submit Answers" style="margin-top: 5px"></form>
           </p>
           <hr>
 
