@@ -33,6 +33,7 @@ try {
         print $x . ". " .
             '<input class = "input" style="width: 150px; margin-bottom: 2px; margin-top: 2px;" type="text" name="subject"; id="grammarSlot' . $x . '"><br>';
     } 
+    print '<form action="javascript: submitGrammarAnswers();" method="GET"><input type="submit" value="Submit Answers" style="margin-top: 5px"></form>';
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

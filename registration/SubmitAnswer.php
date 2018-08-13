@@ -161,7 +161,7 @@ try {
         $sql = "UPDATE Assignments SET completedBy = CONCAT(completedBy, '$firstName ') WHERE textName = '$textName' AND groupNumber = '$groupNumber'";
         $conn -> exec ( $sql );
     }
-    print "<p style = 'color: green'>Answers submitted!</p>";
+    print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
 }
 }
 catch(PDOException $e) {

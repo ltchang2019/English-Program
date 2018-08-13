@@ -146,6 +146,7 @@ input[type=password] {
 
     function submitGrammar(responseText){
       document.getElementById("grammarSlotArea").innerHTML = responseText;
+      location.reload();
     }
 
     function showGrammarSlots(){
@@ -227,6 +228,9 @@ input[type=password] {
 
     function showAnswerMessage(responseText) {
       document.getElementById("answerMessageContainer").innerHTML = responseText; 
+      if(responseText == "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>"){
+        location.reload();
+      }
     }
 
     function showAssignments(responseText) {
@@ -477,7 +481,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
             <div id="grammarSlotArea" style="color: black"></div>
-            <form action="javascript: submitGrammarAnswers();" method="GET"><input type="submit" value="Submit Answers" style="margin-top: 5px"></form>
           </p>
           <hr>
 

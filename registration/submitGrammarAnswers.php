@@ -47,6 +47,9 @@ try {
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 5, '$answer5', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
+        $conn -> exec ( $sql );
     }
     else if($numbQuestions == 6){
         $answer1 = $_GET["grammarSlot1"];
@@ -67,6 +70,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 5, '$answer5', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 6, '$answer6', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 7){
@@ -91,6 +97,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 6, '$answer6', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 7, '$answer7', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 8){
@@ -118,6 +127,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 7, '$answer7', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 8, '$answer8', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 9){
@@ -148,6 +160,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 8, '$answer8', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 9, '$answer9', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 10){
@@ -181,6 +196,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 9, '$answer9', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 10, '$answer10', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 11){
@@ -217,6 +235,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 10, '$answer10', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 11, '$answer11', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 12){
@@ -256,6 +277,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 11, '$answer11', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 12, '$answer12', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 13){
@@ -298,6 +322,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 12, '$answer12', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 13, '$answer13', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 14){
@@ -343,6 +370,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 13, '$answer13', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 14, '$answer14', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     else if($numbQuestions == 15){
@@ -391,6 +421,9 @@ try {
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 14, '$answer14', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 15, '$answer15', '$firstName', '$groupNumber')";
+        $conn -> exec ( $sql );
+
+        $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
     }
     print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
