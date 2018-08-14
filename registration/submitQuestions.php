@@ -39,7 +39,7 @@ try {
         else{
         $sql = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question1', $groupNumber, '')";
         $conn -> exec ( $sql );
-        print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
     }
     }
     else if($numbQuestions == 2){
@@ -56,7 +56,7 @@ try {
         $sql1 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question2', $groupNumber, '')";
         $conn -> exec ( $sql1 );
 
-        print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
     }
     }
     else if($numbQuestions == 3){
@@ -76,7 +76,7 @@ try {
         $sql3 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question3', $groupNumber, '')";
         $conn -> exec ( $sql3 );
 
-        print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
     }
     }
     else if($numbQuestions == 4){
@@ -99,7 +99,7 @@ try {
         $sql4 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question4', $groupNumber, '')";
         $conn -> exec ( $sql4 );
 
-        print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
     }
     }
     else if($numbQuestions == 5){
@@ -125,7 +125,7 @@ try {
         $sql5 = "INSERT INTO Questions (textName, question, groupNumber, completedBy) VALUES ('$textName', '$question5', $groupNumber, '')";
         $conn -> exec ( $sql5 );
 
-        print '<p class="assignmentMessageContainer">Assignment submitted!</p>';
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
     }
     }
     if($blankQuestion=="false"){

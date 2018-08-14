@@ -120,7 +120,7 @@ try {
       $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions5', '$sectionNumb5', '$page5', CURDATE(), '$groupNumber', '$gradeLevel')";
       $conn -> exec ( $sql );
     }
-    print "<p style='color: green'>submitted!</p>";
+    print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();

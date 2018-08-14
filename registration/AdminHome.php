@@ -97,7 +97,7 @@ input[type=password] {
 #questionsContainer{
     display: flex;
     flex-direction: column;
-    min-height: 200px;
+    min-height: 30px;
 }
 #reportArea{
   line-height: 1.5;
@@ -117,6 +117,41 @@ input[type=password] {
     adminShowAssignments();
     createTextMenu();
     showWelcome();
+    showGrammarAssignments();
+    showGrammarMenu();
+
+    function showGrammarReview(){
+      var url = "adminReviewGrammar.php";
+      var assignmentID = document.getElementById("grammarAssignmentsMenu").value;
+
+      url += "?assignmentID=" + assignmentID;
+
+      httpGetAsync(url, reviewGrammarResponses);
+    }
+
+    function reviewGrammarResponses(responseText){
+      document.getElementById("grammarReviewContainer").innerHTML = responseText;
+    }
+
+    function showGrammarMenu(){
+      var url = "adminGrammarMenu.php";
+
+      httpGetAsync(url, grammarMenu);
+    }
+
+    function grammarMenu(responseText){
+      document.getElementById("grammarAssignmentMenu").innerHTML = responseText;
+    }
+
+    function showGrammarAssignments(){
+      var url = "adminShowGrammarAssignments.php";
+
+      httpGetAsync(url, showGrammarInBox);
+    }
+
+    function showGrammarInBox(responseText){
+      document.getElementById("grammarContainer").innerHTML = responseText;
+    }
 
     window.onload = function() {
     if(!window.location.hash) {
@@ -302,7 +337,6 @@ input[type=password] {
             httpQuestionAsync(url, showAssignmentMessage);
             if(blankQuestion==false){
               document.getElementById("fieldContainer").innerHTML = "";
-              document.getElementById("assignmentMessageContainer").innerHTML = "Assignment submitted";
             }
             }
             else{
@@ -313,6 +347,9 @@ input[type=password] {
     }
     function showAssignmentMessage(responseText){
       document.getElementById("assignmentMessageContainer").innerHTML = responseText; 
+      if(responseText == "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>"){
+        location.reload();
+      }
     }
     function showTextInBox(responseText){
       document.getElementById("bookArea").innerHTML = responseText; 
@@ -507,6 +544,9 @@ input[type=password] {
     }
     function submitGrammar(responseText){
       document.getElementById("grammarMessage").innerHTML = responseText; 
+      if(responseText == "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>"){
+        location.reload();
+      }
     }
 
     // function submitGrammarQuestions(){
@@ -538,7 +578,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
 
         <div class="w3-container">
-          <h6><b>Pending Assignments</b></h6>
+          <h6><b>Reading Assignments</b></h6>
           <p>
             <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
               <p id="reportArea"></p>
@@ -548,11 +588,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <hr>
 
-          <h6><b>View Readings, Questions, and Answers</b></h6>
+          <h6><b>Review Reading Homework</b></h6>
           
           Text Name: <div id="textMenu" style="display: inline"></div>
-            <div class="w3-container w3-card w3-white" style="padding-bottom: 10px; margin-top: 10px" id="questionsContainer">
-              <p id="questionArea" style="margin-top: 10px"></p>
+            <div class="w3-container w3-card w3-white" style="padding-bottom: 5px; margin-top: 10px" id="questionsContainer">
+              <p id="questionArea" style="margin-top: 10px">Select an assignment...</p>
             </div>
           </form>
           </p>
@@ -561,6 +601,28 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <input type="submit" value="View Responses" style="margin-top: 5px">
           </form>
           </p>
+          <hr>
+
+          <h6><b>Grammar Assignments</b></h6>
+          <p>
+            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px; padding-top: 15px;" id="grammarContainer" >
+              <p id="grammarArea"></p>
+            </div>
+          </form>
+          </p>
+          <hr>
+
+          <h6><b>Review Grammar Homework</b></h6>
+          
+          Text Name: <div id="grammarAssignmentMenu" style="display: inline"></div>
+            <div class="w3-container w3-card w3-white" style="padding-bottom: 5px; padding-top: 5px; margin-top: 10px" id="grammarReviewContainer">
+              <p id="grammarReview" style="margin-top: 5px">Select an assignment...</p>
+            </div>
+          </form>
+          </p>
+          <form action="javascript:showGrammarReview();" method="GET">
+          <input type="submit" value="View Responses" style="margin-top: 5px">
+          </form>
           <hr>
 
           <h6><b>Assign Reading Homework</b></h6>
@@ -588,7 +650,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <hr style="margin-top: 15px; margin-bottom: 10px">
           </form>
 
-            <h6><b>Assign Grammar Homework (NOT FINISHED)</b></h6>
+            <h6><b>Assign Grammar Homework</b></h6>
             
             Grammar Grade Level  
             <select id="gradeLevel">
