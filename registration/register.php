@@ -112,6 +112,7 @@ form, .content {
     </div>
     <p>
       Already a member? <a href="login.php">Sign in</a>
+      <a href="index.html"><img src="backButton.png" style="float: right; width:75px; height:30px; margin-bottom: 15px;"></a>
     </p>
   </form>
 </body>

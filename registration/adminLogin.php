@@ -98,6 +98,7 @@ form, .content {
     </div>
     <p>
       Don't have an account? <a href="adminRegister.php">Sign up</a>
+      <a href="index.html"><img src="backButton.png" style="float: right; width:75px; height:30px; margin-bottom: 15px;"></a>
     </p>
   </form>
 </body>

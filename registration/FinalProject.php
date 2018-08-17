@@ -497,18 +497,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </p>
           <hr> -->
 
-          <h6><b>View Results (NOT FINISHED)</b></h6>
-          <p>
-            <div class="w3-container w3-card w3-white" style="margin-top: 5px; padding-bottom: 15px;" id="reportAreaContainer" >
-              <p id="reportArea"></p>
-            </div>
-          </form>
-          </p>
-          <form action="javascript:ShowNewProblems();" method="GET">
-          <input type="submit" value="View Assignments" style="margin-bottom: 10px">
-          </form>
-          </p>
-
         </div>
       </div><br>
 

@@ -120,6 +120,14 @@ input[type=password] {
     showGrammarAssignments();
     showGrammarMenu();
 
+    function showGrammarFrame(){
+      var url = "adminShowGrammarFrame.php";
+      var assignmentID = document.getElementById("grammarAssignmentsMenu").value;
+
+       url += "?assignmentID=" + assignmentID;
+       httpGetAsync(url, showTextInBox);
+    }
+
     function showGrammarReview(){
       var url = "adminReviewGrammar.php";
       var assignmentID = document.getElementById("grammarAssignmentsMenu").value;
@@ -332,6 +340,152 @@ input[type=password] {
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "")
                 blankQuestion=true;
             }
+            else if(storedNumber == 6){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+                for (i=4;i<5;i++){
+                var question5 = document.getElementById("input" + i).value;
+                }
+                for (i=5;i<6;i++){
+                var question6 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "")
+                blankQuestion=true;
+            }
+            else if(storedNumber == 7){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+                for (i=4;i<5;i++){
+                var question5 = document.getElementById("input" + i).value;
+                }
+                for (i=5;i<6;i++){
+                var question6 = document.getElementById("input" + i).value;
+                }
+                for (i=6;i<7;i++){
+                var question7 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "")
+                blankQuestion=true;
+            }
+            else if(storedNumber == 8){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+                for (i=4;i<5;i++){
+                var question5 = document.getElementById("input" + i).value;
+                }
+                for (i=5;i<6;i++){
+                var question6 = document.getElementById("input" + i).value;
+                }
+                for (i=6;i<7;i++){
+                var question7 = document.getElementById("input" + i).value;
+                }
+                for (i=7;i<8;i++){
+                var question8 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "")
+                blankQuestion=true;
+            }
+            else if(storedNumber == 9){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+                for (i=4;i<5;i++){
+                var question5 = document.getElementById("input" + i).value;
+                }
+                for (i=5;i<6;i++){
+                var question6 = document.getElementById("input" + i).value;
+                }
+                for (i=6;i<7;i++){
+                var question7 = document.getElementById("input" + i).value;
+                }
+                for (i=7;i<8;i++){
+                var question8 = document.getElementById("input" + i).value;
+                }
+                for (i=8;i<9;i++){
+                var question9 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&question9=" + question9 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "" || question9 == "")
+                blankQuestion=true;
+            }
+            else if(storedNumber == 10){
+                for (i=0;i<1;i++){
+                var question1 = document.getElementById("input" + i).value;
+                }
+                for (i=1;i<2;i++){
+                var question2 = document.getElementById("input" + i).value;
+                }
+                for (i=2;i<3;i++){
+                var question3 = document.getElementById("input" + i).value;
+                }
+                for (i=3;i<4;i++){
+                var question4 = document.getElementById("input" + i).value;
+                }
+                for (i=4;i<5;i++){
+                var question5 = document.getElementById("input" + i).value;
+                }
+                for (i=5;i<6;i++){
+                var question6 = document.getElementById("input" + i).value;
+                }
+                for (i=6;i<7;i++){
+                var question7 = document.getElementById("input" + i).value;
+                }
+                for (i=7;i<8;i++){
+                var question8 = document.getElementById("input" + i).value;
+                }
+                for (i=8;i<9;i++){
+                var question9 = document.getElementById("input" + i).value;
+                }
+                for (i=9;i<10;i++){
+                var question10 = document.getElementById("input" + i).value;
+                }
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&question9=" + question9 + "&question10=" + question10 + "&link=" + link;
+              if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "" || question9 == "" || question10 == "")
+                blankQuestion=true;
+            }
+
             // document.getElementById("adminTextName").value = "";
             // document.getElementById("pdfLink").value = "";
             httpQuestionAsync(url, showAssignmentMessage);
@@ -367,58 +521,6 @@ input[type=password] {
         
       httpGetAsync(url, showAssignments);
     }
-    // function SendMessage(){
-    //   var url = "SendMessage.php"; 
-    //   var toUsername = document.getElementById("toUsername").value;
-    //   var fromUsername = document.getElementById("fromUsername").value;
-    //   var subject = document.getElementById("subject").value;
-    //   var body = document.getElementById("body").value;
-      
-    //   resetFieldStyles();
-    //   var errorMessage = "Missing data: ";
-    //   var somethingBlank = false;
-    //   if(fromUsername == ""){
-    //     errorMessage += "from";
-    //     somethingBlank = true;
-    //     document.getElementById("fromUsername").style.background = "yellow";
-    //   }
-    //   if(toUsername == "" && somethingBlank == true){
-    //     errorMessage += ", to";
-    //     document.getElementById("toUsername").style.background = "yellow";
-    //   }
-    //   else if(toUsername == ""){
-    //     errorMessage += "to";
-    //     somethingBlank = true;
-    //     document.getElementById("toUsername").style.background = "yellow";
-    //   }
-    //   if(subject == "" && somethingBlank == true){
-    //     errorMessage += ", subject";
-    //     document.getElementById("subject").style.background = "yellow";
-    //   }
-    //   else if(subject == ""){
-    //     errorMessage += "subject";
-    //     somethingBlank = true;
-    //     document.getElementById("subject").style.background = "yellow";
-    //   }
-    //   if(body == "" && somethingBlank == true){
-    //     errorMessage += ", body";
-    //     document.getElementById("body").style.background = "yellow";
-    //   }
-    //   else if(body == ""){
-    //     errorMessage += "body";
-    //     somethingBlank = true;
-    //     document.getElementById("body").style.background = "yellow";
-    //   }
-    //   url += "?fromWho=" + fromUsername + "&toWhom=" + toUsername + "&subject=" + subject + "&body=" + body;
-    
-    //   if(errorMessage == "Missing data: ")
-    //     httpGetAsync(url, showResults);
-    //   else{
-    //     alert(errorMessage);
-    //     somethingBlank = false;
-    //     errorMessage = "Missing data: "
-    //   }
-    // }
 
     function adminShowQuestions(){
       var url = "adminShowQuestions.php"; 
@@ -620,10 +722,33 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </div>
           </form>
           </p>
-          <form action="javascript:showGrammarReview();" method="GET">
+          <form action="javascript:showGrammarReview(); showGrammarFrame();" method="GET">
           <input type="submit" value="View Responses" style="margin-top: 5px">
           </form>
           <hr>
+
+          <h6><b>Browse Library</b></h6>
+            
+            Reading Level (from F to Z)
+            <select id="numbQuestions">
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
+              <option value="N">N</option>
+              <option value="O">O</option>
+            </select>
+            <form action="javascript:selectReadingLevel();" method="GET">
+            <input type="submit" value="Select Level" style="margin-top: 4px; margin-bottom: 3px;">
+            </form>
+
+            <div id="bookSelection"/></div>
+
+            <hr>
 
           <h6><b>Assign Reading Homework</b></h6>
             
@@ -637,6 +762,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
             <form action="javascript:addFields();" method="GET">
             <input type="submit" value="Choose Number of Questions" style="margin-top: 4px; margin-bottom: 3px;">

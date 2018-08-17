@@ -34,12 +34,14 @@ try {
             for ($x = 1; $x <= $numbQuestions; $x++) {
 
                 if($x == 1){
+                    print "<b>1. </b>";
                     print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center; margin-top: 15px;} #center { margin-left: auto; margin-right: auto;}</style>";
                     print "<div><table id='center'><tr><th style='width: 200px'>Student</th><th style='width:290px'>Answer</th></tr>";
                 }
-                else{
-                print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-                print "<div><table id='center'><tr><th style='width: 200px'>Student</th><th style='width:290px'>Answer</th></tr>";
+                else{   
+                    print "<b>" . $x . ". </b>";
+                    print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
+                    print "<div><table id='center'><tr><th style='width: 200px'>Student</th><th style='width:290px'>Answer</th></tr>";
                 }   
 
                 $sql1 = "SELECT * FROM GrammarAnswers WHERE assignmentID = '$assignmentID' ";
