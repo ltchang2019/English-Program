@@ -120,6 +120,28 @@ input[type=password] {
     showGrammarAssignments();
     showGrammarMenu();
 
+    function showBrowsedBook(){
+      var url = "showBrowsedBook.php";
+      var docName = document.getElementById("bookBrowseSelector").value;
+
+      url += "?docName=" + docName;
+
+      httpGetAsync(url, showTextInBox);
+    }
+
+    function selectReadingLevel(){
+      var url = "selectReadingLevel.php";
+      var level = document.getElementById("readingLevel").value;
+
+      url += "?level=" + level;
+
+      httpGetAsync(url, showLeveledBooks);
+    }
+
+    function showLeveledBooks(responseText){
+      document.getElementById("bookSelection").innerHTML = responseText;
+    }
+
     function showGrammarFrame(){
       var url = "adminShowGrammarFrame.php";
       var assignmentID = document.getElementById("grammarAssignmentsMenu").value;
@@ -267,13 +289,14 @@ input[type=password] {
               localStorage.setItem("storedTextName", submitTextName);
               var storedTextName = localStorage.getItem("storedTextName");
               var storedNumber = localStorage.getItem("number");
+              var readingLevel = document.getElementById("readingLevelAssign").value;
               url = "submitQuestions.php";
-              var link = document.getElementById("pdfLink").value;
+              // var link = document.getElementById("pdfLink").value;
               var blankQuestion = false;
             if(storedNumber == 1){
               for (i=0;i<storedNumber;i++){
                 var question1 = document.getElementById("input" + i).value;
-                url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&link=" + link;
+                url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1;
                 if(question1 == "")
                   blankQuestion=true;
               }
@@ -285,7 +308,7 @@ input[type=password] {
                 for (i=1;i<2;i++){
                 var question2 = document.getElementById("input" + i).value;
               }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2;
               if(question1 == "" || question2 == "")
                 blankQuestion=true;
           }
@@ -299,7 +322,7 @@ input[type=password] {
                 for (i=2;i<3;i++){
                 var question3 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3;
               if(question1 == "" || question2 == "" || question3 == "")
                 blankQuestion=true;
           }
@@ -316,7 +339,7 @@ input[type=password] {
                 for (i=3;i<4;i++){
                 var question4 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "")
                 blankQuestion=true;
           }
@@ -336,7 +359,7 @@ input[type=password] {
                 for (i=4;i<5;i++){
                 var question5 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "")
                 blankQuestion=true;
             }
@@ -359,7 +382,7 @@ input[type=password] {
                 for (i=5;i<6;i++){
                 var question6 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "")
                 blankQuestion=true;
             }
@@ -385,7 +408,7 @@ input[type=password] {
                 for (i=6;i<7;i++){
                 var question7 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "")
                 blankQuestion=true;
             }
@@ -414,7 +437,7 @@ input[type=password] {
                 for (i=7;i<8;i++){
                 var question8 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "")
                 blankQuestion=true;
             }
@@ -446,7 +469,7 @@ input[type=password] {
                 for (i=8;i<9;i++){
                 var question9 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&question9=" + question9 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&question9=" + question9;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "" || question9 == "")
                 blankQuestion=true;
             }
@@ -481,11 +504,11 @@ input[type=password] {
                 for (i=9;i<10;i++){
                 var question10 = document.getElementById("input" + i).value;
                 }
-              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&question9=" + question9 + "&question10=" + question10 + "&link=" + link;
+              url += "?storedTextName=" + storedTextName + "&numbQuestions=" + storedNumber + "&question1=" + question1 + "&question2=" + question2 + "&question3=" + question3 + "&question4=" + question4 +  "&question5=" + question5 + "&question6=" + question6 + "&question7=" + question7 + "&question8=" + question8 + "&question9=" + question9 + "&question10=" + question10;
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "" || question9 == "" || question10 == "")
                 blankQuestion=true;
             }
-
+            url += "&readingLevel=" + readingLevel;
             // document.getElementById("adminTextName").value = "";
             // document.getElementById("pdfLink").value = "";
             httpQuestionAsync(url, showAssignmentMessage);
@@ -729,18 +752,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <h6><b>Browse Library</b></h6>
             
-            Reading Level (from F to Z)
-            <select id="numbQuestions">
-              <option value="F">F</option>
-              <option value="G">G</option>
-              <option value="H">H</option>
-              <option value="I">I</option>
-              <option value="J">J</option>
-              <option value="K">K</option>
-              <option value="L">L</option>
-              <option value="M">M</option>
-              <option value="N">N</option>
-              <option value="O">O</option>
+            Reading Level (from F to Z): 
+            <select id="readingLevel">
+              <option value="ReadingLevelF">F</option>
+              <option value="ReadingLevelG">G</option>
+              <option value="ReadingLevelH">H</option>
+              <option value="ReadingLevelI">I</option>
+              <option value="ReadingLevelJ">J</option>
+              <option value="ReadingLevelK">K</option>
+              <option value="ReadingLevelL">L</option>
+              <option value="ReadingLevelM">M</option>
+              <option value="ReadingLevelN">N</option>
+              <option value="ReadingLevelO">O</option>
             </select>
             <form action="javascript:selectReadingLevel();" method="GET">
             <input type="submit" value="Select Level" style="margin-top: 4px; margin-bottom: 3px;">
@@ -752,8 +775,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <h6><b>Assign Reading Homework</b></h6>
             
+            Reading Level (from F to Z): 
+            <select id="readingLevelAssign">
+              <option value="ReadingLevelF">F</option>
+              <option value="ReadingLevelG">G</option>
+              <option value="ReadingLevelH">H</option>
+              <option value="ReadingLevelI">I</option>
+              <option value="ReadingLevelJ">J</option>
+              <option value="ReadingLevelK">K</option>
+              <option value="ReadingLevelL">L</option>
+              <option value="ReadingLevelM">M</option>
+              <option value="ReadingLevelN">N</option>
+              <option value="ReadingLevelO">O</option>
+            </select>
+
             <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
-            <div class="inputElement">PDF Link: <input class = "input" type="url" name="subject"; id="pdfLink"></div>
             
             Number of Questions
             <select id="numbQuestions">

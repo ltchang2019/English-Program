@@ -24,7 +24,7 @@ try {
 
     $numbQuestions = $_SESSION["numbQuestions"];
     $textName = $_GET["storedTextName"];
-    $link = $_GET["link"];
+    $readingLevel = $_GET["readingLevel"];
 
     $blankQuestion = "false";
 
@@ -305,7 +305,7 @@ try {
     }
 
     if($blankQuestion=="false"){
-    $sql = "INSERT INTO Assignments (textName, link, groupNumber, dateAssigned, numbQuestions) VALUES ('$textName', '$link', '$groupNumber', CURDATE() ,'$numbQuestions')";
+    $sql = "INSERT INTO Assignments (readingLevel, textName, groupNumber, dateAssigned, numbQuestions) VALUES ('$readingLevel', '$textName', '$groupNumber', CURDATE() ,'$numbQuestions')";
     $conn -> exec ($sql);
     }
 }

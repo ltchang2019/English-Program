@@ -29,14 +29,22 @@ try {
 	$textName = $_GET["textName"];
     $_SESSION["textName"] = $textName;
 
-	$sql1 = "SELECT * FROM Assignments WHERE textName = '$textName' AND groupNumber = '$groupNumber' ";
-    $statement1 = $conn -> query($sql1);
+    $sql = "SELECT * FROM Assignments WHERE textName = '$textName'";
+    $statement = $conn -> query($sql);
 
-    foreach($statement1 as $row1){
-        $link = $row1["link"];
+    foreach($statement as $row){
+        $readingLevel = $row["readingLevel"];
         break;
     }
-        print "<iframe src=" . $link . '" style="width:100%; height:98vh"></iframe>';
+
+    $sql = "SELECT * FROM $readingLevel WHERE textName = '$textName'";
+    $statement = $conn -> query($sql);
+
+    foreach($statement as $row){
+        $docName = $row["docName"];
+    }
+
+        print "<iframe src=" . "../" . $readingLevel . "./" . $docName . '" style="width:100%; height:98vh"></iframe>';
 }
 }
 }

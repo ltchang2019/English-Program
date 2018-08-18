@@ -16,25 +16,24 @@ try {
 
     if($_SESSION["displayBoolean"] == "true"){
 
-	$sql = "SELECT * FROM Administrators WHERE username = '$user'";
+	$textName = $_GET["textName"];
+
+    $sql = "SELECT * FROM Assignments WHERE textName = '$textName'";
     $statement = $conn -> query($sql);
 
     foreach($statement as $row){
-        $groupNumber = $row["groupNumber"];
+        $readingLevel = $row["readingLevel"];
         break;
     }
 
-	$textName = $_GET["textName"];
+    $sql = "SELECT * FROM $readingLevel WHERE textName = '$textName'";
+    $statement = $conn -> query($sql);
 
-	$sql1 = "SELECT * FROM Assignments WHERE textName = '$textName' AND groupNumber = '$groupNumber' ";
-    $statement1 = $conn -> query($sql1);
-
-    foreach($statement1 as $row1){
-        $link = $row1["link"];
-        break;
+    foreach($statement as $row){
+        $docName = $row["docName"];
     }
 
-print "<iframe src=" . $link . '" style="width:100%; height:98vh" id="realBookFrame"></iframe>';
+    print "<iframe src=" . "../" . $readingLevel . "./" . $docName . '" style="width:100%; height:98vh" id="realBookFrame"></iframe>';
 }
 
 }
