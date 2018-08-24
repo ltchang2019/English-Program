@@ -34,7 +34,9 @@ try {
         $answer1 = $_GET["answer1"];
         $answerID1 = $_GET["answerID1"];
 
-        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$answer1', CURDATE(), '$groupNumber','$firstName')";
+        $subAnswer1 = addslashes($answer1);
+
+        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$subAnswer1', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql1 );
 
         $sql = "UPDATE Questions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE questionID = '$answerID1'";
@@ -49,9 +51,12 @@ try {
         $answer2 = $_GET["answer2"];
         $answerID2 = $_GET["answerID2"];
 
-        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$answer1', CURDATE(), '$groupNumber','$firstName')";
+        $subAnswer1 = addslashes($answer1);
+        $subAnswer2 = addslashes($answer2);
+
+        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$subAnswer1', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql1 );
-        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$answer2', CURDATE(), '$groupNumber','$firstName')";
+        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$subAnswer2', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql2 );
 
         $sql = "UPDATE Questions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE questionID = '$answerID1'";
@@ -72,11 +77,15 @@ try {
         $answer3 = $_GET["answer3"];
         $answerID3 = $_GET["answerID3"];
 
-        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$answer1', CURDATE(), '$groupNumber','$firstName')";
+        $subAnswer1 = addslashes($answer1);
+        $subAnswer2 = addslashes($answer2);
+        $subAnswer3 = addslashes($answer3);
+
+        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$subAnswer1', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql1 );
-        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$answer2', CURDATE(), '$groupNumber','$firstName')";
+        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$subAnswer2', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql2 );
-        $sql3 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID3', '$answer3', CURDATE(), '$groupNumber', '$firstName')";
+        $sql3 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID3', '$subAnswer3', CURDATE(), '$groupNumber', '$firstName')";
         $conn -> exec ( $sql3 );
 
         $sql = "UPDATE Questions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE questionID = '$answerID1'";
@@ -102,13 +111,18 @@ try {
         $answer4 = $_GET["answer4"];
         $answerID4 = $_GET["answerID4"];
 
-        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$answer1', CURDATE(), '$groupNumber','$firstName')";
+        $subAnswer1 = addslashes($answer1);
+        $subAnswer2 = addslashes($answer2);
+        $subAnswer3 = addslashes($answer3);
+        $subAnswer4 = addslashes($answer4);
+
+        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$subAnswer1', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql1 );
-        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$answer2', CURDATE(), '$groupNumber','$firstName')";
+        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$subAnswer2', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql2 );
-        $sql3 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID3', '$answer3', CURDATE(), '$groupNumber', '$firstName')";
+        $sql3 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID3', '$subAnswer3', CURDATE(), '$groupNumber', '$firstName')";
         $conn -> exec ( $sql3 );
-        $sql4 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID4', '$answer4', CURDATE(), '$groupNumber', '$firstName')";
+        $sql4 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID4', '$subAnswer4', CURDATE(), '$groupNumber', '$firstName')";
         $conn -> exec ( $sql4 );
 
         $sql = "UPDATE Questions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE questionID = '$answerID1'";
@@ -135,16 +149,22 @@ try {
         $answer5 = $_GET["answer5"];
         $answerID5 = $_GET["answerID5"];
 
+        $subAnswer1 = addslashes($answer1);
+        $subAnswer2 = addslashes($answer2);
+        $subAnswer3 = addslashes($answer3);
+        $subAnswer4 = addslashes($answer4);
+        $subAnswer5 = addslashes($answer5);
 
-        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$answer1', CURDATE(), '$groupNumber','$firstName')";
+
+        $sql1 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID1', '$subAnswer1', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql1 );
-        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$answer2', CURDATE(), '$groupNumber','$firstName')";
+        $sql2 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID2', '$subAnswer2', CURDATE(), '$groupNumber','$firstName')";
         $conn -> exec ( $sql2 );
-        $sql3 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID3', '$answer3', CURDATE(), '$groupNumber', '$firstName')";
+        $sql3 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID3', '$subAnswer3', CURDATE(), '$groupNumber', '$firstName')";
         $conn -> exec ( $sql3 );
-        $sql4 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID4', '$answer4', CURDATE(), '$groupNumber', '$firstName')";
+        $sql4 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID4', '$subAnswer4', CURDATE(), '$groupNumber', '$firstName')";
         $conn -> exec ( $sql4 );
-        $sql5 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID5', '$answer5', CURDATE(), '$groupNumber', '$firstName')";
+        $sql5 = "INSERT INTO Answers (questionID, answer, dateAnswered, groupNumber, firstName)VALUES('$answerID5', '$subAnswer5', CURDATE(), '$groupNumber', '$firstName')";
         $conn -> exec ( $sql5);
 
         $sql = "UPDATE Questions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE questionID = '$answerID1'";
