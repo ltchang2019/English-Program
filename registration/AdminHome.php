@@ -120,6 +120,26 @@ input[type=password] {
     showGrammarAssignments();
     showGrammarMenu();
 
+    function showGrammarUnit(){
+      var url = "showGrammarSection.php";
+      var unit = document.getElementById("grammarUnit").value;
+      url += "?unit=" + unit;
+
+      httpGetAsync(url, showTextInBox);
+    }
+
+    function selectGrammarGrade(){
+      var url = "showGrammarUnits.php";
+      var gradeLevel = document.getElementById("grammarGradeLevel").value;
+      url += "?gradeLevel=" + gradeLevel;
+
+      httpGetAsync(url, showGrammarUnitMenu);
+    }
+
+    function showGrammarUnitMenu(responseText){
+      document.getElementById("grammarUnitMenu").innerHTML = responseText;
+    }
+
     function showBrowsedBook(){
       var url = "showBrowsedBook.php";
       var docName = document.getElementById("bookBrowseSelector").value;
@@ -589,6 +609,7 @@ input[type=password] {
       var url = "submitGrammarAssignment.php";
       var gradeLevel = document.getElementById("gradeLevel").value;
       var numbSections = document.getElementById("numbSections").value;
+      var unit = document.getElementById("grammarUnitNumb").value;
 
       if(numbSections==1){
         var numbQuestions1 = document.getElementById("numbGrammarQuestions1").value;
@@ -663,7 +684,7 @@ input[type=password] {
         url += "?numbQuestions1=" + numbQuestions1 + "&numbQuestions2=" + numbQuestions2 + "&numbQuestions3=" + numbQuestions3 + "&numbQuestions4=" + numbQuestions4 + "&numbQuestions5=" + numbQuestions5 + "&sectionNumb1=" + sectionNumb1 + "&sectionNumb2=" + sectionNumb2 + "&sectionNumb3=" + sectionNumb3 + "&sectionNumb4=" + sectionNumb4 + "&sectionNumb5=" + sectionNumb5 + "&page1=" + page1 + "&page2=" + page2 + "&page3=" + page3 + "&page4=" + page4 + "&page5=" + page5;
       }
 
-      url += "&numbSections=" + numbSections + "&gradeLevel=" + gradeLevel;
+      url += "&numbSections=" + numbSections + "&gradeLevel=" + gradeLevel + "&unit=" + unit;
  
       httpGrammarAsync(url, submitGrammar);
     }
@@ -773,6 +794,28 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
             <hr>
 
+            <h6><b>Browse Grammar Books</b></h6>
+            
+            Grade Level (from 6 to 12): 
+            <select id="grammarGradeLevel">
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+
+            </select>
+            <form action="javascript:selectGrammarGrade();" method="GET">
+            <input type="submit" value="Select Grade Level" style="margin-top: 4px; margin-bottom: 3px;">
+            </form>
+
+            <div id="grammarUnitMenu"/></div>
+
+            <hr>
+
+
           <h6><b>Assign Reading Homework</b></h6>
             
             Reading Level (from F to Z): 
@@ -818,7 +861,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
             <h6><b>Assign Grammar Homework</b></h6>
             
-            Grammar Grade Level  
+            Grade Level  
             <select id="gradeLevel">
               <option value="6">6</option>
               <option value="7">7</option>
@@ -827,6 +870,26 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <option value="10">10</option>
               <option value="11">11</option>
               <option value="12">12</option>
+            </select>
+            <br>
+
+            Unit Number 
+            <select id="grammarUnitNumb">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
             </select>
             <br>
 

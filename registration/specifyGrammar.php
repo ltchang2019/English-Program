@@ -21,7 +21,8 @@ try {
     $_SESSION["numbSections"] = $numbSections;
 
     for ($x = 1; $x <= $numbSections; $x++) {
-    print 'Section ' . '<select id="sectionNumb' . $x .  '">
+    print 'Page' . '<input class = "input" style="width: 35px; margin-bottom: 3px; margin-top: 3px; margin-right: 10px" type="text" name="subject"; id="grammarPage' . $x . '"></input>';
+    print  '<b> / </b>Section ' . '<select id="sectionNumb' . $x .  '">
               <option value="01">01</option>
               <option value="02">02</option>
               <option value="03">03</option>
@@ -49,7 +50,7 @@ try {
               <option value="13">13</option>
               <option value="14">14</option>
               <option value="15">15</option>
-            </select>' . '<b> / </b>' . 'Page' . '<input class = "input" style="width: 25px; margin-bottom: 2px;" type="text" name="subject"; id="grammarPage' . $x . '"><br>' ;
+            </select><br>';
         }
 }
 catch(PDOException $e) {

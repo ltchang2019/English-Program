@@ -32,6 +32,7 @@ try {
     $userID = -1;
     foreach($statement as $row){
         $gradeLevel = $row["gradeLevel"];
+        $unit = $row["unit"];
         $sectionNumber = $row["sectionNumber"];
         $page = $row["pageNumber"];
         $numbQuestions = $row['numbQuestions'];
@@ -41,7 +42,7 @@ try {
         if(strpos($completedBy, $firstName) !== false){
         }
         else{
-        print "<option" . " value='" . $assignmentID . "'>" . "Grade " . $gradeLevel . ", " . "Page " . $page . ", " . "Section " . $sectionNumber . "</option>";
+        print "<option" . " value='" . $assignmentID . "'>" . "Unit " . $unit . ", " . "Page " . $page . ", " . "Section " . $sectionNumber . "</option>";
     }
     }
         print "</select>";

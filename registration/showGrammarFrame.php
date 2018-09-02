@@ -38,7 +38,7 @@ try {
             }
         }
 
-        print '<iframe src="' . "../" . $link . '" style="width:100%; height:98vh"></iframe>';
+        print '<iframe src="' . "../" . "GrammarBooks" . "./" . $link . '" style="width:100%; height:98vh"></iframe>';
 
 }
 catch(PDOException $e) {

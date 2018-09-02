@@ -14,6 +14,8 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $unit = $_GET["unit"];
+
     $sql = "SELECT * FROM Administrators WHERE firstName = '$firstName'";
     $statement = $conn -> query($sql);
 
@@ -31,7 +33,7 @@ try {
       $sectionNumb1 = $_GET["sectionNumb1"];
       $page1 = $_GET["page1"];
 
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
     }
     else if($numbSections == 2){
@@ -42,9 +44,9 @@ try {
       $sectionNumb2 = $_GET["sectionNumb2"];
       $page2 = $_GET["page2"];
 
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel','$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
     }
     else if($numbSections == 3){
@@ -58,11 +60,11 @@ try {
       $page2 = $_GET["page2"];
       $page3 = $_GET["page3"];
 
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions3', '$sectionNumb3', '$page3', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions3', '$sectionNumb3', '$page3', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
     }
     else if($numbSections == 4){
@@ -81,13 +83,13 @@ try {
       $page3 = $_GET["page3"];
       $page4 = $_GET["page4"];
 
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions3', '$sectionNumb3', '$page3', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions3', '$sectionNumb3', '$page3', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions4', '$sectionNumb4', '$page4', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions4', '$sectionNumb4', '$page4', CURDATE(), '$groupNumber', '$gradeLevel','$unit')";
       $conn -> exec ( $sql );
     }
     else if($numbSections == 5){
@@ -109,15 +111,15 @@ try {
       $page4 = $_GET["page4"];
       $page5 = $_GET["page5"];
 
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions1', '$sectionNumb1', '$page1', CURDATE(), '$groupNumber', '$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions2', '$sectionNumb2', '$page2', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions3', '$sectionNumb3', '$page3', CURDATE(), '$groupNumber','$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions3', '$sectionNumb3', '$page3', CURDATE(), '$groupNumber','$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions4', '$sectionNumb4', '$page4', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions4', '$sectionNumb4', '$page4', CURDATE(), '$groupNumber', '$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
-      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel) VALUES ('$questions5', '$sectionNumb5', '$page5', CURDATE(), '$groupNumber', '$gradeLevel')";
+      $sql = "INSERT INTO GrammarQuestions (numbQuestions, sectionNumber, pageNumber, dateAssigned, groupNumber, gradeLevel, unit) VALUES ('$questions5', '$sectionNumb5', '$page5', CURDATE(), '$groupNumber', '$gradeLevel', '$unit')";
       $conn -> exec ( $sql );
     }
     print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
