@@ -1,4 +1,0 @@
-[master 729aebe] OOOOH fixed so much stuff and completely reworked viewing and submitting reading assignments to fit webspace library AHHHH
- 6 files changed, 150 insertions(+), 42 deletions(-)
- create mode 100644 registration/selectReadingLevel.php
- create mode 100644 registration/showBrowsedBook.php
