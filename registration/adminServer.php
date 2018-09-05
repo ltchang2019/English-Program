@@ -49,8 +49,9 @@ if (isset($_POST['reg_user'])) {
           VALUES('$firstName', '$lastName', '$username', '$password', 0)";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
+    $_SESSION['firstName'] = $firstName;
     $_SESSION['success'] = "You are now logged in";
-    header('location: adminIndex.php');
+    header('location: adminHome.php');
   }
 }
 

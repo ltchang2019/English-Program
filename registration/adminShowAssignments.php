@@ -25,12 +25,11 @@ try {
     $statement = $conn -> query($sql1);
 
     if ($statement -> rowCount() == 0) {
-        print "<style> table, th, td { border: 0px solid black;} #center { margin-left: auto; margin-right: auto;}</style>";
-        print "<div id='center'><table id='center'><th><br><h4>" . "No new assignments have been posted..." . "</h4></th>";
+        print "<p style='text-align: center'>No new assignments posted...</p>";
     }
     else{
         print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-        print "<div><table id='center'><tr><th>Date Assigned</th><th>Text</th><th>Number of Questions</th><th>Completed By</th></tr>";
+        print "<div><table id='center'><tr><th>Date Assigned</th><th>Text</th><th>Instructions</th><th>Completed By</th></tr>";
 
     $userID = -1;
     foreach($statement as $row){
@@ -39,6 +38,7 @@ try {
         $text = $row["textName"];
         $link = $row["link"];
         $numbQuestions = $row["numbQuestions"];
+        $instructions = $row["instructions"];
         $completedBy = $row["completedBy"];
 
         $_SESSION['link'] = $link;
@@ -48,7 +48,7 @@ try {
         print "<tr>";
         print "<td>" . $dateAssigned . "</td>";
         print "<td>" . $text . "</td>";
-        print "<td>" . $numbQuestions . "</td>";
+        print "<td>" . $instructions . "</td>";
         print "<td>" . $completedBy . "</td>";
         print "</tr>";
     }

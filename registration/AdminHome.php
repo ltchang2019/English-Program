@@ -43,6 +43,7 @@ input[type=password] {
     hr{
       margin-top: 15px; margin-bottom: 15px;
       border-color: silver;
+      height: 2px;
     }
     p{
       margin-top: 5px; margin-bottom: 5px;
@@ -92,7 +93,7 @@ input[type=password] {
 #reportAreaContainer{
     display: flex;
     flex-direction: column;
-    min-height: 200px;
+    min-height: 70px;
 }
 #questionsContainer{
     display: flex;
@@ -310,6 +311,7 @@ input[type=password] {
               var storedTextName = localStorage.getItem("storedTextName");
               var storedNumber = localStorage.getItem("number");
               var readingLevel = document.getElementById("readingLevelAssign").value;
+              var instructions = document.getElementById("readingInstructions").value;
               url = "submitQuestions.php";
               // var link = document.getElementById("pdfLink").value;
               var blankQuestion = false;
@@ -528,7 +530,7 @@ input[type=password] {
               if(question1 == "" || question2 == "" || question3 == "" || question4 == "" || question5 == "" || question6 == "" || question7 == "" || question8 == "" || question9 == "" || question10 == "")
                 blankQuestion=true;
             }
-            url += "&readingLevel=" + readingLevel;
+            url += "&readingLevel=" + readingLevel + "&instructions=" + instructions;
             // document.getElementById("adminTextName").value = "";
             // document.getElementById("pdfLink").value = "";
             httpQuestionAsync(url, showAssignmentMessage);
@@ -833,6 +835,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             </select>
 
             <div class="inputElement">Text Name: <input class = "input" type="text" name="subject"; id="adminTextName"></div>
+            <div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" style="" id="readingInstructions"></textarea></div>
             
             Number of Questions
             <select id="numbQuestions">
@@ -901,8 +904,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-
-            <!-- <div class="inputElement">Instructions: <br><textarea class = "input" rows="2" cols="34" name="body" placeholder="Page numbers, questions, etc... "; style="margin-bottom: -5px" id="body"></textarea></div> -->
             
             <form action="javascript:specifyGrammar();" method="GET">
             <input type="submit" value="Specify Instructions" style="margin-top: 3px" id="grammarAssignButton">

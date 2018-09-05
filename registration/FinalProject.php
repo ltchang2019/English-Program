@@ -94,7 +94,7 @@ input[type=password] {
 #reportAreaContainer{
     display: flex;
     flex-direction: column;
-    min-height: 200px;
+    min-height: 70px;
 }
 #questionsContainer{
     display: flex;
@@ -145,8 +145,10 @@ input[type=password] {
     }
 
     function submitGrammar(responseText){
-      document.getElementById("grammarSlotArea").innerHTML = responseText;
-      location.reload();
+      document.getElementById("grammarAnswerMessageArea").innerHTML = responseText;
+      if(responseText == "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>"){
+        location.reload();
+      }
     }
 
     function showGrammarSlots(){
@@ -481,6 +483,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <input type="submit" value="View Questions" style="margin-top: 5px">
           </form>
             <div id="grammarSlotArea" style="color: black"></div>
+            <div id="grammarAnswerMessageArea"></div>
           </p>
           <hr>
 

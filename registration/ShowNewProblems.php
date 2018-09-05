@@ -34,12 +34,11 @@ try {
     
 
     if ($statement -> rowCount() == 0) {
-        print "<style> table, th, td { border: 0px solid black;} #center { margin-left: auto; margin-right: auto;}</style>";
-        print "<div id='center'><table id='center'><th><br><h4>" . "No new assignments have been posted..." . "</h4></th>";
+        print "<p style='text-align: center'>No new assignments posted...</p>";
     }
     else{
     print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div id='center'><table id='center'><tr><th>Date Assigned</th><th style='min-width:150px'>Text</th><th>Completed</th></tr>";
+    print "<div id='center'><table id='center'><tr><th style='min-width:100px'>Text</th><th>Instructions</th><th>Completed</th></tr>";
 
     $userID = -1;
     foreach($statement as $row){
@@ -48,6 +47,7 @@ try {
         $assignmentID = $row["assignmentID"];
     	$dateAssigned = $row["dateAssigned"];
         $text = $row["textName"];
+        $instructions = $row["instructions"];
         $link = $row["link"];
         $numbQuestions = $row["numbQuestions"];
 
@@ -60,8 +60,8 @@ try {
             $string = '❌';
         }
         print "<tr>";
-        print "<td style='max-width:50px'>" . $dateAssigned . "</td>";
         print "<td style='max-width:50px'>" . $text . "</td>";
+        print "<td max-width:50px>" . $instructions . "</td>";
         print "<td>" . $string . "</td>";
         print "</tr>";
     }

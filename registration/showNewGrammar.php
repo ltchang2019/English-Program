@@ -38,11 +38,11 @@ try {
     }
     else{
     print "<style> table, th, td {max-width: 500px; border: 1px solid black; text-align: center;} #center { margin-left: auto; margin-right: auto;}</style>";
-    print "<div id='center'><table id='center'><tr><th>Grade Level</th><th>Page</th><th>Section Number</th><th>Completed</th></tr>";
+    print "<div id='center'><table id='center'><tr><th>Unit</th><th>Page</th><th>Section Number</th><th>Completed</th></tr>";
 
     $userID = -1;
     foreach($statement as $row){
-        $gradeLevel = $row["gradeLevel"];
+        $unit = $row["unit"];
     	$sectionNumber = $row["sectionNumber"];
         $page = $row["pageNumber"];
         $completedBy = $row["completedBy"];
@@ -55,7 +55,7 @@ try {
         }
 
         print "<tr>";
-        print "<td style='max-width:50px'>" . $gradeLevel . "</td>";
+        print "<td style='max-width:50px'>" . $unit . "</td>";
         print "<td style='max-width:30px'>" . $page . "</td>";
         print "<td style='max-width:30px'>" . $sectionNumber . "</td>";
         print "<td>" . $string . "</td>";

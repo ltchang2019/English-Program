@@ -43,6 +43,10 @@ try {
         $subAnswer4 = addslashes($answer4);
         $subAnswer5 = addslashes($answer5);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -56,6 +60,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 6){
         $answer1 = $_GET["grammarSlot1"];
@@ -72,7 +78,10 @@ try {
         $subAnswer5 = addslashes($answer5);
         $subAnswer6 = addslashes($answer6);
 
-
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -88,6 +97,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 7){
         $answer1 = $_GET["grammarSlot1"];
@@ -106,6 +117,10 @@ try {
         $subAnswer6 = addslashes($answer6);
         $subAnswer7 = addslashes($answer7);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -123,6 +138,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 8){
         $answer1 = $_GET["grammarSlot1"];
@@ -143,6 +160,10 @@ try {
         $subAnswer7 = addslashes($answer7);
         $subAnswer8 = addslashes($answer8);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -162,6 +183,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 9){
         $answer1 = $_GET["grammarSlot1"];
@@ -184,6 +207,10 @@ try {
         $subAnswer8 = addslashes($answer8);
         $subAnswer9 = addslashes($answer9);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -205,6 +232,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 10){
         $answer1 = $_GET["grammarSlot1"];
@@ -229,6 +258,10 @@ try {
         $subAnswer9 = addslashes($answer9);
         $subAnswer10 = addslashes($answer10);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9=="" || $subAnswer10==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -252,6 +285,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 11){
         $answer1 = $_GET["grammarSlot1"];
@@ -278,6 +313,10 @@ try {
         $subAnswer10 = addslashes($answer10);
         $subAnswer11 = addslashes($answer11);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9=="" || $subAnswer10=="" || $subAnswer11==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -303,6 +342,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 12){
         $answer1 = $_GET["grammarSlot1"];
@@ -331,6 +372,10 @@ try {
         $subAnswer11 = addslashes($answer11);
         $subAnswer12 = addslashes($answer12);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9=="" || $subAnswer10=="" || $subAnswer11=="" || $subAnswer12==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -358,6 +403,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 13){
         $answer1 = $_GET["grammarSlot1"];
@@ -388,6 +435,10 @@ try {
         $subAnswer12 = addslashes($answer12);
         $subAnswer13 = addslashes($answer13);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9=="" || $subAnswer10=="" || $subAnswer11=="" || $subAnswer12=="" || $subAnswer13==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -417,6 +468,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 14){
         $answer1 = $_GET["grammarSlot1"];
@@ -449,6 +502,10 @@ try {
         $subAnswer13 = addslashes($answer13);
         $subAnswer14 = addslashes($answer14);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9=="" || $subAnswer10=="" || $subAnswer11=="" || $subAnswer12=="" || $subAnswer13=="" || $subAnswer14==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -480,6 +537,8 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
     }
     else if($numbQuestions == 15){
         $answer1 = $_GET["grammarSlot1"];
@@ -514,6 +573,10 @@ try {
         $subAnswer14 = addslashes($answer14);
         $subAnswer15 = addslashes($answer15);
 
+        if($subAnswer1=="" || $subAnswer2=="" || $subAnswer3=="" || $subAnswer4=="" || $subAnswer5=="" || $subAnswer6=="" || $subAnswer7=="" || $subAnswer8=="" || $subAnswer9=="" || $subAnswer10=="" || $subAnswer11=="" || $subAnswer12=="" || $subAnswer13=="" || $subAnswer14=="" || $subAnswer15==""){
+            print "<p style='color: crimson'> Please answer all questions...</p>";
+        }
+        else{
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 1, '$subAnswer1', '$firstName', '$groupNumber')";
         $conn -> exec ( $sql );
         $sql = "INSERT INTO GrammarAnswers (assignmentID, questionNumb, answer, firstName, groupNumber) VALUES ('$assignmentID', 2, '$subAnswer2', '$firstName', '$groupNumber')";
@@ -547,8 +610,9 @@ try {
 
         $sql = "UPDATE GrammarQuestions SET completedBy = CONCAT(completedBy, '$firstName ') WHERE assignmentID = '$assignmentID'";
         $conn -> exec ( $sql );
+        print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
     }
-    print "<b><p class='animated fadeOut' style='color: green'>Submitted!</p></b>";
+    }
 }
 catch(PDOException $e) {
     print "Connection failed: " . $e->getMessage();
