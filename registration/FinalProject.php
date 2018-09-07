@@ -126,6 +126,28 @@ input[type=password] {
     showGrammarAssignments();
     createGrammarMenu();
 
+    function showBrowsedBook(){
+      var url = "showBrowsedBook.php";
+      var docName = document.getElementById("bookBrowseSelector").value;
+
+      url += "?docName=" + docName;
+
+      httpGetAsync(url, showTextInBox);
+    }
+
+    function selectReadingLevel(){
+      var url = "selectReadingLevel.php";
+      var level = document.getElementById("readingLevel").value;
+
+      url += "?level=" + level;
+
+      httpGetAsync(url, showLeveledBooks);
+    }
+
+    function showLeveledBooks(responseText){
+      document.getElementById("bookSelection").innerHTML = responseText;
+    }
+
     var answer;
     var idVar;
     function submitGrammarAnswers(){
@@ -486,6 +508,29 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <div id="grammarAnswerMessageArea"></div>
           </p>
           <hr>
+
+          <h6><b>Browse Library</b></h6>
+            
+            Reading Level (from F to Z): 
+            <select id="readingLevel">
+              <option value="ReadingLevelF">F</option>
+              <option value="ReadingLevelG">G</option>
+              <option value="ReadingLevelH">H</option>
+              <option value="ReadingLevelI">I</option>
+              <option value="ReadingLevelJ">J</option>
+              <option value="ReadingLevelK">K</option>
+              <option value="ReadingLevelL">L</option>
+              <option value="ReadingLevelM">M</option>
+              <option value="ReadingLevelN">N</option>
+              <option value="ReadingLevelO">O</option>
+            </select>
+            <form action="javascript:selectReadingLevel();" method="GET">
+            <input type="submit" value="Select Level" style="margin-top: 4px; margin-bottom: 3px;">
+            </form>
+
+            <div id="bookSelection"/></div>
+
+            <hr>
 
           <!-- <h6><b>Grammar Homework</b></h6>
           

@@ -43,7 +43,7 @@ input[type=password] {
     hr{
       margin-top: 15px; margin-bottom: 15px;
       border-color: silver;
-      height: 2px;
+      height: 4px;
     }
     p{
       margin-top: 5px; margin-bottom: 5px;
