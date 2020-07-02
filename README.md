@@ -1,5 +1,4 @@
 # English-Program
-*All code documents in REGISTRATION folder
 
 <b>Home Page<b><br>
 ![Home Page](/1138784898.png)
