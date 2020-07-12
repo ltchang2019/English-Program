@@ -1,6 +1,8 @@
 # English-Program
 
-Code was removed for security reasons and inability to refactor but images remain to demonstrate what final product looked like.
+High school summer project for English tutoring program with Grace Girls' Home.
+
+*Code was removed for security reasons and inability to refactor but images remain to demonstrate what final product looked like*
 
 <b>Home Page<b><br>
 ![Home Page](/1138784898.png)
